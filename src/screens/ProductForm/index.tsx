@@ -1,8 +1,6 @@
 import Component, { Props, Dispatch } from "./Component";
 import NeedProps from "../../components/needProps/needProps";
 
-import toProductsForm from "./thunks/toProductsForm";
-
 type MapStateToProps = Props;
 
 const mapStateToProps = (state): MapStateToProps => {
@@ -12,9 +10,7 @@ const mapStateToProps = (state): MapStateToProps => {
 
 type MapDispatchToProps = Dispatch;
 
-const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
-  toProductsForm: nav => dispatch(toProductsForm(nav))
-});
+const mapDispatchToProps = (dispatch): MapDispatchToProps => ({});
 
 import Header from "./HeaderScreen";
 

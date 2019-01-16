@@ -7,7 +7,9 @@ import { NavigationInjectedProps, NavigationActions } from "react-navigation";
 
 export interface Props {}
 
-export interface Dispatch {}
+export interface Dispatch {
+  toProductsForm: (nav) => void;
+}
 
 interface State {}
 
@@ -21,6 +23,11 @@ export default class Component extends React.Component<
     title: "ПРОДУКТЫ"
   };
 
+  private handleOnPressPlus = () => {
+    const { toProductsForm, navigation } = this.props;
+    toProductsForm(navigation);
+  };
+
   render() {
     return (
       <View style={styles.page}>
@@ -29,11 +36,7 @@ export default class Component extends React.Component<
             <Text style={styles.newProductTitleText}>НОВЫЙ ПРОДУКТ</Text>
           </View>
           <View style={styles.newProductIcon}>
-            <TouchableOpacity
-              onPress={() =>
-                this.props.navigation.dispatch(NavigationActions.back())
-              }
-            >
+            <TouchableOpacity onPress={this.handleOnPressPlus}>
               <Image
                 style={{
                   alignSelf: "flex-end",
