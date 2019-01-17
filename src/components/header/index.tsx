@@ -6,7 +6,7 @@ import {
   TitleText,
   LeftButton,
   RightButton
-} from "./Styles";
+} from "./stylesComponents";
 
 import { View, Text, TouchableOpacity, Image } from "react-native";
 

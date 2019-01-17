@@ -1,4 +1,3 @@
-import { StyleSheet } from "react-native";
 import palette from "../../constants/palette";
 
 import styled from "styled-components/native";
@@ -8,7 +7,6 @@ export const Header = styled.View`
   background-color: ${palette.main};
   border-bottom-width: 0.5;
   height: 80;
-  padding-top: 4;
   padding: 0;
   display: flex;
   flex-direction: row;
