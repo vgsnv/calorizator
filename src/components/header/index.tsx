@@ -1,11 +1,13 @@
 import * as React from "react";
 import {
+  HeaderContainer,
   Header,
   ButtonContainer,
   Title,
   TitleText,
   LeftButton,
-  RightButton
+  RightButton,
+  HeaderTop
 } from "./stylesComponents";
 
 import { View, Text, TouchableOpacity, Image } from "react-native";
@@ -48,21 +50,27 @@ export default class Component extends React.Component<
     const { title, leftButton, rightButton } = this.props;
 
     return (
-      <Header>
-        <ButtonContainer>
-          {leftButton &&
-            this.renderLeftButtonImage(leftButton.onPress, leftButton.image)}
-        </ButtonContainer>
+      <HeaderContainer>
+        <HeaderTop />
+        <Header>
+          <ButtonContainer>
+            {leftButton &&
+              this.renderLeftButtonImage(leftButton.onPress, leftButton.image)}
+          </ButtonContainer>
 
-        <Title>
-          <TitleText>{title}</TitleText>
-        </Title>
+          <Title>
+            <TitleText>{title}</TitleText>
+          </Title>
 
-        <ButtonContainer>
-          {rightButton &&
-            this.renderRightButtonImage(rightButton.onPress, rightButton.image)}
-        </ButtonContainer>
-      </Header>
+          <ButtonContainer>
+            {rightButton &&
+              this.renderRightButtonImage(
+                rightButton.onPress,
+                rightButton.image
+              )}
+          </ButtonContainer>
+        </Header>
+      </HeaderContainer>
     );
   }
 }
