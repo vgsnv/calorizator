@@ -14,7 +14,7 @@ export const ProductAdd = styled.View`
   justify-content: space-between;
   height: 104px;
   padding: 10px;
-  background-color: ${palette.white};
+  background-color: ${palette.gray};
   color: ${palette.black};
 `;
 

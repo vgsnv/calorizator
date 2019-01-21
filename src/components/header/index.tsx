@@ -10,7 +10,7 @@ import {
   HeaderTop
 } from "./stylesComponents";
 
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { Image } from "react-native";
 
 interface Button {
   image: string;

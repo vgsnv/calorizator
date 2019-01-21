@@ -4,14 +4,19 @@ import { connect } from "react-redux";
 import Header from "../../components/header";
 
 import back from "./thunks/back";
-const backImg = require("../../assets/back.png");
+import toProductsForm from "./thunks/toProductsForm";
+
+const leftImg = require("../../assets/Back.png");
+const rightImg = require("../../assets/Add.png");
 
 interface Props {
   title: string;
-  backImg: string;
+  leftImg: string;
+  rightImg: string;
 }
 interface Dispatch {
   back: (nav) => void;
+  toProductsForm: (nav) => void;
   navigation: () => void;
 }
 
@@ -22,16 +27,23 @@ class componentHeader extends React.Component<Props & Dispatch, State> {
     this.props.back(this.props.navigation);
   };
 
+  private onPressRightButton = () => {
+    this.props.toProductsForm(this.props.navigation);
+  };
+
   render() {
     return (
       <Header
         {...{
           title: this.props.title,
           leftButton: {
-            image: this.props.backImg,
+            image: this.props.leftImg,
             onPress: this.onPressLeftButton
           },
-          rightButton: null
+          rightButton: {
+            image: this.props.rightImg,
+            onPress: this.onPressRightButton
+          }
         }}
       />
     );
@@ -40,11 +52,13 @@ class componentHeader extends React.Component<Props & Dispatch, State> {
 
 const headerStateToProps = state => ({
   title: "Продукты",
-  backImg
+  leftImg,
+  rightImg
 });
 
 const headerDispatchToProps = dispatch => ({
-  back: nav => dispatch(back(nav))
+  back: nav => dispatch(back(nav)),
+  toProductsForm: nav => dispatch(toProductsForm(nav))
 });
 
 export default connect(

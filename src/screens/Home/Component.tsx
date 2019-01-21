@@ -42,20 +42,12 @@ export default class Component extends React.Component<
 
     return (
       <View style={styles.page}>
-        <View style={styles.gridItem} />
-
-        <View style={[styles.gridItem, styles.itemWrap]}>
-          <View style={styles.btnContainer}>
-            <Button {...toProducts} />
-          </View>
+        <View style={styles.btnContainer}>
+          <Button {...toProducts} />
         </View>
-        <View style={[styles.gridItem, styles.itemWrap]}>
-          <View style={styles.btnContainer}>
-            <Button {...toDailyMenu} />
-          </View>
+        <View style={styles.btnContainer}>
+          <Button {...toDailyMenu} />
         </View>
-
-        <View style={styles.gridItem} />
       </View>
     );
   }

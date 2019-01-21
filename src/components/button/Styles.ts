@@ -6,7 +6,7 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     borderRadius: 6,
-    backgroundColor: palette.main,
+    backgroundColor: palette.mainDark,
     color: palette.white
   },
   buttonName: {

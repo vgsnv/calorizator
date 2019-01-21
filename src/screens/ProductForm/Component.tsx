@@ -1,7 +1,13 @@
 import * as React from "react";
-import styles from "./Styles";
 
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import {
+  Page,
+  NewProduct,
+  EmptyHeader,
+  ButtonContainer
+} from "./stylesComponents";
+
+import { Image, TouchableOpacity } from "react-native";
 
 import { NavigationInjectedProps, NavigationActions } from "react-navigation";
 
@@ -11,7 +17,7 @@ export interface Dispatch {}
 
 interface State {}
 
-const image = require("../../assets/Close.png");
+const CloseIcon = require("../../assets/Close.png");
 
 export default class Component extends React.Component<
   Props & Dispatch & NavigationInjectedProps,
@@ -28,20 +34,14 @@ export default class Component extends React.Component<
 
   render() {
     return (
-      <View style={styles.page}>
-        <View style={styles.newProductIcon}>
-          <TouchableOpacity onPress={this.handleOnPressPlus}>
-            <Image
-              style={{
-                alignSelf: "flex-end",
-                height: 56,
-                width: 56
-              }}
-              source={image}
-            />
-          </TouchableOpacity>
-        </View>
-      </View>
+      <Page>
+        <EmptyHeader />
+        <NewProduct>
+          <ButtonContainer onPress={this.handleOnPressPlus}>
+            <Image source={CloseIcon} />
+          </ButtonContainer>
+        </NewProduct>
+      </Page>
     );
   }
 }

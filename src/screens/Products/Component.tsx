@@ -38,9 +38,7 @@ export default class Component extends React.Component<
       <Page>
         <ProductAdd>
           <NewProductTitleText>{`НОВЫЙ ПРОДУКТ`}</NewProductTitleText>
-          <ProductAddButton onPress={this.handleOnPressPlus}>
-            <ProductAddButtonIcon source={image} />
-          </ProductAddButton>
+          <ProductAddButton onPress={this.handleOnPressPlus} />
         </ProductAdd>
       </Page>
     );

@@ -5,17 +5,18 @@ export default StyleSheet.create({
   page: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: palette.white
+    backgroundColor: palette.white,
+    alignItems: "center",
+    justifyContent: "flex-end"
   },
-  gridItem: {
-    flex: 1
-  },
+
   itemWrap: {
     alignItems: "center",
     justifyContent: "center"
   },
   btnContainer: {
-    width: "80%",
-    height: "40%"
+    marginBottom: 40,
+    width: 280,
+    height: 58
   }
 });

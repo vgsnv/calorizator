@@ -6,7 +6,7 @@ export const HeaderContainer = styled.View`
   padding: 0;
   border-bottom-color: ${palette.gray};
   border-bottom-width: 0.5;
-  background-color: ${palette.main};
+  background-color: ${palette.white};
 `;
 
 export const HeaderTop = styled.View`
@@ -34,7 +34,7 @@ export const Title = styled.View`
 export const TitleText = styled.Text`
   text-transform: uppercase;
   font-size: 18;
-  color: ${palette.white};
+  color: ${palette.mainDark};
   font-weight: 700;
 `;
 
