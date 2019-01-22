@@ -47,7 +47,7 @@ export default function(
   const selfMapStateToProps = (state): MapStateToProps => {
     return {
       ...mapStateToProps(state),
-      appReady: state.App.ready
+      appReady: state.app.App.ready
     };
   };
 

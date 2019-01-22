@@ -6,7 +6,7 @@ import Header from "../../components/header";
 import back from "./thunks/back";
 import toProductsForm from "./thunks/toProductsForm";
 
-const leftImg = require("../../assets/Back.png");
+const leftImg = require("../../assets/BackN.png");
 const rightImg = require("../../assets/Add.png");
 
 interface Props {

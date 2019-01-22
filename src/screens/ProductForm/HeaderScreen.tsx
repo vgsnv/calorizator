@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Header from "../../components/header";
 
 import back from "./thunks/back";
-const backImg = require("../../assets/Back.png");
+const backImg = require("../../assets/BackN.png");
 
 interface Props {
   title: string;

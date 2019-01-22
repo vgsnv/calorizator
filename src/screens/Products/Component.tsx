@@ -1,12 +1,8 @@
 import * as React from "react";
 
-import {
-  Page,
-  ProductAdd,
-  NewProductTitleText,
-  ProductAddButtonIcon,
-  ProductAddButton
-} from "./stylesComponents";
+import { Page } from "./stylesComponents";
+
+import { FlatList, Text } from "react-native";
 
 import { NavigationInjectedProps } from "react-navigation";
 
@@ -34,13 +30,6 @@ export default class Component extends React.Component<
   };
 
   render() {
-    return (
-      <Page>
-        <ProductAdd>
-          <NewProductTitleText>{`НОВЫЙ ПРОДУКТ`}</NewProductTitleText>
-          <ProductAddButton onPress={this.handleOnPressPlus} />
-        </ProductAdd>
-      </Page>
-    );
+    return <Page />;
   }
 }
