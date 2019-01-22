@@ -4,10 +4,7 @@ import { connect } from "react-redux";
 
 type MapStateToProps = Props;
 
-const mapStateToProps = (state): MapStateToProps => {
-  console.log("state", state);
-  return {};
-};
+const mapStateToProps = (state): MapStateToProps => ({});
 
 type MapDispatchToProps = Dispatch;
 

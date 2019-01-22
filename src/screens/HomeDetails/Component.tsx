@@ -19,9 +19,6 @@ export default class Component extends React.Component<
   };
 
   render() {
-    console.log("this.props", this.props);
-    console.log("this.props", this.props.navigation.state);
-
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>HomeDetails Screen</Text>

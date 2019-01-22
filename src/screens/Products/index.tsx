@@ -6,7 +6,6 @@ import toProductsForm from "./thunks/toProductsForm";
 type MapStateToProps = Props;
 
 const mapStateToProps = (state): MapStateToProps => {
-  console.log("state products", state);
   return {};
 };
 

@@ -4,7 +4,6 @@ import NeedProps from "../../components/needProps/needProps";
 type MapStateToProps = Props;
 
 const mapStateToProps = (state): MapStateToProps => {
-  console.log("state products", state);
   return {};
 };
 
