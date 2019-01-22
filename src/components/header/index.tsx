@@ -16,6 +16,7 @@ interface Button {
   image: string;
   onPress: () => void;
 }
+
 export interface Props {
   title: string;
   leftButton?: Button;

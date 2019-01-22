@@ -5,9 +5,15 @@ import toProductsForm from "./thunks/toProductsForm";
 
 type MapStateToProps = Props;
 
-const mapStateToProps = (state): MapStateToProps => {
-  return {};
+const getProducts = entities => {
+  console.log("entities", entities);
+  return Object.keys(entities).map(key => {
+    return entities[key];
+  });
 };
+const mapStateToProps = ({ db }): MapStateToProps => ({
+  products: getProducts(db.products.entities)
+});
 
 type MapDispatchToProps = Dispatch;
 

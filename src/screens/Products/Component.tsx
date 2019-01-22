@@ -1,20 +1,22 @@
 import * as React from "react";
 
-import { Page } from "./stylesComponents";
+import { Page, PageTotal } from "./stylesComponents";
 
-import { FlatList, Text } from "react-native";
+import ProductList from "./ProductList/List";
 
 import { NavigationInjectedProps } from "react-navigation";
 
-export interface Props {}
+import { Products } from "../../store/db/products";
+
+export interface Props {
+  products: Array<any>;
+}
 
 export interface Dispatch {
   toProductsForm: (nav) => void;
 }
 
 interface State {}
-
-const image = require("../../assets/Add.png");
 
 export default class Component extends React.Component<
   Props & Dispatch & NavigationInjectedProps,
@@ -24,12 +26,13 @@ export default class Component extends React.Component<
     title: "ПРОДУКТЫ"
   };
 
-  private handleOnPressPlus = () => {
-    const { toProductsForm, navigation } = this.props;
-    toProductsForm(navigation);
-  };
-
   render() {
-    return <Page />;
+    console.log("props Products screen", this.props);
+    return (
+      <Page>
+        <PageTotal />
+        <ProductList products={this.props.products} />
+      </Page>
+    );
   }
 }

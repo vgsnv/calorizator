@@ -7,3 +7,8 @@ export const Page = styled.View`
   flex-direction: column;
   background-color: ${palette.gray};
 `;
+
+export const PageTotal = styled.View`
+  height: 50px;
+  background-color: ${palette.gray};
+`;
