@@ -7,8 +7,6 @@ import AppNavigator from "./screens/AppNavigator";
 import createStore from "./store";
 const store = createStore({});
 
-store.dispatch({ type: "aaa" });
-
 class HomeScreen extends React.Component<{}, {}> {
   render() {
     return (

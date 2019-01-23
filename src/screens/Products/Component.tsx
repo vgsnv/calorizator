@@ -27,11 +27,14 @@ export default class Component extends React.Component<
   };
 
   render() {
-    console.log("props Products screen", this.props);
+    const productList = {
+      products: this.props.products
+    };
+
     return (
       <Page>
         <PageTotal />
-        <ProductList products={this.props.products} />
+        <ProductList {...productList} />
       </Page>
     );
   }

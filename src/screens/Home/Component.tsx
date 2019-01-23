@@ -1,15 +1,16 @@
 import * as React from "react";
-import styles from "./Styles";
 
-import { View } from "react-native";
+import { Page, BtnContainer } from "./stylesComponents";
 
-import Button from "../../components/button";
+import * as ui from "../../ui";
 
 import { NavigationInjectedProps } from "react-navigation";
 
 export interface Props {}
 
-export interface Dispatch {}
+export interface Dispatch {
+  toProducts: (nav) => void;
+}
 
 interface State {}
 
@@ -22,11 +23,7 @@ export default class Component extends React.Component<
   };
 
   private handleClickBtnProducts = () => {
-    const {
-      navigation: { navigate }
-    } = this.props;
-
-    navigate("Products");
+    this.props.toProducts(this.props.navigation);
   };
 
   render() {
@@ -41,14 +38,14 @@ export default class Component extends React.Component<
     };
 
     return (
-      <View style={styles.page}>
-        <View style={styles.btnContainer}>
-          <Button {...toProducts} />
-        </View>
-        <View style={styles.btnContainer}>
-          <Button {...toDailyMenu} />
-        </View>
-      </View>
+      <Page>
+        <BtnContainer>
+          <ui.Button {...toProducts} />
+        </BtnContainer>
+        <BtnContainer>
+          <ui.Button {...toDailyMenu} />
+        </BtnContainer>
+      </Page>
     );
   }
 }

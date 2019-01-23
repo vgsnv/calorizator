@@ -3,16 +3,14 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import HomeScreen from "./Home";
 import ProductsScreen from "./Products";
 import ProductFormScreen from "./ProductForm";
-import HomeDetailsScreen from "./HomeDetails";
 
 const MainStack = createStackNavigator(
   {
     Home: HomeScreen,
-    Products: ProductsScreen,
-    HomeDetails: HomeDetailsScreen
+    Products: ProductsScreen
   },
   {
-    initialRouteName: "Products"
+    initialRouteName: "Home"
   }
 );
 

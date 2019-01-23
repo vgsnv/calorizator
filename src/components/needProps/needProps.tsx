@@ -18,6 +18,11 @@ export default function(
   const container = (Component, options) => {
     return class extends React.Component<Props, State> {
       static navigationOptions = ({ navigation }) => {
+        if (!options.headerScreen)
+          return {
+            header: null
+          };
+
         const Header = options.headerScreen;
         const HeaderComponent = <Header navigation={navigation} />;
 

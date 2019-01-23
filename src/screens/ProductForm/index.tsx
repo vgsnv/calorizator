@@ -1,21 +1,20 @@
 import Component, { Props, Dispatch } from "./Component";
 import NeedProps from "../../components/needProps/needProps";
 
+import goBack from "./thunks/goBack";
+
 type MapStateToProps = Props;
 
-const mapStateToProps = (state): MapStateToProps => {
-  return {};
-};
+const mapStateToProps = (state): MapStateToProps => ({});
 
 type MapDispatchToProps = Dispatch;
 
-const mapDispatchToProps = (dispatch): MapDispatchToProps => ({});
-
-import Header from "./HeaderScreen";
+const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
+  goBack: nav => dispatch(goBack(nav))
+});
 
 const headerOptions = {
-  headerScreen: Header,
-  gesturesEnabled: false
+  headerScreen: null
 };
 
 export default NeedProps(

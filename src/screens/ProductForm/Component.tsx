@@ -1,7 +1,5 @@
 import * as React from "react";
 
-import Input from "../../components/input";
-
 import {
   Page,
   NewProduct,
@@ -9,13 +7,17 @@ import {
   ButtonContainer
 } from "./stylesComponents";
 
+import * as ui from "../../ui";
+
 import { Image } from "react-native";
 
-import { NavigationInjectedProps, NavigationActions } from "react-navigation";
+import { NavigationInjectedProps } from "react-navigation";
 
 export interface Props {}
 
-export interface Dispatch {}
+export interface Dispatch {
+  goBack: (nav) => void;
+}
 
 interface State {}
 
@@ -35,9 +37,8 @@ export default class Component extends React.Component<
     }
   };
 
-  private handleOnPressPlus = () => {
-    const { navigation } = this.props;
-    navigation.dispatch(NavigationActions.back());
+  private handleOnPressClose = () => {
+    this.props.goBack(this.props.navigation);
   };
 
   private handleOnChange = text => {
@@ -50,19 +51,25 @@ export default class Component extends React.Component<
   };
 
   render() {
+    const closeButton = {
+      onPress: this.handleOnPressClose
+    };
+
+    const titleInput = {
+      placeholder: "Название",
+      onChangeText: this.handleOnChange,
+      value: this.state.titleInput.value
+    };
+
     return (
       <Page>
         <EmptyHeader />
         <NewProduct>
-          <ButtonContainer onPress={this.handleOnPressPlus}>
+          <ButtonContainer {...closeButton}>
             <Image source={CloseIcon} />
           </ButtonContainer>
 
-          <Input
-            placeholder={"Название"}
-            onChangeText={this.handleOnChange}
-            value={this.state.titleInput.value}
-          />
+          <ui.Input {...titleInput} />
         </NewProduct>
       </Page>
     );

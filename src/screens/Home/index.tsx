@@ -1,6 +1,7 @@
 import Component, { Props, Dispatch } from "./Component";
+import NeedProps from "../../components/needProps/needProps";
 
-import { connect } from "react-redux";
+import toProducts from "./thunks/toProducts";
 
 type MapStateToProps = Props;
 
@@ -8,9 +9,17 @@ const mapStateToProps = (state): MapStateToProps => ({});
 
 type MapDispatchToProps = Dispatch;
 
-const mapDispatchToProps = (dispatch): MapDispatchToProps => ({});
+const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
+  toProducts: nav => dispatch(toProducts(nav))
+});
 
-export default connect(
+const headerOptions = {
+  headerScreen: null
+};
+
+export default NeedProps(
   mapStateToProps,
-  mapDispatchToProps
-)(Component);
+  mapDispatchToProps,
+  Component,
+  headerOptions
+);

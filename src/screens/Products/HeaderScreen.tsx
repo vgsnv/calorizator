@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 
 import Header from "../../components/header";
 
-import back from "./thunks/back";
+import goBack from "./thunks/goBack";
 import toProductsForm from "./thunks/toProductsForm";
 
-const leftImg = require("../../assets/BackN.png");
+const leftImg = require("../../assets/GoBack.png");
 const rightImg = require("../../assets/Add.png");
 
 interface Props {
@@ -14,8 +14,9 @@ interface Props {
   leftImg: string;
   rightImg: string;
 }
+
 interface Dispatch {
-  back: (nav) => void;
+  goBack: (nav) => void;
   toProductsForm: (nav) => void;
   navigation: () => void;
 }
@@ -24,7 +25,7 @@ interface State {}
 
 class componentHeader extends React.Component<Props & Dispatch, State> {
   private onPressLeftButton = () => {
-    this.props.back(this.props.navigation);
+    this.props.goBack(this.props.navigation);
   };
 
   private onPressRightButton = () => {
@@ -57,7 +58,7 @@ const headerStateToProps = state => ({
 });
 
 const headerDispatchToProps = dispatch => ({
-  back: nav => dispatch(back(nav)),
+  goBack: nav => dispatch(goBack(nav)),
   toProductsForm: nav => dispatch(toProductsForm(nav))
 });
 
