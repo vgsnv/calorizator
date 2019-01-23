@@ -2,6 +2,7 @@ import * as React from "react";
 import {
   Container,
   Item,
+  TilteTextContainer,
   TextContainer,
   TitleText,
   ItemText
@@ -31,9 +32,9 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
     return (
       <Container onPress={this.onPress}>
         <Item>
-          <TextContainer>
+          <TilteTextContainer>
             <TitleText>{this.props.title}</TitleText>
-          </TextContainer>
+          </TilteTextContainer>
           <TextContainer>
             <ItemText>{this.props.kk}</ItemText>
           </TextContainer>

@@ -12,7 +12,7 @@ const MainStack = createStackNavigator(
     HomeDetails: HomeDetailsScreen
   },
   {
-    initialRouteName: "Home"
+    initialRouteName: "Products"
   }
 );
 

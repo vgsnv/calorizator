@@ -3,10 +3,10 @@ import palette from "../../../constants/palette";
 import styled from "styled-components/native";
 
 export const Container = styled.TouchableOpacity`
-  height: 56px;
+  height: 68px;
   background-color: ${palette.white};
-  margin-bottom: 8px;
-  padding: 0 8px;
+  margin-bottom: 16px;
+  padding: 0 12px;
 `;
 
 export const Item = styled.View`
@@ -18,6 +18,11 @@ export const Item = styled.View`
 
 export const TextContainer = styled.View`
   flex: 1;
+  align-self: center;
+`;
+
+export const TilteTextContainer = styled.View`
+  flex: 2;
   align-self: center;
 `;
 

@@ -48,6 +48,30 @@ const defaultProducts: Products = {
       protein: 4,
       fat: 30,
       crbh: 20
+    },
+    "4": {
+      id: "4",
+      title: "Рис",
+      kk: 200.5,
+      protein: 4,
+      fat: 30,
+      crbh: 20
+    },
+    "5": {
+      id: "5",
+      title: "Картошка",
+      kk: 200.5,
+      protein: 4,
+      fat: 30,
+      crbh: 20
+    },
+    "6": {
+      id: "6",
+      title: "Горох",
+      kk: 200.5,
+      protein: 4,
+      fat: 30,
+      crbh: 20
     }
   }
 };
