@@ -11,10 +11,10 @@ import {
 export interface Props {
   id: string;
   title: string;
-  kk: number;
-  protein: number;
-  fat: number;
-  crbh: number;
+  kk: string;
+  protein: string;
+  fat: string;
+  crbh: string;
 }
 
 export interface Dispatch {
@@ -29,23 +29,25 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
   };
 
   render() {
+    const { title, kk, protein, fat, crbh } = this.props;
+
     return (
       <Container onPress={this.onPress}>
         <Item>
           <TilteTextContainer>
-            <TitleText>{this.props.title}</TitleText>
+            <TitleText>{title}</TitleText>
           </TilteTextContainer>
           <TextContainer>
-            <ItemText>{this.props.kk}</ItemText>
+            <ItemText>{parseFloat(kk).toFixed(1)}</ItemText>
           </TextContainer>
           <TextContainer>
-            <ItemText>{this.props.protein}</ItemText>
+            <ItemText>{parseFloat(protein).toFixed(1)}</ItemText>
           </TextContainer>
           <TextContainer>
-            <ItemText>{this.props.fat}</ItemText>
+            <ItemText>{parseFloat(fat).toFixed(1)}</ItemText>
           </TextContainer>
           <TextContainer>
-            <ItemText>{this.props.crbh}</ItemText>
+            <ItemText>{parseFloat(crbh).toFixed(1)}</ItemText>
           </TextContainer>
         </Item>
       </Container>

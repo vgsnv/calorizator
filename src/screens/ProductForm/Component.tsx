@@ -1,25 +1,32 @@
 import * as React from "react";
 
-import {
-  Page,
-  NewProduct,
-  EmptyHeader,
-  ButtonContainer
-} from "./stylesComponents";
+import { Page, IcnContainer, BtnContainer } from "./stylesComponents";
 
 import * as ui from "../../ui";
 
-import { Image } from "react-native";
+import { Image, KeyboardAvoidingView, ScrollView } from "react-native";
 
 import { NavigationInjectedProps } from "react-navigation";
+
+const uuidv1 = require("uuid/v1");
 
 export interface Props {}
 
 export interface Dispatch {
   goBack: (nav) => void;
+  submit: (nav, data) => void;
 }
 
-interface State {}
+interface Inputs {
+  title: string;
+  kk: string;
+  protein: string;
+  fat: string;
+  crbh: string;
+}
+interface State {
+  inputs: Inputs;
+}
 
 const CloseIcon = require("../../assets/Close.png");
 
@@ -32,8 +39,12 @@ export default class Component extends React.Component<
   };
 
   state = {
-    titleInput: {
-      value: ""
+    inputs: {
+      title: "",
+      kk: "",
+      protein: "",
+      fat: "",
+      crbh: ""
     }
   };
 
@@ -41,36 +52,135 @@ export default class Component extends React.Component<
     this.props.goBack(this.props.navigation);
   };
 
-  private handleOnChange = text => {
+  private handleOnChangeTITLE = text => {
     this.setState(prevState => ({
       ...prevState,
-      titleInput: {
-        value: text
+      inputs: {
+        ...prevState.inputs,
+        title: text
       }
     }));
   };
 
+  private handleOnChangeKK = text => {
+    this.setState(prevState => ({
+      ...prevState,
+      inputs: {
+        ...prevState.inputs,
+        kk: text
+      }
+    }));
+  };
+
+  private handleOnChangePROTEIN = text => {
+    this.setState(prevState => ({
+      ...prevState,
+      inputs: {
+        ...prevState.inputs,
+        protein: text
+      }
+    }));
+  };
+
+  private handleOnChangeFAT = text => {
+    this.setState(prevState => ({
+      ...prevState,
+      inputs: {
+        ...prevState.inputs,
+        fat: text
+      }
+    }));
+  };
+
+  private handleOnChangeCRBN = text => {
+    this.setState(prevState => ({
+      ...prevState,
+      inputs: {
+        ...prevState.inputs,
+        crbh: text
+      }
+    }));
+  };
+
+  private handleOnSubmit = () => {
+    const nav = this.props.navigation;
+    const submit = this.props.submit;
+
+    console.log("state", this.state.inputs);
+    submit(nav, {
+      id: uuidv1(),
+      ...this.state.inputs
+    });
+  };
+
   render() {
+    console.log("state", this.state);
     const closeButton = {
       onPress: this.handleOnPressClose
     };
 
     const titleInput = {
       placeholder: "Название",
-      onChangeText: this.handleOnChange,
-      value: this.state.titleInput.value
+      onChangeText: this.handleOnChangeTITLE,
+      value: this.state.inputs.title,
+      inputType: ui.InputType.STRING
+    };
+
+    const kkInput = {
+      placeholder: "0.0",
+      label: "Килокалории",
+      onChangeText: this.handleOnChangeKK,
+      value: this.state.inputs.kk,
+      inputType: ui.InputType.NUMBER,
+      onSubmitEditing: () => console.log("submit")
+    };
+
+    const proteinInput = {
+      placeholder: "0.0",
+      label: "Белки",
+      onChangeText: this.handleOnChangePROTEIN,
+      value: this.state.inputs.protein,
+      inputType: ui.InputType.NUMBER
+    };
+
+    const fatInput = {
+      placeholder: "0.0",
+      label: "Жиры",
+      onChangeText: this.handleOnChangeFAT,
+      value: this.state.inputs.fat,
+      inputType: ui.InputType.NUMBER
+    };
+
+    const crbhInput = {
+      placeholder: "0.0",
+      label: "Углеводы",
+      onChangeText: this.handleOnChangeCRBN,
+      value: this.state.inputs.crbh,
+      inputType: ui.InputType.NUMBER
+    };
+
+    const SubmitBtn = {
+      name: "ДОБАВИТЬ",
+      onPress: this.handleOnSubmit
     };
 
     return (
       <Page>
-        <EmptyHeader />
-        <NewProduct>
-          <ButtonContainer {...closeButton}>
+        <KeyboardAvoidingView behavior="position" enabled>
+          <IcnContainer {...closeButton}>
             <Image source={CloseIcon} />
-          </ButtonContainer>
+          </IcnContainer>
 
           <ui.Input {...titleInput} />
-        </NewProduct>
+          <ui.Input {...kkInput} />
+          <ui.Input {...proteinInput} />
+          <ui.Input {...fatInput} />
+          <ui.Input {...crbhInput} />
+        </KeyboardAvoidingView>
+
+        <BtnContainer>
+          <ui.Button {...SubmitBtn} />
+        </BtnContainer>
       </Page>
     );
   }

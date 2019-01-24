@@ -1,9 +1,16 @@
 import * as React from "react";
-import { Input } from "./stylesComponents";
+import { Input, InputContainer, Label } from "./stylesComponents";
+
+export enum InputType {
+  STRING,
+  NUMBER
+}
 
 export interface Props {
+  label?: string;
   value: string;
-  placeholder: string;
+  placeholder?: string;
+  inputType: InputType;
 }
 
 export interface Dispatch {
@@ -22,13 +29,22 @@ export default class Component extends React.Component<
   };
 
   render() {
-    const { value, placeholder } = this.props;
+    const { label, value, placeholder, inputType } = this.props;
     return (
-      <Input
-        value={value}
-        onChangeText={text => this.handleOnChangeText(text)}
-        placeholder={placeholder}
-      />
+      <InputContainer>
+        {inputType === InputType.NUMBER && <Label>{label}</Label>}
+        <Input
+          onSubmitEditing={() => console.log("submit")}
+          keyboardType={
+            inputType === InputType.NUMBER ? "decimal-pad" : "default"
+          }
+          returnKeyType={"done"}
+          inputType={inputType}
+          value={value}
+          onChangeText={text => this.handleOnChangeText(text)}
+          placeholder={placeholder}
+        />
+      </InputContainer>
     );
   }
 }

@@ -9,17 +9,20 @@ export const Page = styled.View`
   background-color: ${palette.white};
 `;
 
-export const EmptyHeader = styled.View`
-  height: 25px;
-`;
+export const NewProduct = styled.View``;
 
-export const NewProduct = styled.View`
-  flex: 1;
-  height: 50px;
-`;
-
-export const ButtonContainer = styled.TouchableOpacity`
+export const IcnContainer = styled.TouchableOpacity`
+  margin-top: 24px;
+  margin-bottom: 54px;
   align-self: flex-end;
   height: 50px;
   width: 50;
+`;
+
+export const BtnContainer = styled.TouchableOpacity`
+  margin-top: 24px;
+  align-self: center;
+  margin-bottom: 40px;
+  width: 280px;
+  height: 58px;
 `;

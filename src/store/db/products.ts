@@ -16,9 +16,15 @@ export interface Products {
 }
 
 const CATEGORIES_LOAD = "DB/CATEGORIES_LOAD";
+const PRODUCTS_ADD = "DB/PRODUCTS_ADD";
 
 export const categoriesLoad = () => ({
   type: CATEGORIES_LOAD
+});
+
+export const productsAdd = data => ({
+  type: PRODUCTS_ADD,
+  data
 });
 
 const defaultProducts: Products = {
@@ -56,28 +62,25 @@ const defaultProducts: Products = {
       protein: 4,
       fat: 30,
       crbh: 20
-    },
-    "5": {
-      id: "5",
-      title: "Картошка",
-      kk: 200.5,
-      protein: 4,
-      fat: 30,
-      crbh: 20
-    },
-    "6": {
-      id: "6",
-      title: "Горох",
-      kk: 200.5,
-      protein: 4,
-      fat: 30,
-      crbh: 20
     }
   }
 };
 
 export default (prevProducts: Products = defaultProducts, action) => {
   switch (action.type) {
+    case PRODUCTS_ADD:
+      return {
+        ...prevProducts,
+        entities: {
+          ...prevProducts.entities,
+          [action.data.id]: {
+            ...action.data
+          }
+        },
+        loading: false,
+        error: false
+      };
+
     default:
       return prevProducts;
   }
