@@ -1,18 +1,27 @@
 import Component, { Props, Dispatch } from "./Component";
 import NeedProps from "../../components/needProps/needProps";
 
+import Header from "./HeaderScreen";
+
+import toProductsFormToEdit from "./thunks/toProductsFormToEdit";
+
 type MapStateToProps = Props;
 
-const mapStateToProps = (state): MapStateToProps => {
-  console.log("state products", state);
-  return {};
+const getProducts = entities => {
+  return Object.keys(entities).map(key => {
+    return entities[key];
+  });
 };
+
+const mapStateToProps = ({ db }): MapStateToProps => ({
+  products: getProducts(db.products.entities)
+});
 
 type MapDispatchToProps = Dispatch;
 
-const mapDispatchToProps = (dispatch): MapDispatchToProps => ({});
-
-import Header from "./HeaderScreen";
+const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
+  toProductsFormToEdit: (nav, id) => dispatch(toProductsFormToEdit(nav, id))
+});
 
 const headerOptions = {
   headerScreen: Header,

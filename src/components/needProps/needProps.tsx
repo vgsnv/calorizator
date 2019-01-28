@@ -18,6 +18,11 @@ export default function(
   const container = (Component, options) => {
     return class extends React.Component<Props, State> {
       static navigationOptions = ({ navigation }) => {
+        if (!options.headerScreen)
+          return {
+            header: null
+          };
+
         const Header = options.headerScreen;
         const HeaderComponent = <Header navigation={navigation} />;
 
@@ -47,7 +52,7 @@ export default function(
   const selfMapStateToProps = (state): MapStateToProps => {
     return {
       ...mapStateToProps(state),
-      appReady: state.App.ready
+      appReady: state.app.App.ready
     };
   };
 

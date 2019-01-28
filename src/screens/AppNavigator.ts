@@ -2,17 +2,31 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 
 import HomeScreen from "./Home";
 import ProductsScreen from "./Products";
-import HomeDetailsScreen from "./HomeDetails";
+import ProductFormScreen from "./ProductForm";
 
-const AppNavigator = createStackNavigator(
+const MainStack = createStackNavigator(
   {
     Home: HomeScreen,
-    Products: ProductsScreen,
-    HomeDetails: HomeDetailsScreen
+    Products: ProductsScreen
   },
   {
     initialRouteName: "Home"
   }
 );
 
-export default createAppContainer(AppNavigator);
+const RootStack = createStackNavigator(
+  {
+    Main: {
+      screen: MainStack
+    },
+    ProductsForm: {
+      screen: ProductFormScreen
+    }
+  },
+  {
+    mode: "modal",
+    headerMode: "none"
+  }
+);
+
+export default createAppContainer(RootStack);

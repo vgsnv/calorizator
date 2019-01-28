@@ -1,10 +1,10 @@
 import * as React from "react";
-import styles from "./Styles";
-
-import { Text, TouchableOpacity } from "react-native";
+import { Button, ButtonText } from "./stylesComponents";
 
 export interface Props {
   name: string;
+  disabled?: boolean;
+  activeOpacity: number;
 }
 
 export interface Dispatch {
@@ -24,12 +24,16 @@ export default class Component extends React.Component<
   };
 
   render() {
-    const { name } = this.props;
+    const { name, disabled, activeOpacity } = this.props;
 
     return (
-      <TouchableOpacity style={styles.button} onPress={this.handleClick}>
-        <Text style={styles.buttonName}>{name}</Text>
-      </TouchableOpacity>
+      <Button
+        activeOpacity={activeOpacity}
+        disabled={disabled}
+        onPress={this.handleClick}
+      >
+        <ButtonText>{name}</ButtonText>
+      </Button>
     );
   }
 }

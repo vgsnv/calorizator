@@ -1,15 +1,16 @@
 import * as React from "react";
-import styles from "./Styles";
 
-import { View } from "react-native";
+import { Page, BtnContainer } from "./stylesComponents";
 
-import Button from "../../components/button";
+import * as ui from "../../ui";
 
 import { NavigationInjectedProps } from "react-navigation";
 
 export interface Props {}
 
-export interface Dispatch {}
+export interface Dispatch {
+  toProducts: (nav) => void;
+}
 
 interface State {}
 
@@ -22,41 +23,33 @@ export default class Component extends React.Component<
   };
 
   private handleClickBtnProducts = () => {
-    const {
-      navigation: { navigate }
-    } = this.props;
-
-    navigate("Products");
+    this.props.toProducts(this.props.navigation);
   };
 
   render() {
     const toProducts = {
       name: "КОРЗИНА ПРОДУКТОВ",
+      activeOpacity: 0.5,
+      disabled: false,
       onPress: this.handleClickBtnProducts
     };
 
     const toDailyMenu = {
       name: "МЕНЮ НА ДЕНЬ",
+      activeOpacity: 0.5,
+      disabled: false,
       onPress: this.handleClickBtnProducts
     };
 
     return (
-      <View style={styles.page}>
-        <View style={styles.gridItem} />
-
-        <View style={[styles.gridItem, styles.itemWrap]}>
-          <View style={styles.btnContainer}>
-            <Button {...toProducts} />
-          </View>
-        </View>
-        <View style={[styles.gridItem, styles.itemWrap]}>
-          <View style={styles.btnContainer}>
-            <Button {...toDailyMenu} />
-          </View>
-        </View>
-
-        <View style={styles.gridItem} />
-      </View>
+      <Page>
+        <BtnContainer>
+          <ui.Button {...toProducts} />
+        </BtnContainer>
+        <BtnContainer>
+          <ui.Button {...toDailyMenu} />
+        </BtnContainer>
+      </Page>
     );
   }
 }

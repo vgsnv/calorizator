@@ -1,19 +1,22 @@
 import * as React from "react";
 import {
+  HeaderContainer,
   Header,
   ButtonContainer,
   Title,
   TitleText,
   LeftButton,
-  RightButton
-} from "./Styles";
+  RightButton,
+  HeaderTop
+} from "./stylesComponents";
 
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { Image } from "react-native";
 
 interface Button {
   image: string;
   onPress: () => void;
 }
+
 export interface Props {
   title: string;
   leftButton?: Button;
@@ -48,21 +51,27 @@ export default class Component extends React.Component<
     const { title, leftButton, rightButton } = this.props;
 
     return (
-      <Header>
-        <ButtonContainer>
-          {leftButton &&
-            this.renderLeftButtonImage(leftButton.onPress, leftButton.image)}
-        </ButtonContainer>
+      <HeaderContainer>
+        <HeaderTop />
+        <Header>
+          <ButtonContainer>
+            {leftButton &&
+              this.renderLeftButtonImage(leftButton.onPress, leftButton.image)}
+          </ButtonContainer>
 
-        <Title>
-          <TitleText>{title}</TitleText>
-        </Title>
+          <Title>
+            <TitleText>{title}</TitleText>
+          </Title>
 
-        <ButtonContainer>
-          {rightButton &&
-            this.renderRightButtonImage(rightButton.onPress, rightButton.image)}
-        </ButtonContainer>
-      </Header>
+          <ButtonContainer>
+            {rightButton &&
+              this.renderRightButtonImage(
+                rightButton.onPress,
+                rightButton.image
+              )}
+          </ButtonContainer>
+        </Header>
+      </HeaderContainer>
     );
   }
 }

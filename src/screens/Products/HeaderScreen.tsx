@@ -3,23 +3,33 @@ import { connect } from "react-redux";
 
 import Header from "../../components/header";
 
-import back from "./thunks/back";
-const backImg = require("../../assets/back.png");
+import goBack from "./thunks/goBack";
+import toProductsFormAdd from "./thunks/toProductsFormAdd";
+
+const leftImg = require("../../assets/GoBack.png");
+const rightImg = require("../../assets/Add.png");
 
 interface Props {
   title: string;
-  backImg: string;
+  leftImg: string;
+  rightImg: string;
+  navigation: any;
 }
+
 interface Dispatch {
-  back: (nav) => void;
-  navigation: () => void;
+  goBack: (nav) => void;
+  toProductsFormAdd: (nav) => void;
 }
 
 interface State {}
 
 class componentHeader extends React.Component<Props & Dispatch, State> {
   private onPressLeftButton = () => {
-    this.props.back(this.props.navigation);
+    this.props.goBack(this.props.navigation);
+  };
+
+  private onPressRightButton = () => {
+    this.props.toProductsFormAdd(this.props.navigation);
   };
 
   render() {
@@ -28,10 +38,13 @@ class componentHeader extends React.Component<Props & Dispatch, State> {
         {...{
           title: this.props.title,
           leftButton: {
-            image: this.props.backImg,
+            image: this.props.leftImg,
             onPress: this.onPressLeftButton
           },
-          rightButton: null
+          rightButton: {
+            image: this.props.rightImg,
+            onPress: this.onPressRightButton
+          }
         }}
       />
     );
@@ -39,12 +52,14 @@ class componentHeader extends React.Component<Props & Dispatch, State> {
 }
 
 const headerStateToProps = state => ({
-  title: "Продукты",
-  backImg
+  title: "Корзина продуктов",
+  leftImg,
+  rightImg
 });
 
 const headerDispatchToProps = dispatch => ({
-  back: nav => dispatch(back(nav))
+  goBack: nav => dispatch(goBack(nav)),
+  toProductsFormAdd: nav => dispatch(toProductsFormAdd(nav))
 });
 
 export default connect(

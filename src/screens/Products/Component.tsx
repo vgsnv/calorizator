@@ -1,17 +1,20 @@
 import * as React from "react";
-import styles from "./Styles";
 
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { Page, PageTotal } from "./stylesComponents";
 
-import { NavigationInjectedProps, NavigationActions } from "react-navigation";
+import ProductList from "./ProductList/List";
 
-export interface Props {}
+import { NavigationInjectedProps } from "react-navigation";
 
-export interface Dispatch {}
+export interface Props {
+  products: Array<any>;
+}
+
+export interface Dispatch {
+  toProductsFormToEdit: (nav, id) => void;
+}
 
 interface State {}
-
-const image = require("../../assets/Add.png");
 
 export default class Component extends React.Component<
   Props & Dispatch & NavigationInjectedProps,
@@ -22,36 +25,17 @@ export default class Component extends React.Component<
   };
 
   render() {
-    return (
-      <View style={styles.page}>
-        <View style={[styles.newProduct]}>
-          <View style={styles.newProductTitle}>
-            <Text style={styles.newProductTitleText}>НОВЫЙ ПРОДУКТ</Text>
-          </View>
-          <View style={styles.newProductIcon}>
-            <TouchableOpacity
-              onPress={() =>
-                this.props.navigation.dispatch(NavigationActions.back())
-              }
-            >
-              <Image
-                style={{
-                  alignSelf: "flex-end",
-                  height: 56,
-                  width: 56
-                }}
-                source={image}
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
+    const productList = {
+      products: this.props.products,
+      toProductsFormToEdit: this.props.toProductsFormToEdit,
+      navigation: this.props.navigation
+    };
 
-        <View style={styles.gridItem} />
-        <View style={styles.gridItem} />
-        <View style={styles.gridItem} />
-        <View style={styles.gridItem} />
-        <View style={styles.gridItem} />
-      </View>
+    return (
+      <Page>
+        <PageTotal />
+        <ProductList {...productList} />
+      </Page>
     );
   }
 }
