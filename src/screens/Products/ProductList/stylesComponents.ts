@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 
 export const Container = styled.TouchableOpacity`
   height: 68px;
-  background-color: ${palette.white};
+  background-color: ${palette.main};
   margin-bottom: 16px;
   padding: 0 12px;
 `;
@@ -28,14 +28,13 @@ export const TilteTextContainer = styled.View`
 
 export const TitleText = styled.Text`
   font-size: 14;
-  font-weight: 700;
   text-align: left;
-  text-transform: uppercase;
-  color: ${palette.mainDark};
+  text-transform: capitalize;
+  color: ${palette.white};
 `;
 
 export const ItemText = styled.Text`
   font-size: 14;
-  font-weight: 500;
   text-align: right;
+  color: ${palette.white};
 `;

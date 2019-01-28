@@ -1,16 +1,18 @@
 import * as React from "react";
 
-import { Page, IcnContainer, BtnContainer } from "./stylesComponents";
+import { Page, ModalHeader, BtnContainer, TxtButton } from "./stylesComponents";
 
 import * as ui from "../../ui";
 
-import { Image, KeyboardAvoidingView, ScrollView } from "react-native";
+import { KeyboardAvoidingView, Text } from "react-native";
 
 import { NavigationInjectedProps } from "react-navigation";
 
-const uuidv1 = require("uuid/v1");
+import { Product } from "../../store/app/curProduct";
 
-export interface Props {}
+export interface Props {
+  curProduct: Product;
+}
 
 export interface Dispatch {
   goBack: (nav) => void;
@@ -25,10 +27,9 @@ interface Inputs {
   crbh: string;
 }
 interface State {
+  submitTitle: string;
   inputs: Inputs;
 }
-
-const CloseIcon = require("../../assets/Close.png");
 
 export default class Component extends React.Component<
   Props & Dispatch & NavigationInjectedProps,
@@ -38,15 +39,36 @@ export default class Component extends React.Component<
     title: "ПРОДУКТЫ"
   };
 
-  state = {
-    inputs: {
-      title: "",
-      kk: "",
-      protein: "",
-      fat: "",
-      crbh: ""
+  constructor(props) {
+    super(props);
+
+    let curProduct, submitTitle;
+
+    if (!!this.props.curProduct) {
+      submitTitle = "Сохранить";
+      curProduct = this.props.curProduct;
+    } else {
+      submitTitle = "Добавить";
+      curProduct = {
+        title: "",
+        kk: "",
+        protein: "",
+        fat: "",
+        crbh: ""
+      };
     }
-  };
+
+    this.state = {
+      submitTitle,
+      inputs: {
+        title: curProduct.title,
+        kk: curProduct.kk,
+        protein: curProduct.protein,
+        fat: curProduct.fat,
+        crbh: curProduct.crbh
+      }
+    };
+  }
 
   private handleOnPressClose = () => {
     this.props.goBack(this.props.navigation);
@@ -102,22 +124,15 @@ export default class Component extends React.Component<
     }));
   };
 
-  private handleOnSubmit = () => {
+  private handleOnPressSubmit = () => {
     const nav = this.props.navigation;
     const submit = this.props.submit;
 
-    console.log("state", this.state.inputs);
-    submit(nav, {
-      id: uuidv1(),
-      ...this.state.inputs
-    });
+    submit(nav, this.state.inputs);
   };
 
   render() {
     console.log("state", this.state);
-    const closeButton = {
-      onPress: this.handleOnPressClose
-    };
 
     const titleInput = {
       placeholder: "Название",
@@ -131,8 +146,7 @@ export default class Component extends React.Component<
       label: "Килокалории",
       onChangeText: this.handleOnChangeKK,
       value: this.state.inputs.kk,
-      inputType: ui.InputType.NUMBER,
-      onSubmitEditing: () => console.log("submit")
+      inputType: ui.InputType.NUMBER
     };
 
     const proteinInput = {
@@ -159,28 +173,31 @@ export default class Component extends React.Component<
       inputType: ui.InputType.NUMBER
     };
 
+    const closeButton = {
+      onPress: this.handleOnPressClose
+    };
+
     const SubmitBtn = {
-      name: "ДОБАВИТЬ",
-      onPress: this.handleOnSubmit
+      onPress: this.handleOnPressSubmit
     };
 
     return (
       <Page>
         <KeyboardAvoidingView behavior="position" enabled>
-          <IcnContainer {...closeButton}>
-            <Image source={CloseIcon} />
-          </IcnContainer>
-
+          <ModalHeader>
+            <BtnContainer {...closeButton}>
+              <TxtButton>Отмена</TxtButton>
+            </BtnContainer>
+            <BtnContainer {...SubmitBtn}>
+              <TxtButton>{this.state.submitTitle}</TxtButton>
+            </BtnContainer>
+          </ModalHeader>
           <ui.Input {...titleInput} />
           <ui.Input {...kkInput} />
           <ui.Input {...proteinInput} />
           <ui.Input {...fatInput} />
           <ui.Input {...crbhInput} />
         </KeyboardAvoidingView>
-
-        <BtnContainer>
-          <ui.Button {...SubmitBtn} />
-        </BtnContainer>
       </Page>
     );
   }

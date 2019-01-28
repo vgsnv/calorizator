@@ -6,14 +6,12 @@ import ProductList from "./ProductList/List";
 
 import { NavigationInjectedProps } from "react-navigation";
 
-import { Products } from "../../store/db/products";
-
 export interface Props {
   products: Array<any>;
 }
 
 export interface Dispatch {
-  toProductsForm: (nav) => void;
+  toProductsFormToEdit: (nav, id) => void;
 }
 
 interface State {}
@@ -28,7 +26,9 @@ export default class Component extends React.Component<
 
   render() {
     const productList = {
-      products: this.props.products
+      products: this.props.products,
+      toProductsFormToEdit: this.props.toProductsFormToEdit,
+      navigation: this.props.navigation
     };
 
     return (

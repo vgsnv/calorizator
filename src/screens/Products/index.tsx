@@ -3,7 +3,7 @@ import NeedProps from "../../components/needProps/needProps";
 
 import Header from "./HeaderScreen";
 
-import toProductsForm from "./thunks/toProductsForm";
+import toProductsFormToEdit from "./thunks/toProductsFormToEdit";
 
 type MapStateToProps = Props;
 
@@ -20,7 +20,7 @@ const mapStateToProps = ({ db }): MapStateToProps => ({
 type MapDispatchToProps = Dispatch;
 
 const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
-  toProductsForm: nav => dispatch(toProductsForm(nav))
+  toProductsFormToEdit: (nav, id) => dispatch(toProductsFormToEdit(nav, id))
 });
 
 const headerOptions = {

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Header from "../../components/header";
 
 import goBack from "./thunks/goBack";
-import toProductsForm from "./thunks/toProductsForm";
+import toProductsFormAdd from "./thunks/toProductsFormAdd";
 
 const leftImg = require("../../assets/GoBack.png");
 const rightImg = require("../../assets/Add.png");
@@ -13,12 +13,12 @@ interface Props {
   title: string;
   leftImg: string;
   rightImg: string;
+  navigation: any;
 }
 
 interface Dispatch {
   goBack: (nav) => void;
-  toProductsForm: (nav) => void;
-  navigation: () => void;
+  toProductsFormAdd: (nav) => void;
 }
 
 interface State {}
@@ -29,7 +29,7 @@ class componentHeader extends React.Component<Props & Dispatch, State> {
   };
 
   private onPressRightButton = () => {
-    this.props.toProductsForm(this.props.navigation);
+    this.props.toProductsFormAdd(this.props.navigation);
   };
 
   render() {
@@ -52,14 +52,14 @@ class componentHeader extends React.Component<Props & Dispatch, State> {
 }
 
 const headerStateToProps = state => ({
-  title: "Продукты",
+  title: "Корзина продуктов",
   leftImg,
   rightImg
 });
 
 const headerDispatchToProps = dispatch => ({
   goBack: nav => dispatch(goBack(nav)),
-  toProductsForm: nav => dispatch(toProductsForm(nav))
+  toProductsFormAdd: nav => dispatch(toProductsFormAdd(nav))
 });
 
 export default connect(

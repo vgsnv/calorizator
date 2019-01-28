@@ -6,7 +6,9 @@ import submit from "./thunks/submit";
 
 type MapStateToProps = Props;
 
-const mapStateToProps = (state): MapStateToProps => ({});
+const mapStateToProps = ({ app }): MapStateToProps => ({
+  curProduct: app.curProduct
+});
 
 type MapDispatchToProps = Dispatch;
 

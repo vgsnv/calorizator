@@ -8,9 +8,12 @@ import { Product } from "../../../store/db/products";
 
 export interface Props {
   products: Array<Product>;
+  navigation: any;
 }
 
-export interface Dispatch {}
+export interface Dispatch {
+  toProductsFormToEdit: (nav, id) => void;
+}
 
 interface State {}
 
@@ -21,7 +24,7 @@ export default class Component extends React.Component<
   private keyExtractor = item => item.id;
 
   private onPressItem = (id: string) => {
-    console.log("click by id:", id);
+    this.props.toProductsFormToEdit(this.props.navigation, id);
   };
 
   private renderItem = ({ item }) => {

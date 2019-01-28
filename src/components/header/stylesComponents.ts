@@ -32,10 +32,10 @@ export const Title = styled.View`
 `;
 
 export const TitleText = styled.Text`
-  text-transform: uppercase;
-  font-size: 18;
-  color: ${palette.mainDark};
-  font-weight: 700;
+  font-size: 17;
+  font-family: "System";
+  font-style: normal;
+  letter-spacing: -0.4px;
 `;
 
 export const LeftButton = styled.TouchableOpacity`

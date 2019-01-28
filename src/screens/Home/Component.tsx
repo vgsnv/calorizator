@@ -29,11 +29,15 @@ export default class Component extends React.Component<
   render() {
     const toProducts = {
       name: "КОРЗИНА ПРОДУКТОВ",
+      activeOpacity: 0.5,
+      disabled: false,
       onPress: this.handleClickBtnProducts
     };
 
     const toDailyMenu = {
       name: "МЕНЮ НА ДЕНЬ",
+      activeOpacity: 0.5,
+      disabled: false,
       onPress: this.handleClickBtnProducts
     };
 

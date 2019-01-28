@@ -6,23 +6,25 @@ export const Page = styled.View`
   flex: 1;
   flex-direction: column;
   padding: 0 5px;
-  background-color: ${palette.white};
+  background-color: ${palette.gray};
 `;
 
-export const NewProduct = styled.View``;
-
-export const IcnContainer = styled.TouchableOpacity`
-  margin-top: 24px;
-  margin-bottom: 54px;
-  align-self: flex-end;
+export const ModalHeader = styled.View`
   height: 50px;
-  width: 50;
+  flex-direction: row;
+  padding: 0 8px;
+  margin-top: 24px;
+  margin-bottom: 50px;
+  justify-content: space-between;
 `;
 
 export const BtnContainer = styled.TouchableOpacity`
-  margin-top: 24px;
-  align-self: center;
-  margin-bottom: 40px;
-  width: 280px;
-  height: 58px;
+  height: 100%;
+  align-content: space-between;
+  justify-content: center;
+`;
+
+export const TxtButton = styled.Text`
+  font-size: 18px;
+  color: ${palette.mainDark};
 `;
