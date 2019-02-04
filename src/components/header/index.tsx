@@ -1,13 +1,13 @@
 import * as React from "react";
 import {
   HeaderContainer,
-  Header,
-  ButtonContainer,
+  Nav,
+  LButtonContainer,
+  RButtonContainer,
+  Img,
   Title,
   TitleText,
-  LeftButton,
-  RightButton,
-  HeaderTop
+  EmptySpace
 } from "./stylesComponents";
 
 import { Image } from "react-native";
@@ -31,46 +31,28 @@ export default class Component extends React.Component<
   Props & Dispatch,
   State
 > {
-  private renderLeftButtonImage = (onPress, image) => {
-    return (
-      <LeftButton onPress={onPress}>
-        <Image source={image} />
-      </LeftButton>
-    );
-  };
-
-  private renderRightButtonImage = (onPress, image) => {
-    return (
-      <RightButton onPress={onPress}>
-        <Image source={image} />
-      </RightButton>
-    );
-  };
-
   render() {
     const { title, leftButton, rightButton } = this.props;
 
     return (
       <HeaderContainer>
-        <HeaderTop />
-        <Header>
-          <ButtonContainer>
-            {leftButton &&
-              this.renderLeftButtonImage(leftButton.onPress, leftButton.image)}
-          </ButtonContainer>
+        <EmptySpace />
+        <Nav>
+          {leftButton && (
+            <LButtonContainer onPress={leftButton.onPress}>
+              <Img source={leftButton.image} />
+            </LButtonContainer>
+          )}
+          {rightButton && (
+            <RButtonContainer onPress={rightButton.onPress}>
+              <Img source={rightButton.image} />
+            </RButtonContainer>
+          )}
+        </Nav>
 
-          <Title>
-            <TitleText>{title}</TitleText>
-          </Title>
-
-          <ButtonContainer>
-            {rightButton &&
-              this.renderRightButtonImage(
-                rightButton.onPress,
-                rightButton.image
-              )}
-          </ButtonContainer>
-        </Header>
+        <Title>
+          <TitleText>{title}</TitleText>
+        </Title>
       </HeaderContainer>
     );
   }

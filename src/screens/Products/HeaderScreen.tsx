@@ -52,7 +52,7 @@ class componentHeader extends React.Component<Props & Dispatch, State> {
 }
 
 const headerStateToProps = state => ({
-  title: "Корзина продуктов",
+  title: "Продукты",
   leftImg,
   rightImg
 });

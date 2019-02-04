@@ -33,7 +33,7 @@ export default class Component extends React.Component<
 
     return (
       <Page>
-        <PageTotal />
+        {/* <PageTotal /> */}
         <ProductList {...productList} />
       </Page>
     );
