@@ -2,11 +2,18 @@ import * as React from "react";
 import {
   Container,
   Item,
+  Left,
+  Right,
   TilteTextContainer,
-  TextContainer,
+  DetailContainer,
+  DetailItem,
+  DetailText,
   TitleText,
-  ItemText
+  BigText,
+  Img
 } from "./stylesComponents";
+
+const forward = require("../../../assets/forward.png");
 
 export interface Props {
   id: string;
@@ -34,21 +41,27 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
     return (
       <Container onPress={this.onPress}>
         <Item>
-          <TilteTextContainer>
-            <TitleText>{title}</TitleText>
-          </TilteTextContainer>
-          <TextContainer>
-            <ItemText>{parseFloat(kk).toFixed(1)}</ItemText>
-          </TextContainer>
-          <TextContainer>
-            <ItemText>{parseFloat(protein).toFixed(1)}</ItemText>
-          </TextContainer>
-          <TextContainer>
-            <ItemText>{parseFloat(fat).toFixed(1)}</ItemText>
-          </TextContainer>
-          <TextContainer>
-            <ItemText>{parseFloat(crbh).toFixed(1)}</ItemText>
-          </TextContainer>
+          <Left>
+            <TilteTextContainer>
+              <TitleText>{title}</TitleText>
+            </TilteTextContainer>
+
+            <DetailContainer>
+              <DetailItem type={"protein"}>
+                <DetailText>{parseFloat(protein).toFixed(1)}</DetailText>
+              </DetailItem>
+              <DetailItem type={"fat"}>
+                <DetailText>{parseFloat(fat).toFixed(1)}</DetailText>
+              </DetailItem>
+              <DetailItem type={"crbh"}>
+                <DetailText>{parseFloat(crbh).toFixed(1)}</DetailText>
+              </DetailItem>
+            </DetailContainer>
+          </Left>
+          <Right>
+            <BigText>{parseFloat(kk).toFixed(0)}</BigText>
+            <Img source={forward} />
+          </Right>
         </Item>
       </Container>
     );

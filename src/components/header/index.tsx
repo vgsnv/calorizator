@@ -10,8 +10,6 @@ import {
   EmptySpace
 } from "./stylesComponents";
 
-import { Image } from "react-native";
-
 interface Button {
   image: string;
   onPress: () => void;

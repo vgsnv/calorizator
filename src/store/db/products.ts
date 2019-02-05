@@ -34,7 +34,7 @@ const defaultProducts: Products = {
     "1": {
       id: "1",
       title: "Гречка",
-      kk: "400.5",
+      kk: "70",
       protein: "4",
       fat: "3",
       crbh: "20"
@@ -42,7 +42,7 @@ const defaultProducts: Products = {
     "2": {
       id: "2",
       title: "Ягоды",
-      kk: "100.52",
+      kk: "80.52",
       protein: "0",
       fat: "7",
       crbh: "2"
@@ -50,7 +50,7 @@ const defaultProducts: Products = {
     "3": {
       id: "3",
       title: "Творог",
-      kk: "200.5",
+      kk: "20.5",
       protein: "4",
       fat: "30",
       crbh: "20"
@@ -61,6 +61,14 @@ const defaultProducts: Products = {
       kk: "200.5",
       protein: "4",
       fat: "30",
+      crbh: "20"
+    },
+    "5": {
+      id: "5",
+      title: "Куриные грудки",
+      kk: "70",
+      protein: "25",
+      fat: "3",
       crbh: "20"
     }
   }

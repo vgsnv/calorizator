@@ -33,14 +33,15 @@ export const Img = styled.Image`
 `;
 
 export const Title = styled.View`
-  height: 58px;
+  height: 62px;
+  justify-content: center;
 `;
 
 export const TitleText = styled.Text`
   font-weight: 500;
-  padding-left: 16px;
-  padding-top: 6px;
+  padding-left: 18px;
+  /* padding-top: 6px; */
   font-size: 38;
   color: ${palette.grayLight};
-  letter-spacing: -0.4px;
+  letter-spacing: -0.6px;
 `;
