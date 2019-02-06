@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Page, ModalHeader, BtnContainer, TxtButton } from "./stylesComponents";
+import { Page } from "./stylesComponents";
 
 import * as ui from "../../ui";
 
@@ -184,14 +184,6 @@ export default class Component extends React.Component<
     return (
       <Page>
         <KeyboardAvoidingView behavior="position" enabled>
-          <ModalHeader>
-            <BtnContainer {...closeButton}>
-              <TxtButton>Отмена</TxtButton>
-            </BtnContainer>
-            <BtnContainer {...SubmitBtn}>
-              <TxtButton>{this.state.submitTitle}</TxtButton>
-            </BtnContainer>
-          </ModalHeader>
           <ui.Input {...titleInput} />
           <ui.Input {...kkInput} />
           <ui.Input {...proteinInput} />

@@ -7,7 +7,8 @@ import ProductFormScreen from "./ProductForm";
 const MainStack = createStackNavigator(
   {
     Home: HomeScreen,
-    Products: ProductsScreen
+    Products: ProductsScreen,
+    ProductsForm: ProductFormScreen
   },
   {
     initialRouteName: "Products"
@@ -18,10 +19,10 @@ const RootStack = createStackNavigator(
   {
     Main: {
       screen: MainStack
-    },
-    ProductsForm: {
-      screen: ProductFormScreen
     }
+    // ProductsForm: {
+    //   screen: ProductFormScreen
+    // }
   },
   {
     mode: "modal",
