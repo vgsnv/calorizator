@@ -20,9 +20,6 @@ const RootStack = createStackNavigator(
     Main: {
       screen: MainStack
     }
-    // ProductsForm: {
-    //   screen: ProductFormScreen
-    // }
   },
   {
     mode: "modal",

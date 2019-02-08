@@ -9,6 +9,6 @@ export const Page = styled.View`
 `;
 
 export const PageTotal = styled.View`
-  height: 50px;
-  background-color: ${palette.white};
+  height: 54px;
+  background-color: ${palette.graySuperLight};
 `;
