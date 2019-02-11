@@ -10,6 +10,7 @@ export interface Props {}
 
 export interface Dispatch {
   toProducts: (nav) => void;
+  toDefault: (nav) => void;
 }
 
 interface State {}
@@ -26,6 +27,10 @@ export default class Component extends React.Component<
     this.props.toProducts(this.props.navigation);
   };
 
+  private handleClickBtnDefault = () => {
+    this.props.toDefault(this.props.navigation);
+  };
+
   render() {
     const toProducts = {
       name: "КОРЗИНА ПРОДУКТОВ",
@@ -38,7 +43,7 @@ export default class Component extends React.Component<
       name: "МЕНЮ НА ДЕНЬ",
       activeOpacity: 0.5,
       disabled: false,
-      onPress: this.handleClickBtnProducts
+      onPress: this.handleClickBtnDefault
     };
 
     return (

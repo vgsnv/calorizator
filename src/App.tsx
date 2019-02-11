@@ -5,7 +5,8 @@ import { Provider } from "react-redux";
 import AppNavigator from "./screens/AppNavigator";
 
 import createStore from "./store";
-const store = createStore({});
+
+const store = createStore();
 
 class App extends React.Component<{}, {}> {
   render() {

@@ -9,7 +9,8 @@ const PageContainer = ({ appReady, children }) => {
   return (
     <View
       style={{
-        flex: 1
+        flex: 1,
+        backgroundColor: "transparent"
       }}
     >
       {children}
