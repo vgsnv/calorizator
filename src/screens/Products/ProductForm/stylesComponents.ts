@@ -1,4 +1,4 @@
-import palette from "../../constants/palette";
+import palette from "../../../constants/palette";
 
 import styled from "styled-components/native";
 
@@ -7,4 +7,12 @@ export const Page = styled.View`
   flex-direction: column;
   padding: 0 5px;
   background-color: ${palette.white};
+`;
+
+export const BtnContainer = styled.View`
+  margin-top: 40px;
+  width: 280px;
+  height: 58px;
+
+  align-self: center;
 `;

@@ -7,5 +7,5 @@ export default (nav, id) => async (dispatch, getState) => {
   const curProduct = prevState.db.products.entities[id];
 
   dispatch(curproductAdd(curProduct));
-  await nav.dispatch(NavigationActions.navigate({ routeName: "ProductsForm" }));
+  // await nav.dispatch(NavigationActions.navigate({ routeName: "ProductsForm" }));
 };

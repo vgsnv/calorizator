@@ -1,14 +1,12 @@
 import * as React from "react";
 
-import { Page } from "./stylesComponents";
+import { Page, BtnContainer } from "./stylesComponents";
 
-import * as ui from "../../ui";
+import * as ui from "../../../ui";
 
-import { KeyboardAvoidingView, Text } from "react-native";
+import { KeyboardAvoidingView } from "react-native";
 
-import { NavigationInjectedProps } from "react-navigation";
-
-import { Product } from "../../store/app/curProduct";
+import { Product } from "../../../store/app/curProduct";
 
 export interface Props {
   curProduct: Product;
@@ -16,7 +14,7 @@ export interface Props {
 
 export interface Dispatch {
   goBack: (nav) => void;
-  submit: (nav, data) => void;
+  submit: (data) => void;
 }
 
 interface Inputs {
@@ -32,7 +30,7 @@ interface State {
 }
 
 export default class Component extends React.Component<
-  Props & Dispatch & NavigationInjectedProps,
+  Props & Dispatch,
   State
 > {
   static navigationOptions = {
@@ -69,10 +67,6 @@ export default class Component extends React.Component<
       }
     };
   }
-
-  private handleOnPressClose = () => {
-    this.props.goBack(this.props.navigation);
-  };
 
   private handleOnChangeTITLE = text => {
     this.setState(prevState => ({
@@ -125,15 +119,12 @@ export default class Component extends React.Component<
   };
 
   private handleOnPressSubmit = () => {
-    const nav = this.props.navigation;
     const submit = this.props.submit;
 
-    submit(nav, this.state.inputs);
+    submit(this.state.inputs);
   };
 
   render() {
-    console.log("state", this.state);
-
     const titleInput = {
       placeholder: "Название",
       onChangeText: this.handleOnChangeTITLE,
@@ -173,11 +164,10 @@ export default class Component extends React.Component<
       inputType: ui.InputType.NUMBER
     };
 
-    const closeButton = {
-      onPress: this.handleOnPressClose
-    };
-
     const SubmitBtn = {
+      name: "Добавить",
+      activeOpacity: 0.5,
+      disabled: false,
       onPress: this.handleOnPressSubmit
     };
 
@@ -189,6 +179,10 @@ export default class Component extends React.Component<
           <ui.Input {...proteinInput} />
           <ui.Input {...fatInput} />
           <ui.Input {...crbhInput} />
+
+          <BtnContainer>
+            <ui.Button {...SubmitBtn} />
+          </BtnContainer>
         </KeyboardAvoidingView>
       </Page>
     );
