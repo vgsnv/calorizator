@@ -13,7 +13,6 @@ export interface Props {
 }
 
 export interface Dispatch {
-  goBack: (nav) => void;
   submit: (data) => void;
 }
 

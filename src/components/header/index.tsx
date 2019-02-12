@@ -32,6 +32,8 @@ export default class Component extends React.Component<
   render() {
     const { title, leftButton, rightButton } = this.props;
 
+    console.log("header props", this.props);
+
     return (
       <HeaderContainer>
         <EmptySpace />

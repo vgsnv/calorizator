@@ -12,7 +12,7 @@ export interface Props {
 }
 
 export interface Dispatch {
-  toProductsFormToEdit: (nav, id) => void;
+  toProductsFormToEdit: (id) => void;
 }
 
 interface State {}
@@ -24,7 +24,7 @@ export default class Component extends React.Component<
   private keyExtractor = item => item.id;
 
   private onPressItem = (id: string) => {
-    this.props.toProductsFormToEdit(this.props.navigation, id);
+    this.props.toProductsFormToEdit(id);
   };
 
   private renderItem = ({ item }) => {

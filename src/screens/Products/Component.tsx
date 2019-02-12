@@ -1,11 +1,12 @@
 import * as React from "react";
 
-import { Page, PageTotal } from "./stylesComponents";
+import { Page } from "./stylesComponents";
 
 import ProductList from "./ProductList/List";
 import ProductForm from "./ProductForm";
 
 import { NavigationInjectedProps } from "react-navigation";
+import { Product } from "../../store/app/curProduct";
 
 export interface Props {
   products: Array<any>;
@@ -13,9 +14,9 @@ export interface Props {
 }
 
 export interface Dispatch {
-  toProductsFormToEdit: (nav, id) => void;
+  toProductsFormToEdit: (id) => void;
   goBack: (nav) => void;
-  submit: (nav, data) => void;
+  submit: (data) => void;
 }
 
 interface State {}
@@ -37,7 +38,6 @@ export default class Component extends React.Component<
 
     const productForm = {
       curProduct: this.props.curProduct,
-      goBack: this.props.goBack,
       submit: this.props.submit
     };
 

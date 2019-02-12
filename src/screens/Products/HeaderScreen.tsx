@@ -3,8 +3,10 @@ import { connect } from "react-redux";
 
 import Header from "../../components/header";
 
+import resetProductForm from "./thunks/resetProductForm";
 import goBack from "./thunks/goBack";
 import toProductsFormAdd from "./thunks/toProductsFormAdd";
+import { ProductFormMode } from "../../store/app/curProduct";
 
 const leftImg = require("../../assets/GoBack.png");
 const rightImg = require("../../assets/Add.png");
@@ -14,22 +16,27 @@ interface Props {
   leftImg: string;
   rightImg: string;
   navigation: any;
+  mode?: ProductFormMode;
 }
 
 interface Dispatch {
   goBack: (nav) => void;
-  toProductsFormAdd: (nav) => void;
+  resetProductForm: () => void;
+  toProductsFormAdd: () => void;
 }
 
 interface State {}
 
 class componentHeader extends React.Component<Props & Dispatch, State> {
   private onPressLeftButton = () => {
-    this.props.goBack(this.props.navigation);
+    const { mode } = this.props;
+    return !!mode
+      ? this.props.resetProductForm()
+      : this.props.goBack(this.props.navigation);
   };
 
   private onPressRightButton = () => {
-    this.props.toProductsFormAdd(this.props.navigation);
+    this.props.toProductsFormAdd();
   };
 
   render() {
@@ -51,15 +58,21 @@ class componentHeader extends React.Component<Props & Dispatch, State> {
   }
 }
 
-const headerStateToProps = state => ({
-  title: "Продукты",
+const headerStateToProps = ({ app, db }) => ({
+  title: !!app.curProduct
+    ? app.curProduct.mode === ProductFormMode.EDIT
+      ? "Изменить"
+      : "Создать"
+    : "Продукты",
   leftImg,
-  rightImg
+  rightImg,
+  mode: !!app.curProduct ? app.curProduct.mode : null
 });
 
 const headerDispatchToProps = dispatch => ({
   goBack: nav => dispatch(goBack(nav)),
-  toProductsFormAdd: nav => dispatch(toProductsFormAdd(nav))
+  resetProductForm: nav => dispatch(resetProductForm()),
+  toProductsFormAdd: () => dispatch(toProductsFormAdd())
 });
 
 export default connect(

@@ -24,7 +24,7 @@ const mapStateToProps = ({ app, db }): MapStateToProps => ({
 type MapDispatchToProps = Dispatch;
 
 const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
-  toProductsFormToEdit: (nav, id) => dispatch(toProductsFormToEdit(nav, id)),
+  toProductsFormToEdit: id => dispatch(toProductsFormToEdit(id)),
   goBack: nav => dispatch(goBack(nav)),
   submit: data => dispatch(submit(data))
 });
