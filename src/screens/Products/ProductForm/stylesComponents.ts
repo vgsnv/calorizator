@@ -11,7 +11,9 @@ export const Page = styled.View`
 
 export const BtnContainer = styled.View`
   margin-top: 40px;
-  width: 280px;
+  flex: 1;
+  align-self: stretch;
+  /* width: 280px; */
   height: 58px;
 
   align-self: center;

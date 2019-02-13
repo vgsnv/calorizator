@@ -9,6 +9,7 @@ import { KeyboardAvoidingView } from "react-native";
 import { Product } from "../../../store/app/curProduct";
 
 export interface Props {
+  style?: any;
   curProduct: Product;
 }
 

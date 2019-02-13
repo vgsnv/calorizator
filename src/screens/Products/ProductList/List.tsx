@@ -4,9 +4,12 @@ import Item from "./Item";
 
 import { FlatList } from "react-native";
 
+import { View } from "react-native";
+
 import { Product } from "../../../store/db/products";
 
 export interface Props {
+  style?: any;
   products: Array<Product>;
   navigation: any;
 }
