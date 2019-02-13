@@ -1,10 +1,10 @@
 import styled from "styled-components/native";
 
 import palette from "../../constants/palette";
-import { pathToFileURL } from "url";
 
 export const HeaderContainer = styled.View`
   background-color: ${palette.white};
+  height: 159px;
 `;
 
 export const EmptySpace = styled.View`
@@ -33,15 +33,15 @@ export const Img = styled.Image`
 `;
 
 export const Title = styled.View`
+  position: absolute;
   height: 62px;
   justify-content: center;
+  z-index: -1;
 `;
 
-export const TitleText = styled.Text`
+export const TitleText = styled.TouchableOpacity`
   font-weight: 500;
   padding-left: 18px;
-  /* padding-top: 6px; */
-  font-size: 38;
   color: ${palette.grayLight};
   letter-spacing: -0.6px;
 `;

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
-import Header from "../../components/header";
+import Header, { HeaderType } from "../../components/header";
 
 import resetProductForm from "./thunks/resetProductForm";
 import goBack from "./thunks/goBack";
@@ -51,7 +51,11 @@ class componentHeader extends React.Component<Props & Dispatch, State> {
           rightButton: {
             image: this.props.rightImg,
             onPress: this.onPressRightButton
-          }
+          },
+          headerType:
+            !!this.props.mode || this.props.mode === ProductFormMode.ADD
+              ? HeaderType.SMALL
+              : HeaderType.BIG
         }}
       />
     );
@@ -61,8 +65,8 @@ class componentHeader extends React.Component<Props & Dispatch, State> {
 const headerStateToProps = ({ app, db }) => ({
   title: !!app.curProduct
     ? app.curProduct.mode === ProductFormMode.EDIT
-      ? "Изменить"
-      : "Создать"
+      ? "Продукты"
+      : "Продукты"
     : "Продукты",
   leftImg,
   rightImg,
