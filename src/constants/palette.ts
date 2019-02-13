@@ -6,6 +6,7 @@ export default {
   grayLight: "#494957", /// new
   gray: "#33333b",
   grayText: "#a6a6bc",
+  grayRoze: "#E2E1EB",
   graySuperLight: "#f4f5f8",
   grayDark: "#626262",
   white: "#FFFFFF",

@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import { Page } from "./stylesComponents";
+import { Page, ModalHeader, BtnContainer, TxtButton } from "./stylesComponents";
 
 import * as ui from "../../ui";
 
-import { KeyboardAvoidingView, Text } from "react-native";
+import { KeyboardAvoidingView } from "react-native";
 
 import { NavigationInjectedProps } from "react-navigation";
 
@@ -183,6 +183,14 @@ export default class Component extends React.Component<
 
     return (
       <Page>
+        <ModalHeader>
+          <BtnContainer {...closeButton}>
+            <TxtButton>Отмена</TxtButton>
+          </BtnContainer>
+          <BtnContainer {...SubmitBtn}>
+            <TxtButton>{this.state.submitTitle}</TxtButton>
+          </BtnContainer>
+        </ModalHeader>
         <KeyboardAvoidingView behavior="position" enabled>
           <ui.Input {...titleInput} />
           <ui.Input {...kkInput} />

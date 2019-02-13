@@ -9,7 +9,6 @@ const MainStack = createStackNavigator(
   {
     Home: HomeScreen,
     Products: ProductsScreen,
-    ProductsForm: ProductFormScreen,
     Default: DefaultScreen
   },
   {
@@ -21,6 +20,9 @@ const RootStack = createStackNavigator(
   {
     Main: {
       screen: MainStack
+    },
+    ProductsForm: {
+      screen: ProductFormScreen
     }
   },
   {
