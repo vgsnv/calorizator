@@ -4,7 +4,10 @@ import { Page, ModalHeader, BtnContainer, TxtButton } from "./stylesComponents";
 
 import * as ui from "../../ui";
 
+import Slider from "./Slider";
+
 import { KeyboardAvoidingView } from "react-native";
+import { View } from "react-native";
 
 import { NavigationInjectedProps } from "react-navigation";
 
@@ -191,12 +194,57 @@ export default class Component extends React.Component<
             <TxtButton>{this.state.submitTitle}</TxtButton>
           </BtnContainer>
         </ModalHeader>
+
         <KeyboardAvoidingView behavior="position" enabled>
           <ui.Input {...titleInput} />
-          <ui.Input {...kkInput} />
+          {/* <ui.Input {...kkInput} />
           <ui.Input {...proteinInput} />
           <ui.Input {...fatInput} />
-          <ui.Input {...crbhInput} />
+          <ui.Input {...crbhInput} /> */}
+
+          <View
+            style={{
+              marginTop: 100,
+              flex: 1,
+              flexDirection: "row"
+            }}
+          >
+            <View
+              style={{
+                alignItems: "center",
+                flex: 1
+              }}
+            >
+              <Slider />
+            </View>
+
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center"
+              }}
+            >
+              <Slider />
+            </View>
+
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center"
+              }}
+            >
+              <Slider />
+            </View>
+
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center"
+              }}
+            >
+              <Slider />
+            </View>
+          </View>
         </KeyboardAvoidingView>
       </Page>
     );
