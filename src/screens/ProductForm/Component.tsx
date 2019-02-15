@@ -104,8 +104,6 @@ export default class Component extends React.Component<
       onPress: this.handleOnPressSubmit
     };
 
-    const s1Text = this.state.kk;
-
     return (
       <Page>
         <ModalHeader>
