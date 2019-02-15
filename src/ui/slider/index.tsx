@@ -9,7 +9,6 @@ export interface Props {
   value: number;
   minValue: number;
   maxValue: number;
-  step: number;
 }
 
 export interface Dispatch {
@@ -17,8 +16,8 @@ export interface Dispatch {
 }
 
 interface State {
-  curY: number;
-  k: number;
+  heightTouchOnPage: number;
+  scaleUnit: number;
 }
 
 export default class Component extends React.Component<
@@ -26,64 +25,44 @@ export default class Component extends React.Component<
   State
 > {
   state = {
-    curY: 0,
-    k: 0
+    heightTouchOnPage: 0,
+    scaleUnit: 0
   };
+
   componentDidMount = () => {
-    const { minValue, maxValue, step, style } = this.props;
+    const { minValue, maxValue, style } = this.props;
     const { height } = style;
 
-    const k = parseInt(height) / (maxValue - minValue);
-
     this.setState({
-      k: k
+      scaleUnit: parseInt(height) / (maxValue - minValue)
     });
-    console.log("componentDidMount", "k", k, "this.state.k", this.state.k);
   };
 
   private _panResponder = PanResponder.create({
-    onMoveShouldSetPanResponder: evt => {
-      this.setState({
-        curY: evt.nativeEvent.pageY
-      });
+    onMoveShouldSetPanResponder: e => {
+      this.setState({ heightTouchOnPage: e.nativeEvent.pageY });
       return true;
     },
 
-    onPanResponderMove: evt => {
-      let pageY = evt.nativeEvent.pageY;
+    onPanResponderMove: e => {
+      const pageY = e.nativeEvent.pageY;
 
-      const { value } = this.props;
-      const h = value - (pageY - this.state.curY) / this.state.k;
-      const v = h;
+      const { value, onChangeValue } = this.props;
+      const { heightTouchOnPage, scaleUnit } = this.state;
 
-      console.log("h:", h, "v:", v);
-
-      this.handleGesture(v);
+      onChangeValue(value - (pageY - heightTouchOnPage) / scaleUnit);
 
       this.setState({
-        curY: pageY
+        heightTouchOnPage: pageY
       });
     }
   });
 
-  private handleGesture = v => {
-    const { onChangeValue } = this.props;
-    onChangeValue(v);
-  };
-
   render() {
-    const { style, emptyColor, backColor, value } = this.props;
+    const { style, emptyColor, backColor, value, minValue } = this.props;
+    const { scaleUnit } = this.state;
 
-    const caclHeight = (value - this.props.minValue) * this.state.k;
-
-    console.log(
-      "render",
-      "this.state.k",
-      this.state.k,
-      "value",
-      value,
-      caclHeight
-    );
+    const heightOfFullSpace = (value - minValue) * scaleUnit;
 
     return (
       <View
@@ -102,7 +81,7 @@ export default class Component extends React.Component<
             position: "absolute",
             backgroundColor: backColor,
             bottom: 0,
-            height: caclHeight,
+            height: heightOfFullSpace,
             width: style.width
           }}
         />

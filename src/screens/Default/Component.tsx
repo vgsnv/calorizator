@@ -107,7 +107,6 @@ export default class Component extends React.Component<
               onChangeValue={this.changeS1}
               maxValue={100}
               minValue={0}
-              step={1}
               style={{
                 borderRadius: 16,
                 height: 400,
@@ -131,7 +130,6 @@ export default class Component extends React.Component<
               onChangeValue={this.changeS2}
               maxValue={70}
               minValue={20}
-              step={1}
               style={{
                 borderRadius: 32,
                 height: 400,
