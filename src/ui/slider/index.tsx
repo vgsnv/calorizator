@@ -34,7 +34,7 @@ export default class Component extends React.Component<
     const { height } = style;
 
     this.setState({
-      scaleUnit: parseInt(height) / (maxValue - minValue)
+      scaleUnit: parseInt(height.toString()) / (maxValue - minValue)
     });
   };
 

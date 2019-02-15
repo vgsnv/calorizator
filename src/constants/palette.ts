@@ -11,8 +11,16 @@ export default {
   grayDark: "#626262",
   white: "#FFFFFF",
   nutrients: {
+    proteinLight: "#EAF8FF",
     protein: "#A9C6D5",
+
+    fatLight: "#FBFAFF",
     fat: "#E2E1EB",
-    crbh: "#D3C5D0"
+
+    crbhLight: "#FFF8FE",
+    crbh: "#D3C5D0",
+
+    kkLight: "#E2E2F4",
+    kk: "#A6A6BC"
   }
 };
