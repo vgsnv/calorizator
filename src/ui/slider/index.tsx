@@ -7,6 +7,9 @@ export interface Props {
   emptyColor: string;
   backColor: string;
   value: number;
+  minValue: number;
+  maxValue: number;
+  step: number;
 }
 
 export interface Dispatch {
@@ -14,12 +17,8 @@ export interface Dispatch {
 }
 
 interface State {
-  minValue: number;
-  maxValue: number;
-  step: number;
-  value: number;
-  emptyColor: string;
-  backColor: string;
+  curY: number;
+  k: number;
 }
 
 export default class Component extends React.Component<
@@ -27,34 +26,43 @@ export default class Component extends React.Component<
   State
 > {
   state = {
-    minValue: 0,
-    maxValue: 100,
-    step: 1,
-    value: 25,
-    emptyColor: "yellow",
-    backColor: "red"
+    curY: 0,
+    k: 0
   };
+  componentDidMount = () => {
+    const { minValue, maxValue, step, style } = this.props;
+    const { height } = style;
 
-  curY: number = 0;
+    const k = parseInt(height) / (maxValue - minValue);
+
+    this.setState({
+      k: k
+    });
+    console.log("componentDidMount", "k", k, "this.state.k", this.state.k);
+  };
 
   private _panResponder = PanResponder.create({
     onMoveShouldSetPanResponder: evt => {
-      this.curY = evt.nativeEvent.pageY;
+      this.setState({
+        curY: evt.nativeEvent.pageY
+      });
       return true;
     },
 
     onPanResponderMove: evt => {
-      let p = {
-        pageY: evt.nativeEvent.pageY
-      };
-
-      const a = this.curY;
-
-      this.curY = p.pageY;
+      let pageY = evt.nativeEvent.pageY;
 
       const { value } = this.props;
+      const h = value - (pageY - this.state.curY) / this.state.k;
+      const v = h;
 
-      this.handleGesture(value - (p.pageY - a));
+      console.log("h:", h, "v:", v);
+
+      this.handleGesture(v);
+
+      this.setState({
+        curY: pageY
+      });
     }
   });
 
@@ -65,6 +73,17 @@ export default class Component extends React.Component<
 
   render() {
     const { style, emptyColor, backColor, value } = this.props;
+
+    const caclHeight = (value - this.props.minValue) * this.state.k;
+
+    console.log(
+      "render",
+      "this.state.k",
+      this.state.k,
+      "value",
+      value,
+      caclHeight
+    );
 
     return (
       <View
@@ -83,7 +102,7 @@ export default class Component extends React.Component<
             position: "absolute",
             backgroundColor: backColor,
             bottom: 0,
-            height: value,
+            height: caclHeight,
             width: style.width
           }}
         />
