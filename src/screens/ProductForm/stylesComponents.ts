@@ -6,7 +6,7 @@ export const Page = styled.View`
   flex: 1;
   flex-direction: column;
   padding: 0;
-  background-color: ${palette.white};
+  background-color: ${palette.graySuperLight};
 `;
 
 export const ModalHeader = styled.View`
@@ -17,7 +17,6 @@ export const ModalHeader = styled.View`
   margin-top: 48px;
   margin-bottom: 50px;
   justify-content: space-between;
-  background-color: ${palette.white};
   border-color: ${palette.grayRoze};
   border-bottom-width: 1px;
 `;
