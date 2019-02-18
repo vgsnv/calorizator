@@ -10,7 +10,7 @@ export interface Props {}
 
 export interface Dispatch {
   toProducts: (nav) => void;
-  toDefault: (nav) => void;
+  toDiary: (nav) => void;
 }
 
 interface State {}
@@ -28,7 +28,7 @@ export default class Component extends React.Component<
   };
 
   private handleClickBtnDefault = () => {
-    this.props.toDefault(this.props.navigation);
+    this.props.toDiary(this.props.navigation);
   };
 
   render() {
