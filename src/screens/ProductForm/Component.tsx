@@ -5,7 +5,7 @@ import { Page, ModalHeader, BtnContainer, TxtButton } from "./stylesComponents";
 import * as ui from "../../ui";
 import palette from "../../constants/palette";
 
-import { View, Text } from "react-native";
+import { View } from "react-native";
 
 import { NavigationInjectedProps } from "react-navigation";
 
@@ -20,6 +20,9 @@ export interface Dispatch {
   goBack: (nav) => void;
   submit: (nav, data) => void;
 }
+
+const validateNutrientValue = (minValue, value, maxValue) =>
+  minValue <= value && value < +maxValue;
 
 interface State {
   submitTitle: string;
@@ -44,25 +47,29 @@ export default class Component extends React.Component<
   };
 
   private changeKK = value => {
-    this.setState(() => ({
-      kk: value.toFixed(1)
-    }));
+    if (validateNutrientValue(0, value, 500))
+      this.setState({
+        kk: value.toFixed(1)
+      });
   };
 
   private changePROTEIN = value => {
-    this.setState(() => ({
-      protein: value.toFixed(1)
-    }));
+    if (validateNutrientValue(0, value, 40))
+      this.setState({
+        protein: value.toFixed(1)
+      });
   };
   private changeFAT = value => {
-    this.setState(() => ({
-      fat: value.toFixed(1)
-    }));
+    if (validateNutrientValue(0, value, 100))
+      this.setState({
+        fat: value.toFixed(1)
+      });
   };
   private changeCRBH = value => {
-    this.setState(() => ({
-      crbh: value.toFixed(1)
-    }));
+    if (validateNutrientValue(0, value, 100))
+      this.setState({
+        crbh: value.toFixed(1)
+      });
   };
 
   private handleOnPressClose = () => {

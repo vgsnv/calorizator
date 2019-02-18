@@ -45,12 +45,14 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
               fontWeight: "600"
             }}
           >
-            {value.toString()}
+            {`${parseFloat(value)
+              .toFixed(1)
+              .toString()}`}
           </Text>
 
           <Text
             style={{
-              fontSize: 12,
+              fontSize: 11,
               color: this.props.backColor,
               textAlign: "right",
               fontWeight: "600"
