@@ -11,7 +11,9 @@ export interface Props {
   navigation?: any;
 }
 
-export interface Dispatch {}
+export interface Dispatch {
+  toDiaryEdit: (nav, id) => void;
+}
 
 interface State {}
 
@@ -19,6 +21,10 @@ export default class Component extends React.Component<
   Props & Dispatch,
   State
 > {
+  private onPressItem = (id: string) => {
+    this.props.toDiaryEdit(this.props.navigation, id);
+  };
+
   private renderItem = (item, index) => {
     const itemProps = {
       id: item.id,
@@ -26,8 +32,10 @@ export default class Component extends React.Component<
       totalKK: item.totalKK,
       totalProtein: item.totalProtein,
       totalFat: item.totalFat,
-      totalCRBH: item.totalCRBH
+      totalCRBH: item.totalCRBH,
+      onPressItem: this.onPressItem
     };
+
     return (
       <Item
         key={item.id}

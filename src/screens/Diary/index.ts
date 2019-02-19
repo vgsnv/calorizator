@@ -3,6 +3,8 @@ import NeedProps from "../../components/needProps/needProps";
 
 import Header from "./HeaderScreen";
 
+import toDiaryEdit from "./thunks/toDiaryEdit";
+
 import { DiaryItems } from "../../store/app/diary";
 import { Meals } from "../../store/db/meals";
 import { MealItems } from "../../store/db/mealItems";
@@ -18,8 +20,6 @@ const getDiaryItems = (
 ) => {
   return diary.entities.map((item, index) => {
     const meal = meals.entities[item.id];
-
-    console.log("meal", meal);
 
     const id = item.id;
 
@@ -77,7 +77,9 @@ const mapStateToProps = ({ app, db }): MapStateToProps => ({
 
 type MapDispatchToProps = Dispatch;
 
-const mapDispatchToProps = (dispatch): MapDispatchToProps => ({});
+const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
+  toDiaryEdit: (nav, id) => dispatch(toDiaryEdit(nav, id))
+});
 
 const headerOptions = {
   headerScreen: Header

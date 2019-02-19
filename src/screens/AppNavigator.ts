@@ -5,6 +5,7 @@ import ProductsScreen from "./Products";
 import ProductFormScreen from "./ProductForm";
 import DiaryScreen from "./Diary";
 import DiaryFormScreen from "./DiaryForm";
+import DiaryEditScreen from "./DiaryEdit";
 import DefaultScreen from "./Default";
 
 const MainStack = createStackNavigator(
@@ -12,7 +13,8 @@ const MainStack = createStackNavigator(
     Home: HomeScreen,
     Products: ProductsScreen,
     Default: DefaultScreen,
-    Diary: DiaryScreen
+    Diary: DiaryScreen,
+    DiaryEdit: DiaryEditScreen
   },
   {
     initialRouteName: "Home"

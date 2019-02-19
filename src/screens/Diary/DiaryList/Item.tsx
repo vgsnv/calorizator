@@ -22,18 +22,24 @@ export interface Props {
   style?: ViewStyle;
 }
 
-export interface Dispatch {}
+export interface Dispatch {
+  onPressItem: (id: string) => void;
+}
 
 interface State {}
 
 export default class extends React.PureComponent<Props & Dispatch, State> {
+  private onPress = () => {
+    this.props.onPressItem(this.props.id);
+  };
+
   render() {
-    console.log("this.props", this.props);
     return (
       <ContainerItem
         style={{
           ...this.props.style
         }}
+        onPress={this.onPress}
       >
         <Item
           style={{

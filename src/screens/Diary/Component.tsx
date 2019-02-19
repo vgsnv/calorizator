@@ -8,7 +8,9 @@ import { NavigationInjectedProps } from "react-navigation";
 
 export interface Props extends DiaryItemsList {}
 
-export interface Dispatch {}
+export interface Dispatch {
+  toDiaryEdit: (nav, id) => void;
+}
 
 interface State {}
 
@@ -18,8 +20,11 @@ export default class Component extends React.Component<
 > {
   render() {
     const diaryList = {
-      diaryItems: this.props.diaryItems
+      diaryItems: this.props.diaryItems,
+      toDiaryEdit: this.props.toDiaryEdit,
+      navigation: this.props.navigation
     };
+
     return (
       <Page>
         <MealListContainer>
