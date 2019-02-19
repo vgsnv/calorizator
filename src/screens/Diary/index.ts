@@ -52,7 +52,7 @@ const getDiaryItems = (
                 totalProtein:
                   acc.totalProtein + products.entities[ProductId].protein * k,
                 totalFat: acc.totalFat + products.entities[ProductId].fat * k,
-                totalCrbh: acc.totalCrbh + products.entities[ProductId].crbh * k
+                totalCRBH: acc.totalCRBH + products.entities[ProductId].crbh * k
               };
             }
 
@@ -62,10 +62,10 @@ const getDiaryItems = (
             totalKK: 0,
             totalProtein: 0,
             totalFat: 0,
-            totalCrbh: 0
+            totalCRBH: 0
           }
         )
-      : { totalKK: 0, totalProtein: 0, totalFat: 0, totalCrbh: 0 };
+      : { totalKK: 0, totalProtein: 0, totalFat: 0, totalCRBH: 0 };
 
     return { ...meals.entities[item.id], ...TotalNutrients };
   });

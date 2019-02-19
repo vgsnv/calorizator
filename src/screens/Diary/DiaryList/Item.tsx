@@ -1,7 +1,16 @@
 import * as React from "react";
-import { Container, Item } from "./stylesComponents";
+import {
+  ContainerItem,
+  Item,
+  TitleText,
+  DetailText,
+  KKText,
+  Left,
+  Right,
+  NutrientText
+} from "./stylesComponents";
 
-import { Text } from "react-native";
+import { ViewStyle } from "react-native";
 
 export interface Props {
   id: string;
@@ -10,6 +19,7 @@ export interface Props {
   totalProtein: number;
   totalFat: number;
   totalCRBH: number;
+  style?: ViewStyle;
 }
 
 export interface Dispatch {}
@@ -18,16 +28,34 @@ interface State {}
 
 export default class extends React.PureComponent<Props & Dispatch, State> {
   render() {
+    console.log("this.props", this.props);
     return (
-      <Container>
-        <Item>
-          <Text>{this.props.title}</Text>
-          <Text>{this.props.totalKK}</Text>
-          <Text>{this.props.totalProtein}</Text>
-          <Text>{this.props.totalFat}</Text>
-          <Text>{this.props.totalCRBH}</Text>
+      <ContainerItem
+        style={{
+          ...this.props.style
+        }}
+      >
+        <Item
+          style={{
+            shadowColor: "#000",
+            shadowOffset: { width: 3, height: 1 },
+            shadowOpacity: 0.16,
+            shadowRadius: 6
+          }}
+        >
+          <TitleText>{this.props.title}</TitleText>
+          <DetailText>
+            <Left>
+              <KKText>{this.props.totalKK}</KKText>
+            </Left>
+            <Right>
+              <NutrientText>{this.props.totalProtein}</NutrientText>
+              <NutrientText>{this.props.totalFat}</NutrientText>
+              <NutrientText>{this.props.totalCRBH}</NutrientText>
+            </Right>
+          </DetailText>
         </Item>
-      </Container>
+      </ContainerItem>
     );
   }
 }

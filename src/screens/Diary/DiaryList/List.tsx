@@ -2,7 +2,9 @@ import * as React from "react";
 
 import Item, { Props as DiaryItem } from "./Item";
 
-import { FlatList } from "react-native";
+import { ScrollView } from "react-native";
+
+import { checkIndexIsEven } from "../../../helpers/someFunctions";
 
 export interface Props {
   diaryItems: Array<DiaryItem>;
@@ -17,9 +19,7 @@ export default class Component extends React.Component<
   Props & Dispatch,
   State
 > {
-  private keyExtractor = item => item.id;
-
-  private renderItem = ({ item }) => {
+  private renderItem = (item, index) => {
     const itemProps = {
       id: item.id,
       title: item.title,
@@ -28,17 +28,36 @@ export default class Component extends React.Component<
       totalFat: item.totalFat,
       totalCRBH: item.totalCRBH
     };
-    return <Item {...itemProps} />;
+    return (
+      <Item
+        key={item.id}
+        style={{
+          paddingLeft: checkIndexIsEven(index) ? 20 : 5,
+          paddingRight: checkIndexIsEven(index) ? 5 : 20
+        }}
+        {...itemProps}
+      />
+    );
+  };
+
+  private renderItems = () => {
+    return this.props.diaryItems.map((item, index) => {
+      return this.renderItem(item, index);
+    });
   };
 
   render() {
     return (
-      <FlatList
-        data={this.props.diaryItems}
-        extraData={this.state}
-        keyExtractor={this.keyExtractor}
-        renderItem={this.renderItem}
-      />
+      <ScrollView
+        contentContainerStyle={{
+          flex: 1,
+          flexDirection: "row",
+          flexWrap: "wrap",
+          justifyContent: "flex-start"
+        }}
+      >
+        {this.renderItems()}
+      </ScrollView>
     );
   }
 }

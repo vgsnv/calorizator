@@ -14,7 +14,7 @@ const MainStack = createStackNavigator(
     Diary: DiaryScreen
   },
   {
-    initialRouteName: "Home"
+    initialRouteName: "Diary"
   }
 );
 

@@ -2,76 +2,59 @@ import palette from "../../../constants/palette";
 
 import styled from "styled-components/native";
 
-export const Container = styled.TouchableOpacity`
-  padding: 0 0 0 34px;
-  height: 88px;
-  background-color: ${palette.white};
+export const ContainerItem = styled.TouchableOpacity`
+  width: 50%;
+  padding-top: 20px;
+  padding-bottom: 0px;
+  height: 150px;
+  justify-content: space-around;
 `;
 
 export const Item = styled.View`
   flex: 1;
-  flex-direction: row;
-  border-style: solid;
-  border-color: #eff0f2;
-  border-bottom-width: 1px;
-`;
-
-export const Left = styled.View`
-  flex: 2;
+  padding: 16px;
   flex-direction: column;
-`;
-
-export const TilteTextContainer = styled.View`
-  flex: 1;
-  justify-content: center;
+  background-color: #f4f5f8;
+  border-radius: 8px;
 `;
 
 export const TitleText = styled.Text`
-  font-size: 26px;
-  font-weight: 600;
-  color: ${palette.gray};
+  flex: 1;
+  font-size: 16px;
+  font-weight: 700;
+  color: #a6a6bc;
 `;
 
-export const DetailContainer = styled.View`
-  flex: 1;
+export const DetailText = styled.View`
+  flex: 2;
   flex-direction: row;
   align-items: center;
-`;
-
-export const DetailItem = styled.View`
-  height: 18px;
-  width: 44px;
-  background-color: ${props => palette.nutrients[props.type]};
-  border-radius: 4px;
-  margin-right: 10px;
   justify-content: center;
 `;
 
-export const DetailText = styled.Text`
-  font-size: 12px;
-  text-align: center;
-  color: ${palette.grayLight};
+export const Left = styled.View`
+  flex: 3;
+  align-items: flex-start;
+  justify-content: center;
+`;
+
+export const KKText = styled.Text`
+  font-size: 37px;
+  font-weight: 600;
+  text-align: left;
+  color: #33333b;
 `;
 
 export const Right = styled.View`
   flex: 1;
-  align-self: center;
-  justify-content: center;
-  padding-right: 40px;
+  justify-content: flex-end;
 `;
 
-export const BigText = styled.Text`
-  font-size: 37px;
+export const NutrientText = styled.Text`
+  font-size: 10px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  font-weight: bold;
   text-align: right;
-  font-weight: 700;
-  letter-spacing: -0.6px;
-
-  color: ${palette.grayText};
-`;
-
-export const Img = styled.Image`
-  position: absolute;
-  align-self: flex-end;
-  width: 52px;
-  height: 52px;
+  color: #74757c;
 `;
