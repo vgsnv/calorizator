@@ -4,19 +4,23 @@ import { connect } from "react-redux";
 import Header from "../../components/header";
 
 import goBack from "./thunks/goBack";
+import toDiaryForm from "./thunks/toDiaryForm";
+
+import { ImageSourcePropType } from "react-native";
 
 const leftImg = require("../../assets/GoBack.png");
 const rightImg = require("../../assets/Add.png");
 
 interface Props {
   title: string;
-  leftImg: string;
-  rightImg: string;
+  leftImg: ImageSourcePropType;
+  rightImg: ImageSourcePropType;
   navigation: any;
 }
 
 interface Dispatch {
   goBack: (nav) => void;
+  toDiaryForm: (nav) => void;
 }
 
 interface State {}
@@ -27,7 +31,7 @@ class componentHeader extends React.Component<Props & Dispatch, State> {
   };
 
   private onPressRightButton = () => {
-    this.props.goBack(this.props.navigation);
+    this.props.toDiaryForm(this.props.navigation);
   };
 
   render() {
@@ -57,7 +61,7 @@ const headerStateToProps = state => ({
 
 const headerDispatchToProps = dispatch => ({
   goBack: nav => dispatch(goBack(nav)),
-  toProductsFormAdd: nav => dispatch(goBack(nav))
+  toDiaryForm: nav => dispatch(toDiaryForm(nav))
 });
 
 export default connect(

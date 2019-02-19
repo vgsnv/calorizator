@@ -38,7 +38,11 @@ export const DetailContainer = styled.View`
   align-items: center;
 `;
 
-export const DetailItem = styled.View`
+interface DetailItem {
+  type: string;
+}
+
+export const DetailItem = styled.View<DetailItem>`
   height: 18px;
   width: 44px;
   background-color: ${props => palette.nutrients[props.type]};
