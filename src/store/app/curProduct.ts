@@ -13,9 +13,9 @@ export interface Product {
   crbh: string;
 }
 
-const CURPRODUCT_ADD = "DB/CURPRODUCT_ADD";
-const CURPRODUCT_EDIT = "DB/CURPRODUCT_EDIT";
-const CURPRODUCT_RESET = "DB/CURPRODUCT_RESET";
+const CURPRODUCT_ADD = "APP/CURPRODUCT_ADD";
+const CURPRODUCT_EDIT = "APP/CURPRODUCT_EDIT";
+const CURPRODUCT_RESET = "APP/CURPRODUCT_RESET";
 
 export const curproductAdd = (id: string) => ({
   type: CURPRODUCT_ADD,

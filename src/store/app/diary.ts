@@ -7,6 +7,13 @@ export interface DiaryItems {
   entities: Array<DiaryItem>;
 }
 
+const DIARYITEMS_ADD = "APP/DIARYITEMS_ADD";
+
+export const diaryItemsAdd = (data: DiaryItem) => ({
+  type: DIARYITEMS_ADD,
+  data
+});
+
 const defaultDiaryItems: DiaryItems = {
   entities: [
     {
@@ -26,6 +33,11 @@ const defaultDiaryItems: DiaryItems = {
 
 export default (prevState: DiaryItems = defaultDiaryItems, action) => {
   switch (action.type) {
+    case DIARYITEMS_ADD:
+      return {
+        entities: [...prevState.entities, action.data]
+      };
+
     default:
       return prevState;
   }

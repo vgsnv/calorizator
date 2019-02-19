@@ -1,8 +1,6 @@
 import Component, { Props, Dispatch } from "./Component";
 import NeedProps from "../../components/needProps/needProps";
 
-import Header from "./HeaderScreen";
-
 import goBack from "./thunks/goBack";
 import submit from "./thunks/submit";
 
@@ -20,8 +18,8 @@ const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
 });
 
 const headerOptions = {
-  headerScreen: Header,
-  gesturesEnabled: true
+  headerScreen: null,
+  gesturesEnabled: false
 };
 
 export default NeedProps(

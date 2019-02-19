@@ -10,6 +10,13 @@ export interface Meals {
   };
 }
 
+const MEALS_ADD = "DB/MEALS_ADD";
+
+export const mealsAdd = data => ({
+  type: MEALS_ADD,
+  data
+});
+
 const defaultMeals: Meals = {
   entities: {
     "1art": {
@@ -47,6 +54,17 @@ const defaultMeals: Meals = {
 
 export default (prevState: Meals = defaultMeals, action) => {
   switch (action.type) {
+    case MEALS_ADD:
+      return {
+        entities: {
+          ...prevState.entities,
+          [action.data.id]: {
+            ...action.data,
+            parentId: null
+          }
+        }
+      };
+
     default:
       return prevState;
   }

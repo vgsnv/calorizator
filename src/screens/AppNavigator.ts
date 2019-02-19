@@ -12,11 +12,10 @@ const MainStack = createStackNavigator(
     Home: HomeScreen,
     Products: ProductsScreen,
     Default: DefaultScreen,
-    Diary: DiaryScreen,
-    DiaryForm: DiaryFormScreen
+    Diary: DiaryScreen
   },
   {
-    initialRouteName: "DiaryForm"
+    initialRouteName: "Home"
   }
 );
 
@@ -27,6 +26,9 @@ const RootStack = createStackNavigator(
     },
     ProductsForm: {
       screen: ProductFormScreen
+    },
+    DiaryForm: {
+      screen: DiaryFormScreen
     }
   },
   {
