@@ -6,38 +6,18 @@ import DiaryList from "./DiaryList/List";
 
 import { NavigationInjectedProps } from "react-navigation";
 
-export interface Props {}
+interface DiaryItem {
+  id: string;
+  title: string;
+}
+
+export interface Props {
+  diaryItems: Array<DiaryItem>;
+}
 
 export interface Dispatch {}
 
 interface State {}
-
-const list = [
-  {
-    id: 1,
-    Title: "Понедельник",
-    kk: 0,
-    protein: 0.0,
-    fat: 0.0,
-    crbh: 0.0
-  },
-  {
-    id: 2,
-    Title: "Вторник",
-    kk: 0,
-    protein: 0.0,
-    fat: 0.0,
-    crbh: 0.0
-  },
-  {
-    id: 3,
-    Title: "Среда",
-    kk: 0,
-    protein: 0.0,
-    fat: 0.0,
-    crbh: 0.0
-  }
-];
 
 export default class Component extends React.Component<
   Props & Dispatch & NavigationInjectedProps,
@@ -45,7 +25,7 @@ export default class Component extends React.Component<
 > {
   render() {
     const diaryList = {
-      list: list
+      diaryItems: this.props.diaryItems
     };
     return (
       <Page>

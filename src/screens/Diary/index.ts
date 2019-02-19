@@ -3,9 +3,20 @@ import NeedProps from "../../components/needProps/needProps";
 
 import Header from "./HeaderScreen";
 
+import { DiaryItems } from "../../store/app/diary";
+import { Meals } from "../../store/db/meals";
+
 type MapStateToProps = Props;
 
-const mapStateToProps = (state): MapStateToProps => ({});
+const getDiaryItems = (meals: Meals, diary: DiaryItems) => {
+  return diary.entities.map((item, index) => {
+    return meals.entities[item.id];
+  });
+};
+
+const mapStateToProps = ({ app, db }): MapStateToProps => ({
+  diaryItems: getDiaryItems(db.meals, app.diary)
+});
 
 type MapDispatchToProps = Dispatch;
 

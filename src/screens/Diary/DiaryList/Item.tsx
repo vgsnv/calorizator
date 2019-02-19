@@ -3,7 +3,10 @@ import { Container, Item } from "./stylesComponents";
 
 import { Text } from "react-native";
 
-export interface Props {}
+export interface Props {
+  id: string;
+  title: string;
+}
 
 export interface Dispatch {}
 
@@ -14,7 +17,7 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
     return (
       <Container>
         <Item>
-          <Text>Hello</Text>
+          <Text>{this.props.title}</Text>
         </Item>
       </Container>
     );

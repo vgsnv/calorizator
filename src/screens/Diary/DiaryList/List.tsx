@@ -4,10 +4,13 @@ import Item from "./Item";
 
 import { FlatList } from "react-native";
 
-import { Product } from "../../../store/db/products";
+interface DiaryItem {
+  id: string;
+  title: string;
+}
 
 export interface Props {
-  list: Array<Product>;
+  diaryItems: Array<DiaryItem>;
   navigation?: any;
 }
 
@@ -21,14 +24,18 @@ export default class Component extends React.Component<
 > {
   private keyExtractor = item => item.id;
 
-  private renderItem = () => {
-    return <Item />;
+  private renderItem = ({ item }) => {
+    const itemProps = {
+      id: item.id,
+      title: item.title
+    };
+    return <Item {...itemProps} />;
   };
 
   render() {
     return (
       <FlatList
-        data={this.props.list}
+        data={this.props.diaryItems}
         extraData={this.state}
         keyExtractor={this.keyExtractor}
         renderItem={this.renderItem}
