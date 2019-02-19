@@ -1,7 +1,6 @@
 import styled from "styled-components/native";
 
 import palette from "../../constants/palette";
-import { pathToFileURL } from "url";
 
 export const HeaderContainer = styled.View`
   background-color: ${palette.white};
@@ -39,8 +38,7 @@ export const Title = styled.View`
 
 export const TitleText = styled.Text`
   font-weight: 500;
-  padding-left: 18px;
-  /* padding-top: 6px; */
+  padding-left: 32px;
   font-size: 38;
   color: ${palette.grayLight};
   letter-spacing: -0.6px;

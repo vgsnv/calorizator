@@ -70,17 +70,25 @@ const defaultProducts: Products = {
       protein: "25",
       fat: "3",
       crbh: "20"
+    },
+    "6": {
+      id: "6",
+      title: "Овсянка",
+      kk: "40",
+      protein: "5",
+      fat: "0",
+      crbh: "40"
     }
   }
 };
 
-export default (prevProducts: Products = defaultProducts, action) => {
+export default (prevState: Products = defaultProducts, action) => {
   switch (action.type) {
     case PRODUCTS_ADD:
       return {
-        ...prevProducts,
+        ...prevState,
         entities: {
-          ...prevProducts.entities,
+          ...prevState.entities,
           [action.data.id]: {
             ...action.data
           }
@@ -90,6 +98,6 @@ export default (prevProducts: Products = defaultProducts, action) => {
       };
 
     default:
-      return prevProducts;
+      return prevState;
   }
 };

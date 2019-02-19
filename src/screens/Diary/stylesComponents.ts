@@ -8,7 +8,7 @@ export const Page = styled.View`
   align-items: stretch;
 `;
 
-export const TitleContainer = styled.View`
+export const MealListContainer = styled.View`
   flex: 1;
   background-color: #ccc;
   justify-content: center;

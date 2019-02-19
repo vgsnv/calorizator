@@ -6,13 +6,15 @@ import Header from "../../components/header";
 import goBack from "./thunks/goBack";
 import toProductsFormAdd from "./thunks/toProductsFormAdd";
 
+import { ImageSourcePropType } from "react-native";
+
 const leftImg = require("../../assets/GoBack.png");
 const rightImg = require("../../assets/Add.png");
 
 interface Props {
   title: string;
-  leftImg: string;
-  rightImg: string;
+  leftImg: ImageSourcePropType;
+  rightImg: ImageSourcePropType;
   navigation: any;
 }
 
@@ -51,7 +53,7 @@ class componentHeader extends React.Component<Props & Dispatch, State> {
   }
 }
 
-const headerStateToProps = state => ({
+const headerStateToProps = () => ({
   title: "Продукты",
   leftImg,
   rightImg
