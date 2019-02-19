@@ -2,18 +2,11 @@ import * as React from "react";
 
 import { Page, MealListContainer } from "./stylesComponents";
 
-import DiaryList from "./DiaryList/List";
+import DiaryList, { Props as DiaryItemsList } from "./DiaryList/List";
 
 import { NavigationInjectedProps } from "react-navigation";
 
-interface DiaryItem {
-  id: string;
-  title: string;
-}
-
-export interface Props {
-  diaryItems: Array<DiaryItem>;
-}
+export interface Props extends DiaryItemsList {}
 
 export interface Dispatch {}
 

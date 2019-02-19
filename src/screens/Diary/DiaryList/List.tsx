@@ -1,13 +1,8 @@
 import * as React from "react";
 
-import Item from "./Item";
+import Item, { Props as DiaryItem } from "./Item";
 
 import { FlatList } from "react-native";
-
-interface DiaryItem {
-  id: string;
-  title: string;
-}
 
 export interface Props {
   diaryItems: Array<DiaryItem>;
@@ -27,7 +22,11 @@ export default class Component extends React.Component<
   private renderItem = ({ item }) => {
     const itemProps = {
       id: item.id,
-      title: item.title
+      title: item.title,
+      totalKK: item.totalKK,
+      totalProtein: item.totalProtein,
+      totalFat: item.totalFat,
+      totalCRBH: item.totalCRBH
     };
     return <Item {...itemProps} />;
   };
