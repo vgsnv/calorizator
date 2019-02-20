@@ -18,25 +18,20 @@ const getDiaryItems = (
   diary: DiaryItems,
   products: Products
 ) => {
-  return diary.entities.map((item, index) => {
-    const meal = meals.entities[item.id];
-
+  return diary.entities.map(item => {
     const id = item.id;
 
-    const MealsInMeals = Object.keys(meals.entities).reduce(
-      (acc, curIdMeal) => {
-        const ParentId = meals.entities[curIdMeal].parentId;
+    const ChildMeals = Object.keys(meals.entities).reduce((acc, curIdMeal) => {
+      const ParentId = meals.entities[curIdMeal].parentId;
 
-        if (!!ParentId && ParentId === id) {
-          acc.push(curIdMeal);
-        }
+      if (!!ParentId && ParentId === id) {
+        acc.push(curIdMeal);
+      }
 
-        return acc;
-      },
-      []
-    );
+      return acc;
+    }, []);
 
-    const TotalNutrients = MealsInMeals.length
+    const TotalNutrients = ChildMeals.length
       ? Object.keys(mealItems.entities).reduce(
           (acc, curMealItem) => {
             const {
@@ -45,7 +40,7 @@ const getDiaryItems = (
               weight: Weight
             } = mealItems.entities[curMealItem];
 
-            if (MealsInMeals.some((element, index) => element === MealId)) {
+            if (ChildMeals.some(element => element === MealId)) {
               const k = Weight / 100;
               acc = {
                 totalKK: acc.totalKK + products.entities[ProductId].kk * k,
