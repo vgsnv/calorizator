@@ -1,42 +1,43 @@
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import {
+  createStackNavigator,
+  createAppContainer,
+  createBottomTabNavigator
+} from "react-navigation";
 
-import HomeScreen from "./Home";
 import ProductsScreen from "./Products";
 import ProductFormScreen from "./ProductForm";
 import DiaryScreen from "./Diary";
 import DiaryFormScreen from "./DiaryForm";
 import DiaryEditScreen from "./DiaryEdit";
-import DefaultScreen from "./Default";
 
-const MainStack = createStackNavigator(
-  {
-    Home: HomeScreen,
-    Products: ProductsScreen,
-    Default: DefaultScreen,
-    Diary: DiaryScreen,
-    DiaryEdit: DiaryEditScreen
-  },
-  {
-    initialRouteName: "Home"
-  }
-);
+const HomeStack = createStackNavigator({
+  Diary: DiaryScreen,
+  DiaryEdit: DiaryEditScreen
+});
 
-const RootStack = createStackNavigator(
-  {
-    Main: {
-      screen: MainStack
+const ProductsStack = createStackNavigator({
+  Products: ProductsScreen
+});
+
+const BottomTabNavigator = createBottomTabNavigator({
+  Home: HomeStack,
+  Products: ProductsStack
+});
+
+export default createAppContainer(
+  createStackNavigator(
+    {
+      Main: BottomTabNavigator,
+      ProductsForm: {
+        screen: ProductFormScreen
+      },
+      DiaryForm: {
+        screen: DiaryFormScreen
+      }
     },
-    ProductsForm: {
-      screen: ProductFormScreen
-    },
-    DiaryForm: {
-      screen: DiaryFormScreen
+    {
+      mode: "modal",
+      headerMode: "none"
     }
-  },
-  {
-    mode: "modal",
-    headerMode: "none"
-  }
+  )
 );
-
-export default createAppContainer(RootStack);
