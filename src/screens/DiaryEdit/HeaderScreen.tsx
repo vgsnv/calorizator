@@ -53,14 +53,11 @@ class componentHeader extends React.Component<Props & Dispatch, State> {
   }
 }
 
-const headerStateToProps = state => {
-  console.log("state", state);
-  return {
-    title: "Продукты",
-    leftImg,
-    rightImg
-  };
-};
+const headerStateToProps = ({ app, db }) => ({
+  title: db.meals.entities[app.diaryEdit.diaryItemId].title,
+  leftImg,
+  rightImg
+});
 
 const headerDispatchToProps = dispatch => ({
   goBack: nav => dispatch(goBack(nav)),

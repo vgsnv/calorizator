@@ -18,7 +18,11 @@ export const Label = styled.Text`
   text-transform: capitalize;
 `;
 
-export const Input = styled.TextInput`
+interface TextInput {
+  inputType: InputType;
+}
+
+export const Input = styled.TextInput<TextInput>`
   flex: 1;
   padding: 14px 16px;
 
@@ -26,6 +30,6 @@ export const Input = styled.TextInput`
   text-align: ${props =>
     props.inputType === InputType.STRING ? "left" : "right"};
   border-radius: 4px;
-  border-color: ${palette.grayDark};
-  border-width: 1;
+  border-color: ${palette.grayText};
+  border-bottom-width: 1;
 `;

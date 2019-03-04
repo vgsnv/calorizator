@@ -1,6 +1,12 @@
 import * as React from "react";
 
-import { Page, ModalHeader, BtnContainer, TxtButton } from "./stylesComponents";
+import {
+  Page,
+  ModalHeader,
+  BtnContainer,
+  TxtButton,
+  BodyContainer
+} from "./stylesComponents";
 
 import { NavigationInjectedProps } from "react-navigation";
 
@@ -70,7 +76,9 @@ export default class Component extends React.Component<
             <TxtButton>Готово</TxtButton>
           </BtnContainer>
         </ModalHeader>
-        <ui.Input {...diaryTitle} />
+        <BodyContainer>
+          <ui.Input {...diaryTitle} />
+        </BodyContainer>
       </Page>
     );
   }

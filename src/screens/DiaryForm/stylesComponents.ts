@@ -38,6 +38,12 @@ export const ModalHeader = styled.View`
   border-bottom-width: 1px;
 `;
 
+export const BodyContainer = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const BtnContainer = styled.TouchableOpacity`
   height: 100%;
   align-content: space-between;
