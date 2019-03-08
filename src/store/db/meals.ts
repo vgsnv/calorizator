@@ -34,6 +34,11 @@ const defaultMeals: Meals = {
       parentId: "1art",
       title: "Обед"
     },
+    "14art": {
+      id: "14art",
+      parentId: "1art",
+      title: "Ужин"
+    },
     "4uyt": {
       id: "4uyt",
       parentId: null,
