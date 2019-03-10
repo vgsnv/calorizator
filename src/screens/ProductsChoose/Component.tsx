@@ -1,10 +1,18 @@
 import * as React from "react";
 
-import { Page, TitleContainer, Title } from "./stylesComponents";
+import { Page } from "./stylesComponents";
+
+import TotalNutrients from "./TotalNutrients";
+import ProductList from "./ProductList/List";
+
+import { TotalNutrients as ITotalNutrients } from "../../store/db/mealItems";
 
 import { NavigationInjectedProps } from "react-navigation";
 
-export interface Props {}
+export interface Props {
+  totalNutrients: ITotalNutrients;
+  productWithWeight: any;
+}
 
 export interface Dispatch {}
 
@@ -15,11 +23,19 @@ export default class Component extends React.Component<
   State
 > {
   render() {
+    console.log("render props", this.props);
+
+    const totalNutrients = { totalNutrients: this.props.totalNutrients };
+
+    const productList = {
+      products: this.props.productWithWeight,
+      navigation: this.props.navigation
+    };
+
     return (
       <Page>
-        <TitleContainer>
-          <Title>DEFAULT</Title>
-        </TitleContainer>
+        <TotalNutrients {...totalNutrients} />
+        <ProductList {...productList} />
       </Page>
     );
   }

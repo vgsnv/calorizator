@@ -60,6 +60,7 @@ export default (prevState: MealItems = defaultMealItems, action) => {
       return prevState;
   }
 };
+
 export interface MealItemsByMealIdItem {
   [key: string]: MealItem;
 }

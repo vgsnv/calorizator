@@ -5,7 +5,7 @@ import Header from "./HeaderScreen";
 
 import toProductsChoose from "./thunks/toProductsChoose";
 
-import { Meal, Meals, getChildMealsId } from "../../store/db/meals";
+import { Meals, getChildMealsId } from "../../store/db/meals";
 import {
   getTotalNutrients,
   getMealItemsByMealId
@@ -20,7 +20,6 @@ const getMealsById = (
   products
 ) =>
   ChildMealsId.map(mealId => {
-    console.log(getTotalNutrients([mealId], mealItems, products));
     return {
       portion: meals.entities[mealId],
       totalNutrients: getTotalNutrients([mealId], mealItems, products)
