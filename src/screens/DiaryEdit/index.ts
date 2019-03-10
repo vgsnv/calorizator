@@ -3,6 +3,8 @@ import NeedProps from "../../components/needProps/needProps";
 
 import Header from "./HeaderScreen";
 
+import toProductsChoose from "./thunks/toProductsChoose";
+
 import { Meal, Meals, getChildMealsId } from "../../store/db/meals";
 import {
   getTotalNutrients,
@@ -55,7 +57,9 @@ const mapStateToProps = ({ app, db }): MapStateToProps => {
 
 type MapDispatchToProps = Dispatch;
 
-const mapDispatchToProps = (dispatch): MapDispatchToProps => ({});
+const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
+  toProductsChoose: (nav, id) => dispatch(toProductsChoose(nav, id))
+});
 
 const headerOptions = {
   headerScreen: Header,

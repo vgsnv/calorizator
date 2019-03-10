@@ -1,6 +1,5 @@
 import * as React from "react";
 
-import { View, Text } from "react-native";
 import {
   PortionContainer,
   TilteContainer,
@@ -25,17 +24,24 @@ import {
 import { Products } from "../../../store/db/products";
 
 export interface Props {
+  id: string;
   title: string;
   totalNutrients: ITotalNutrients;
   products: Products;
   mealItemsByMealIdItem: MealItemsByMealIdItem;
 }
 
-export interface Dispatch {}
+export interface Dispatch {
+  onPressItem: (id: string) => void;
+}
 
 interface State {}
 
 export default class extends React.PureComponent<Props & Dispatch, State> {
+  private onPress = () => {
+    this.props.onPressItem(this.props.id);
+  };
+
   private renderProduct = (id, title, weight) => {
     return (
       <Product key={id}>
@@ -66,7 +72,7 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
 
   render() {
     const { title, mealItemsByMealIdItem, totalNutrients } = this.props;
-
+    console.log("this.props", this.props);
     return (
       <PortionContainer
         style={{
@@ -75,6 +81,7 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
           shadowOpacity: 0.16,
           shadowRadius: 6
         }}
+        onPress={this.onPress}
       >
         <TilteContainer>
           <Left>

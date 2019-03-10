@@ -24,9 +24,12 @@ export interface Props {
   mealsList: Array<PortionItem>;
   mealItemsByMealId: MealItemsByMealId;
   products: Products;
+  navigation: any;
 }
 
-export interface Dispatch {}
+export interface Dispatch {
+  toProductsChoose: (nav, id) => void;
+}
 
 interface State {}
 
@@ -36,12 +39,18 @@ export default class Component extends React.Component<
 > {
   private keyExtractor = item => item.portion.id;
 
+  private onPressItem = (id: string) => {
+    this.props.toProductsChoose(this.props.navigation, id);
+  };
+
   private renderItem = ({ item: { portion, totalNutrients } }) => {
     const itemProps = {
+      id: portion.id,
       title: portion.title,
       totalNutrients,
       mealItemsByMealIdItem: this.props.mealItemsByMealId[portion.id],
-      products: this.props.products
+      products: this.props.products,
+      onPressItem: this.onPressItem
     };
     return <Item {...itemProps} />;
   };

@@ -10,10 +10,12 @@ import DiaryScreen from "./Diary";
 import DiaryFormScreen from "./DiaryForm";
 import DiaryEditScreen from "./DiaryEdit";
 import PortionFormScreen from "./PortionForm";
+import ProductsChooseScreen from "./ProductsChoose";
 
 const HomeStack = createStackNavigator({
   Diary: DiaryScreen,
-  DiaryEdit: DiaryEditScreen
+  DiaryEdit: DiaryEditScreen,
+  ProductsChoose: ProductsChooseScreen
 });
 
 const ProductsStack = createStackNavigator({

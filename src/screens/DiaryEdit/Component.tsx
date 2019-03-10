@@ -4,7 +4,6 @@ import { Page } from "./stylesComponents";
 
 import PortionList, { PortionItem } from "./PortionList/List";
 
-import { Meal } from "../../store/db/meals";
 import {
   MealItemsByMealId,
   TotalNutrients as ITotalNutrients
@@ -20,7 +19,9 @@ export interface Props {
   products: Products;
 }
 
-export interface Dispatch {}
+export interface Dispatch {
+  toProductsChoose: (nav, id) => void;
+}
 
 interface State {}
 
@@ -33,7 +34,9 @@ export default class Component extends React.Component<
       mealsList: this.props.mealsList,
       mealItemsByMealId: this.props.mealItemsByMealId,
       products: this.props.products,
-      totalNutrients: this.props.totalNutrients
+      totalNutrients: this.props.totalNutrients,
+      toProductsChoose: this.props.toProductsChoose,
+      navigation: this.props.navigation
     };
 
     return (
