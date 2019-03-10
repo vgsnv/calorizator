@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Header from "../../components/header";
 
 import goBack from "./thunks/goBack";
-import toProductsFormAdd from "./thunks/submit";
+import toPortionForm from "./thunks/toPortionForm";
 
 import { ImageSourcePropType } from "react-native";
 
@@ -20,7 +20,7 @@ interface Props {
 
 interface Dispatch {
   goBack: (nav) => void;
-  toProductsFormAdd: (nav) => void;
+  toPortionForm: (nav) => void;
 }
 
 interface State {}
@@ -31,7 +31,7 @@ class componentHeader extends React.Component<Props & Dispatch, State> {
   };
 
   private onPressRightButton = () => {
-    this.props.toProductsFormAdd(this.props.navigation);
+    this.props.toPortionForm(this.props.navigation);
   };
 
   render() {
@@ -61,7 +61,7 @@ const headerStateToProps = ({ app, db }) => ({
 
 const headerDispatchToProps = dispatch => ({
   goBack: nav => dispatch(goBack(nav)),
-  toProductsFormAdd: nav => dispatch(toProductsFormAdd(nav))
+  toPortionForm: nav => dispatch(toPortionForm(nav))
 });
 
 export default connect(

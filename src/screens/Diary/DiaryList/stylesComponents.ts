@@ -19,14 +19,12 @@ export const Item = styled.View`
 `;
 
 export const TitleText = styled.Text`
-  flex: 1;
   font-size: 16px;
   font-weight: 700;
   color: #a6a6bc;
 `;
 
 export const DetailText = styled.View`
-  flex: 2;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -34,14 +32,14 @@ export const DetailText = styled.View`
 
 export const Left = styled.View`
   flex: 3;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: center;
 `;
 
 export const KKText = styled.Text`
   font-size: 37px;
   font-weight: 600;
-  text-align: left;
+  text-align: right;
   color: #33333b;
 `;
 

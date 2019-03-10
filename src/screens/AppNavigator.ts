@@ -9,6 +9,7 @@ import ProductFormScreen from "./ProductForm";
 import DiaryScreen from "./Diary";
 import DiaryFormScreen from "./DiaryForm";
 import DiaryEditScreen from "./DiaryEdit";
+import PortionFormScreen from "./PortionForm";
 
 const HomeStack = createStackNavigator({
   Diary: DiaryScreen,
@@ -33,6 +34,9 @@ export default createAppContainer(
       },
       DiaryForm: {
         screen: DiaryFormScreen
+      },
+      PortionForm: {
+        screen: PortionFormScreen
       }
     },
     {

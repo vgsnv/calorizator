@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 
 export const PortionContainer = styled.TouchableOpacity`
   flex-direction: column;
-  min-height: 20px;
+  min-height: 100px;
   margin: 0 16px;
   padding: 16px;
 
@@ -83,6 +83,14 @@ export const ProductValue = styled.Text`
 export const BigText = styled.Text`
   font-size: 20px;
   text-align: right;
+  font-weight: 600;
+
+  color: ${palette.grayText};
+`;
+
+export const ChooseText = styled.Text`
+  font-size: 20px;
+  text-align: center;
   font-weight: 600;
 
   color: ${palette.grayText};

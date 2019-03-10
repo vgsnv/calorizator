@@ -14,7 +14,8 @@ import {
   TotalNutrientsText,
   Left,
   Right,
-  BigText
+  BigText,
+  ChooseText
 } from "./stylesComponents";
 
 import {
@@ -78,32 +79,38 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
         <TilteContainer>
           <Left>
             <TitleText>{title}</TitleText>
-            <TotalNutrientsContainter>
-              <TotalNutrientsItem>
-                <TotalNutrientsText>
-                  {totalNutrients.totalProtein.toFixed(0)}
-                </TotalNutrientsText>
-              </TotalNutrientsItem>
+            {mealItemsByMealIdItem && (
+              <TotalNutrientsContainter>
+                <TotalNutrientsItem>
+                  <TotalNutrientsText>
+                    {totalNutrients.totalProtein.toFixed(0)}
+                  </TotalNutrientsText>
+                </TotalNutrientsItem>
 
-              <TotalNutrientsItem>
-                <TotalNutrientsText>
-                  {totalNutrients.totalFat.toFixed(0)}
-                </TotalNutrientsText>
-              </TotalNutrientsItem>
+                <TotalNutrientsItem>
+                  <TotalNutrientsText>
+                    {totalNutrients.totalFat.toFixed(0)}
+                  </TotalNutrientsText>
+                </TotalNutrientsItem>
 
-              <TotalNutrientsItem>
-                <TotalNutrientsText>
-                  {totalNutrients.totalCRBH.toFixed(0)}
-                </TotalNutrientsText>
-              </TotalNutrientsItem>
-            </TotalNutrientsContainter>
+                <TotalNutrientsItem>
+                  <TotalNutrientsText>
+                    {totalNutrients.totalCRBH.toFixed(0)}
+                  </TotalNutrientsText>
+                </TotalNutrientsItem>
+              </TotalNutrientsContainter>
+            )}
           </Left>
-          <Right>
-            <BigText>{totalNutrients.totalKK.toFixed(0)}</BigText>
-          </Right>
+          {mealItemsByMealIdItem && (
+            <Right>
+              <BigText>{totalNutrients.totalKK.toFixed(0)}</BigText>
+            </Right>
+          )}
         </TilteContainer>
 
         {mealItemsByMealIdItem && this.renderProducts()}
+
+        {!mealItemsByMealIdItem && <ChooseText>Выбрать продукты</ChooseText>}
       </PortionContainer>
     );
   }

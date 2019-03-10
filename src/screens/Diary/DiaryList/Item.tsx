@@ -52,7 +52,7 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
           <TitleText>{this.props.title}</TitleText>
           <DetailText>
             <Left>
-              <KKText>{this.props.totalKK}</KKText>
+              <KKText>{this.props.totalKK.toFixed(0)}</KKText>
             </Left>
             <Right>
               <NutrientText>{this.props.totalProtein}</NutrientText>

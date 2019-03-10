@@ -64,8 +64,7 @@ export default (prevState: Meals = defaultMeals, action) => {
         entities: {
           ...prevState.entities,
           [action.data.id]: {
-            ...action.data,
-            parentId: null
+            ...action.data
           }
         }
       };
