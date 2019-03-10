@@ -74,3 +74,11 @@ export default (prevState: Meals = defaultMeals, action) => {
       return prevState;
   }
 };
+
+export const getChildMealsId = (meals: Meals, idMeal: string): Array<string> =>
+  Object.keys(meals.entities).reduce((acc, id) => {
+    if (meals.entities[id].parentId === idMeal) {
+      acc.push(id);
+    }
+    return acc;
+  }, []);

@@ -3,25 +3,55 @@ import NeedProps from "../../components/needProps/needProps";
 
 import Header from "./HeaderScreen";
 
-import { Meals } from "../../store/db/meals";
+import { Meal, Meals, getChildMealsId } from "../../store/db/meals";
+import {
+  getTotalNutrients,
+  getMealItemsByMealId
+} from "../../store/db/mealItems";
 
 type MapStateToProps = Props;
 
-const getMeals = (id, meals) =>
-  Object.keys(meals.entities).reduce((acc, curIdMeal) => {
-    const ParentId = meals.entities[curIdMeal].parentId;
+const getMealsById = (
+  ChildMealsId: Array<string>,
+  meals: Meals,
+  mealItems,
+  products
+) =>
+  ChildMealsId.map(mealId => {
+    console.log(getTotalNutrients([mealId], mealItems, products));
+    return {
+      portion: meals.entities[mealId],
+      totalNutrients: getTotalNutrients([mealId], mealItems, products)
+    };
+  });
 
-    if (!!ParentId && ParentId === id) {
-      acc.push(meals.entities[curIdMeal]);
-    }
+const mapStateToProps = ({ app, db }): MapStateToProps => {
+  const ChildMealsId = getChildMealsId(db.meals, app.diaryEdit.diaryItemId);
 
-    return acc;
-  }, []);
+  const ChildMeals = getMealsById(
+    ChildMealsId,
+    db.meals,
+    db.mealItems,
+    db.products
+  );
 
-const mapStateToProps = ({ app, db }): MapStateToProps => ({
-  //TOFO тут надо понять что передавать
-  mealsList: getMeals(app.diaryEdit.diaryItemId, db.meals)
-});
+  const MealItemsByMealId = getMealItemsByMealId(ChildMealsId, db.mealItems);
+
+  console.log("MealItemsByMealId", ChildMeals, MealItemsByMealId);
+
+  const TotalNutrients = getTotalNutrients(
+    ChildMealsId,
+    db.mealItems,
+    db.products
+  );
+
+  return {
+    mealsList: ChildMeals,
+    mealItemsByMealId: MealItemsByMealId,
+    totalNutrients: TotalNutrients,
+    products: db.products
+  };
+};
 
 type MapDispatchToProps = Dispatch;
 

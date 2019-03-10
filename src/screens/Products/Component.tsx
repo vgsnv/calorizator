@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Page, PageTotal } from "./stylesComponents";
+import { Page } from "./stylesComponents";
 
 import ProductList from "./ProductList/List";
 

@@ -1,15 +1,23 @@
 import * as React from "react";
 
-import { Page, TitleContainer, Title } from "./stylesComponents";
+import { Page } from "./stylesComponents";
 
-import { FlatList, View, Text } from "react-native";
+import PortionList, { PortionItem } from "./PortionList/List";
 
 import { Meal } from "../../store/db/meals";
+import {
+  MealItemsByMealId,
+  TotalNutrients as ITotalNutrients
+} from "../../store/db/mealItems";
+import { Products } from "../../store/db/products";
 
 import { NavigationInjectedProps } from "react-navigation";
 
 export interface Props {
-  mealsList: Array<Meal>;
+  totalNutrients: ITotalNutrients;
+  mealsList: Array<PortionItem>;
+  mealItemsByMealId: MealItemsByMealId;
+  products: Products;
 }
 
 export interface Dispatch {}
@@ -20,29 +28,17 @@ export default class Component extends React.Component<
   Props & Dispatch & NavigationInjectedProps,
   State
 > {
-  private keyExtractor = item => item.id;
-
-  private renderItem = item => {
-    console.log("item", item);
-    return (
-      <View>
-        <Text>{item.id}</Text>
-      </View>
-    );
-  };
-
   render() {
-    console.log("this.props", this.props);
+    const portionList = {
+      mealsList: this.props.mealsList,
+      mealItemsByMealId: this.props.mealItemsByMealId,
+      products: this.props.products,
+      totalNutrients: this.props.totalNutrients
+    };
+
     return (
       <Page>
-        <TitleContainer>
-          <FlatList
-            data={this.props.mealsList}
-            extraData={this.state}
-            keyExtractor={this.keyExtractor}
-            renderItem={this.renderItem}
-          />
-        </TitleContainer>
+        <PortionList {...portionList} />
       </Page>
     );
   }
