@@ -72,6 +72,7 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
           }}
         >
           <ui.Slider
+            direct={ui.SliderDirect.VERTICAL}
             emptyColor={this.props.emptyColor}
             backColor={this.props.backColor}
             value={value}

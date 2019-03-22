@@ -2,7 +2,13 @@ import * as React from "react";
 
 import { View, PanResponder, ViewStyle } from "react-native";
 
+export enum SliderDirect {
+  VERTICAL = "vertical",
+  HORIZONT = "horizont"
+}
+
 export interface Props {
+  direct: SliderDirect;
   style?: ViewStyle;
   emptyColor: string;
   backColor: string;
@@ -30,39 +36,59 @@ export default class Component extends React.Component<
   };
 
   componentDidMount = () => {
-    const { minValue, maxValue, style } = this.props;
-    const { height } = style;
+    const { minValue, maxValue, style, direct } = this.props;
+    const { height, width } = style;
+
+    const lenght = direct === SliderDirect.VERTICAL ? height : width;
 
     this.setState({
-      scaleUnit: parseInt(height.toString()) / (maxValue - minValue)
+      scaleUnit: parseInt(lenght.toString()) / (maxValue - minValue)
     });
   };
 
-  private _panResponder = PanResponder.create({
+  private panResponder = PanResponder.create({
     onMoveShouldSetPanResponder: e => {
-      this.setState({ heightTouchOnPage: e.nativeEvent.pageY });
+      const pageD =
+        this.props.direct === SliderDirect.VERTICAL
+          ? e.nativeEvent.pageY
+          : e.nativeEvent.pageX;
+
+      this.setState({ heightTouchOnPage: pageD });
       return true;
     },
 
     onPanResponderMove: e => {
-      const pageY = e.nativeEvent.pageY;
+      const pageD =
+        this.props.direct === SliderDirect.VERTICAL
+          ? e.nativeEvent.pageY
+          : e.nativeEvent.pageX;
 
-      const { value, onChangeValue } = this.props;
+      const { value, onChangeValue, direct } = this.props;
       const { heightTouchOnPage, scaleUnit } = this.state;
 
-      onChangeValue(value - (pageY - heightTouchOnPage) / scaleUnit);
+      const k = direct === SliderDirect.VERTICAL ? 1 : -1;
+
+      onChangeValue(value - (k * pageD - k * heightTouchOnPage) / scaleUnit);
 
       this.setState({
-        heightTouchOnPage: pageY
+        heightTouchOnPage: pageD
       });
     }
   });
 
   render() {
-    const { style, emptyColor, backColor, value, minValue } = this.props;
+    const {
+      style,
+      emptyColor,
+      backColor,
+      value,
+      minValue,
+      direct
+    } = this.props;
+
     const { scaleUnit } = this.state;
 
-    const heightOfFullSpace = (value - minValue) * scaleUnit;
+    const lenghtOfFullSpace = (value - minValue) * scaleUnit;
 
     return (
       <View
@@ -73,7 +99,7 @@ export default class Component extends React.Component<
           },
           style
         ]}
-        {...this._panResponder.panHandlers}
+        {...this.panResponder.panHandlers}
       >
         <View
           style={{
@@ -81,8 +107,12 @@ export default class Component extends React.Component<
             position: "absolute",
             backgroundColor: backColor,
             bottom: 0,
-            height: heightOfFullSpace,
-            width: style.width
+            height:
+              direct === SliderDirect.VERTICAL
+                ? lenghtOfFullSpace
+                : style.height,
+            width:
+              direct === SliderDirect.VERTICAL ? style.width : lenghtOfFullSpace
           }}
         />
       </View>

@@ -8,11 +8,6 @@ export const TotalNutrients = styled.View`
   padding: 16px;
 `;
 
-export const Left = styled.View`
-  flex: 4;
-  flex-direction: column;
-`;
-
 export const DetailContainer = styled.View`
   flex: 1;
   flex-direction: row;
@@ -24,11 +19,11 @@ interface DetailItem {
 }
 
 export const DetailItem = styled.View<DetailItem>`
-  height: 28px;
-  width: 54px;
+  height: 40px;
+  width: 72px;
   background-color: ${props => palette.nutrients[props.type]};
-  border-radius: 6px;
-  margin-right: 10px;
+  border-radius: 12px;
+  margin-right: 32px;
   justify-content: center;
 `;
 
@@ -39,15 +34,9 @@ export const DetailText = styled.Text`
   color: ${palette.grayLight};
 `;
 
-export const Right = styled.View`
-  flex: 1;
-  align-self: center;
-  justify-content: center;
-`;
-
-export const BigText = styled.Text`
-  font-size: 37px;
-  text-align: right;
-  font-weight: 600;
-  color: ${palette.grayText};
+export const DetailDesc = styled.Text`
+  font-size: 11px;
+  font-weight: 500;
+  text-align: center;
+  color: ${palette.grayLight};
 `;

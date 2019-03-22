@@ -9,6 +9,8 @@ import {
   getMealItemsByMealId
 } from "../../store/db/mealItems";
 
+import { changeMealItem } from "../../store/db/mealItems";
+
 type MapStateToProps = Props;
 
 const getProdutWeightFromMeailItems = (mealItems, mealId) => {
@@ -60,6 +62,7 @@ const mapStateToProps = ({ app, db }): MapStateToProps => {
     db.products.entities,
     ProdutWeightFromMeailItems
   );
+
   return {
     productWithWeight: ProductWithWeight,
     totalNutrients: TotalNutrients
@@ -68,7 +71,9 @@ const mapStateToProps = ({ app, db }): MapStateToProps => {
 
 type MapDispatchToProps = Dispatch;
 
-const mapDispatchToProps = (dispatch): MapDispatchToProps => ({});
+const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
+  changeMealItem: data => dispatch(changeMealItem(data))
+});
 
 const headerOptions = {
   headerScreen: Header

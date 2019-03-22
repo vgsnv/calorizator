@@ -23,18 +23,20 @@ export default class Component extends React.Component<
   State
 > {
   render() {
-    console.log("render props", this.props);
+    const { totalNutrients, productWithWeight, navigation } = this.props;
 
-    const totalNutrients = { totalNutrients: this.props.totalNutrients };
+    const ptotalNutrients = {
+      totalNutrients
+    };
 
     const productList = {
-      products: this.props.productWithWeight,
-      navigation: this.props.navigation
+      products: productWithWeight,
+      navigation: navigation
     };
 
     return (
       <Page>
-        <TotalNutrients {...totalNutrients} />
+        <TotalNutrients {...ptotalNutrients} />
         <ProductList {...productList} />
       </Page>
     );

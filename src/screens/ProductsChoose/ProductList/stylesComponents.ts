@@ -2,28 +2,25 @@ import palette from "../../../constants/palette";
 
 import styled from "styled-components/native";
 
-export const Container = styled.TouchableOpacity`
-  padding: 0 0 0 34px;
-  height: 88px;
-  background-color: ${palette.white};
+export const Container = styled.View`
+  padding: 0 10px 0 34px;
+  min-height: 120px;
+  background-color: ${palette.graySuperLight};
 `;
 
 export const Item = styled.View`
-  flex: 1;
-  flex-direction: row;
-  border-style: solid;
-  border-color: #eff0f2;
-  border-bottom-width: 1px;
+  flex-direction: column;
+  padding: 5px 0;
 `;
 
-export const Left = styled.View`
-  flex: 2;
+export const Top = styled.View`
   flex-direction: column;
+  padding: 5px 0;
 `;
 
 export const TilteTextContainer = styled.View`
-  flex: 1;
-  justify-content: center;
+  justify-content: space-between;
+  flex-direction: row;
 `;
 
 export const TitleText = styled.Text`
@@ -32,50 +29,44 @@ export const TitleText = styled.Text`
   color: ${palette.gray};
 `;
 
-export const DetailContainer = styled.View`
-  flex: 1;
+export const Bottom = styled.View`
+  padding: 5px 0;
   flex-direction: row;
-  align-items: center;
+  align-self: flex-start;
+  justify-content: space-between;
+`;
+
+export const DetailContainer = styled.View`
+  flex: 4;
+  flex-direction: row;
+  align-items: flex-start;
 `;
 
 interface DetailItem {
   type: string;
 }
 
-export const DetailItem = styled.View<DetailItem>`
+export const DetailItem = styled.View`
   height: 18px;
   width: 44px;
-  background-color: ${props => palette.nutrients[props.type]};
-  border-radius: 4px;
   margin-right: 10px;
-  justify-content: center;
+  justify-content: flex-start;
 `;
 
 export const DetailText = styled.Text`
   font-size: 12px;
-  text-align: center;
   color: ${palette.grayLight};
 `;
 
-export const Right = styled.View`
-  flex: 1;
-  align-self: center;
-  justify-content: center;
-  padding-right: 40px;
-`;
-
 export const BigText = styled.Text`
-  font-size: 37px;
+  flex: 1;
+  font-size: 24px;
   text-align: right;
-  font-weight: 700;
-  letter-spacing: -0.6px;
-
+  font-weight: 600;
   color: ${palette.grayText};
 `;
 
-export const Img = styled.Image`
-  position: absolute;
-  align-self: flex-end;
-  width: 52px;
-  height: 52px;
+export const SliderContainer = styled.View`
+  flex: 2;
+  align-items: center;
 `;

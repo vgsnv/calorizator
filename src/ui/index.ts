@@ -1,5 +1,5 @@
 import Button from "./button";
-import Slider from "./slider";
+import Slider, { SliderDirect } from "./slider";
 import Input, { InputType } from "./input";
 
-export { Button, Input, InputType, Slider };
+export { Button, Input, InputType, Slider, SliderDirect };

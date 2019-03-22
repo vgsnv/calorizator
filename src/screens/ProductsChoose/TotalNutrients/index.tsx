@@ -1,14 +1,19 @@
 import * as React from "react";
 
 import {
-  Left,
-  Right,
   DetailContainer,
   DetailItem,
   DetailText,
-  BigText,
-  TotalNutrients
+  TotalNutrients,
+  DetailDesc
 } from "./stylesComponents";
+
+const shadowStyle = {
+  shadowColor: "#000",
+  shadowOffset: { width: 1, height: 3 },
+  shadowOpacity: 0.16,
+  shadowRadius: 4
+};
 
 import { TotalNutrients as ITotalNutrients } from "../../../store/db/mealItems";
 
@@ -31,22 +36,24 @@ export default class Component extends React.Component<
 
     return (
       <TotalNutrients>
-        <Left>
-          <DetailContainer>
-            <DetailItem type={"protein"}>
-              <DetailText>{totalProtein.toFixed(1)}</DetailText>
-            </DetailItem>
-            <DetailItem type={"fat"}>
-              <DetailText>{totalFat.toFixed(1)}</DetailText>
-            </DetailItem>
-            <DetailItem type={"crbh"}>
-              <DetailText>{totalCRBH.toFixed(1)}</DetailText>
-            </DetailItem>
-          </DetailContainer>
-        </Left>
-        <Right>
-          <BigText>{totalKK.toFixed(0)}</BigText>
-        </Right>
+        <DetailContainer>
+          <DetailItem style={shadowStyle} type={"protein"}>
+            <DetailText>{totalProtein.toFixed(1)}</DetailText>
+            <DetailDesc>{"Белки"}</DetailDesc>
+          </DetailItem>
+          <DetailItem style={shadowStyle} type={"fat"}>
+            <DetailText>{totalFat.toFixed(1)}</DetailText>
+            <DetailDesc>{"Жиры"}</DetailDesc>
+          </DetailItem>
+          <DetailItem style={shadowStyle} type={"crbh"}>
+            <DetailText>{totalCRBH.toFixed(1)}</DetailText>
+            <DetailDesc>{"Углеводы"}</DetailDesc>
+          </DetailItem>
+          <DetailItem style={shadowStyle} type={"kk"}>
+            <DetailText>{totalKK.toFixed(0)}</DetailText>
+            <DetailDesc>{"ККал"}</DetailDesc>
+          </DetailItem>
+        </DetailContainer>
       </TotalNutrients>
     );
   }

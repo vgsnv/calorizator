@@ -101,6 +101,7 @@ export default class Component extends React.Component<
             }}
           >
             <ui.Slider
+              direct={ui.SliderDirect.VERTICAL}
               emptyColor={"#E8F8F5"}
               backColor={"#A9C6D5"}
               value={this.state.s1.value}
@@ -114,30 +115,30 @@ export default class Component extends React.Component<
               }}
             />
           </SliderContainer>
-
-          <SliderContainer
-            style={{
-              shadowColor: "#000",
-              shadowOffset: { width: 1, height: 3 },
-              shadowOpacity: 0.16,
-              shadowRadius: 4
-            }}
-          >
-            <ui.Slider
-              emptyColor={"yellow"}
-              backColor={"red"}
-              value={this.state.s2.value}
-              onChangeValue={this.changeS2}
-              maxValue={70}
-              minValue={20}
-              style={{
-                borderRadius: 32,
-                height: 400,
-                width: 100
-              }}
-            />
-          </SliderContainer>
         </View>
+        <SliderContainer
+          style={{
+            shadowColor: "#000",
+            shadowOffset: { width: 1, height: 3 },
+            shadowOpacity: 0.16,
+            shadowRadius: 4
+          }}
+        >
+          <ui.Slider
+            direct={ui.SliderDirect.HORIZONT}
+            emptyColor={"white"}
+            backColor={"#e2e1eb"}
+            value={this.state.s2.value}
+            onChangeValue={this.changeS2}
+            maxValue={100}
+            minValue={20}
+            style={{
+              borderRadius: 8,
+              height: 20,
+              width: 400
+            }}
+          />
+        </SliderContainer>
       </Page>
     );
   }
