@@ -20,7 +20,7 @@ export default class Component extends React.Component<
 > {
   render() {
     const diaryList = {
-      diaryItems: this.props.diaryItems,
+      dietsItems: this.props.dietsItems,
       toDiaryEdit: this.props.toDiaryEdit,
       navigation: this.props.navigation
     };

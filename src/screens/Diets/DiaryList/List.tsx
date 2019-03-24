@@ -7,7 +7,7 @@ import { ScrollView } from "react-native";
 import { checkIndexIsEven } from "../../../helpers/someFunctions";
 
 export interface Props {
-  diaryItems: Array<DiaryItem>;
+  dietsItems: Array<DiaryItem>;
   navigation?: any;
 }
 
@@ -49,7 +49,7 @@ export default class Component extends React.Component<
   };
 
   private renderItems = () => {
-    return this.props.diaryItems.map((item, index) => {
+    return this.props.dietsItems.map((item, index) => {
       return this.renderItem(item, index);
     });
   };

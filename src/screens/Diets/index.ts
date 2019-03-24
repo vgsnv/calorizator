@@ -5,15 +5,15 @@ import Header from "./HeaderScreen";
 
 import toDiaryEdit from "./thunks/toDiaryEdit";
 
-import { DiaryItems } from "../../store/app/diary";
+import { DietsItems } from "../../store/app/diets";
 import { Meals, getChildMealsId } from "../../store/db/meals";
 import { MealItems, getTotalNutrients } from "../../store/db/mealItems";
 import { Products } from "../../store/db/products";
 
 type MapStateToProps = Props;
 
-const getDiaryItems = (
-  diary: DiaryItems,
+const getDietsItems = (
+  diary: DietsItems,
   mealItems: MealItems,
   meals: Meals,
   products: Products
@@ -32,7 +32,7 @@ const getDiaryItems = (
   });
 
 const mapStateToProps = ({ app, db }): MapStateToProps => ({
-  diaryItems: getDiaryItems(app.diary, db.mealItems, db.meals, db.products)
+  dietsItems: getDietsItems(app.diets, db.mealItems, db.meals, db.products)
 });
 
 type MapDispatchToProps = Dispatch;

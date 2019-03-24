@@ -1,7 +1,7 @@
 import { NavigationActions } from "react-navigation";
 
 import { mealsAdd } from "../../../store/db/meals";
-import { diaryItemsAdd } from "../../../store/app/diary";
+import { dietsItemsAdd } from "../../../store/app/diets";
 
 const uuidv1 = require("uuid/v1");
 
@@ -17,7 +17,7 @@ export default (nav, data) => async (dispatch, getState) => {
   );
 
   await dispatch(
-    diaryItemsAdd({
+    dietsItemsAdd({
       id,
       order: null
     })

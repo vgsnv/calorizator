@@ -6,14 +6,14 @@ import {
 
 import ProductsScreen from "./Products";
 import ProductFormScreen from "./ProductForm";
-import DiaryScreen from "./Diary";
+import DietsScreen from "./Diets";
 import DiaryFormScreen from "./DiaryForm";
 import DiaryEditScreen from "./DiaryEdit";
 import PortionFormScreen from "./PortionForm";
 import ProductsChooseScreen from "./ProductsChoose";
 
 const HomeStack = createStackNavigator({
-  Diary: DiaryScreen,
+  Diets: DietsScreen,
   DiaryEdit: DiaryEditScreen,
   ProductsChoose: ProductsChooseScreen
 });
