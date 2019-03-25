@@ -3,7 +3,7 @@ import NeedProps from "../../components/needProps/needProps";
 
 import Header from "./HeaderScreen";
 
-import toDiaryEdit from "./thunks/toDiaryEdit";
+import toMeals from "./thunks/toMeals";
 
 import { DietsItems } from "../../store/app/diets";
 import { Meals, getChildMealsId } from "../../store/db/meals";
@@ -38,7 +38,7 @@ const mapStateToProps = ({ app, db }): MapStateToProps => ({
 type MapDispatchToProps = Dispatch;
 
 const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
-  toDiaryEdit: (nav, id) => dispatch(toDiaryEdit(nav, id))
+  toMeals: (nav, id) => dispatch(toMeals(nav, id))
 });
 
 const headerOptions = {

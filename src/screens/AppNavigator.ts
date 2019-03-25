@@ -7,14 +7,14 @@ import {
 import ProductsScreen from "./Products";
 import ProductFormScreen from "./ProductForm";
 import DietsScreen from "./Diets";
-import DiaryFormScreen from "./DiaryForm";
-import DiaryEditScreen from "./DiaryEdit";
+import DietChangeScreen from "./DietChange";
+import MealsScreen from "./Meals";
 import PortionFormScreen from "./PortionForm";
 import ProductsChooseScreen from "./ProductsChoose";
 
 const HomeStack = createStackNavigator({
   Diets: DietsScreen,
-  DiaryEdit: DiaryEditScreen,
+  Meals: MealsScreen,
   ProductsChoose: ProductsChooseScreen
 });
 
@@ -34,8 +34,8 @@ export default createAppContainer(
       ProductsForm: {
         screen: ProductFormScreen
       },
-      DiaryForm: {
-        screen: DiaryFormScreen
+      DietChange: {
+        screen: DietChangeScreen
       },
       PortionForm: {
         screen: PortionFormScreen

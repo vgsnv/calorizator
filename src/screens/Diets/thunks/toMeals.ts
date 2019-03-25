@@ -4,5 +4,5 @@ import { diaryEditEditId } from "../../../store/app/diaryEdit";
 
 export default (nav, id) => async dispatch => {
   dispatch(diaryEditEditId(id));
-  await nav.dispatch(NavigationActions.navigate({ routeName: "DiaryEdit" }));
+  await nav.dispatch(NavigationActions.navigate({ routeName: "Meals" }));
 };

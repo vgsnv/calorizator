@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import Header from "../../components/header";
 
-import toDiaryForm from "./thunks/toDiaryForm";
+import toDietChange from "./thunks/toDietChange";
 
 import { ImageSourcePropType } from "react-native";
 
@@ -17,14 +17,14 @@ interface Props {
 }
 
 interface Dispatch {
-  toDiaryForm: (nav) => void;
+  toDietChange: (nav) => void;
 }
 
 interface State {}
 
 class componentHeader extends React.Component<Props & Dispatch, State> {
   private onPressRightButton = () => {
-    this.props.toDiaryForm(this.props.navigation);
+    this.props.toDietChange(this.props.navigation);
   };
 
   render() {
@@ -50,7 +50,7 @@ const headerStateToProps = state => ({
 });
 
 const headerDispatchToProps = dispatch => ({
-  toDiaryForm: nav => dispatch(toDiaryForm(nav))
+  toDietChange: nav => dispatch(toDietChange(nav))
 });
 
 export default connect(

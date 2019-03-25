@@ -12,7 +12,7 @@ export interface Props {
 }
 
 export interface Dispatch {
-  toDiaryEdit: (nav, id) => void;
+  toMeals: (nav, id) => void;
 }
 
 interface State {}
@@ -22,7 +22,7 @@ export default class Component extends React.Component<
   State
 > {
   private onPressItem = (id: string) => {
-    this.props.toDiaryEdit(this.props.navigation, id);
+    this.props.toMeals(this.props.navigation, id);
   };
 
   private renderItem = (item, index) => {
