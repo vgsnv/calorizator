@@ -9,7 +9,7 @@ import ProductFormScreen from "./ProductForm";
 import DietsScreen from "./Diets";
 import DietChangeScreen from "./DietChange";
 import MealsScreen from "./Meals";
-import PortionFormScreen from "./PortionForm";
+import MealsChangeScreen from "./MealsChange";
 import ProductsChooseScreen from "./ProductsChoose";
 
 const HomeStack = createStackNavigator({
@@ -37,8 +37,8 @@ export default createAppContainer(
       DietChange: {
         screen: DietChangeScreen
       },
-      PortionForm: {
-        screen: PortionFormScreen
+      MealsChange: {
+        screen: MealsChangeScreen
       }
     },
     {
