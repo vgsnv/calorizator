@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Page } from "./stylesComponents";
 
-import PortionList, { PortionItem } from "./PortionList/List";
+import MealsList, { MealItem } from "./MealsList/List";
 
 import {
   MealItemsByMealId,
@@ -14,7 +14,7 @@ import { NavigationInjectedProps } from "react-navigation";
 
 export interface Props {
   totalNutrients: ITotalNutrients;
-  mealsList: Array<PortionItem>;
+  mealsList: Array<MealItem>;
   mealItemsByMealId: MealItemsByMealId;
   products: Products;
 }
@@ -30,7 +30,7 @@ export default class Component extends React.Component<
   State
 > {
   render() {
-    const portionList = {
+    const mealsList = {
       mealsList: this.props.mealsList,
       mealItemsByMealId: this.props.mealItemsByMealId,
       products: this.props.products,
@@ -41,7 +41,7 @@ export default class Component extends React.Component<
 
     return (
       <Page>
-        <PortionList {...portionList} />
+        <MealsList {...mealsList} />
       </Page>
     );
   }

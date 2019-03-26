@@ -54,7 +54,7 @@ class componentHeader extends React.Component<Props & Dispatch, State> {
 }
 
 const headerStateToProps = ({ app, db }) => ({
-  title: db.meals.entities[app.diaryEdit.diaryItemId].title,
+  title: db.meals.entities[app.mealsInDiet.selectedDietId].title,
   leftImg,
   rightImg
 });

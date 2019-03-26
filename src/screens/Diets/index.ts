@@ -3,7 +3,7 @@ import NeedProps from "../../components/needProps/needProps";
 
 import Header from "./HeaderScreen";
 
-import toMeals from "./thunks/toMeals";
+import toMealsInDiet from "./thunks/toMealsInDiet";
 
 import { DietsItems } from "../../store/app/diets";
 import { Meals, getChildMealsId } from "../../store/db/meals";
@@ -13,12 +13,12 @@ import { Products } from "../../store/db/products";
 type MapStateToProps = Props;
 
 const getDietsItems = (
-  diary: DietsItems,
+  diets: DietsItems,
   mealItems: MealItems,
   meals: Meals,
   products: Products
 ) =>
-  diary.entities.map(item => {
+  diets.entities.map(item => {
     const Id = item.id;
 
     const ChildMeals = getChildMealsId(meals, Id);
@@ -38,7 +38,7 @@ const mapStateToProps = ({ app, db }): MapStateToProps => ({
 type MapDispatchToProps = Dispatch;
 
 const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
-  toMeals: (nav, id) => dispatch(toMeals(nav, id))
+  toMealsInDiet: (nav, id) => dispatch(toMealsInDiet(nav, id))
 });
 
 const headerOptions = {

@@ -14,14 +14,14 @@ import {
 } from "../../../store/db/mealItems";
 import { Products } from "../../../store/db/products";
 
-export interface PortionItem {
+export interface MealItem {
   portion: Meal;
   totalNutrients: ITotalNutrients;
 }
 
 export interface Props {
   totalNutrients: ITotalNutrients;
-  mealsList: Array<PortionItem>;
+  mealsList: Array<MealItem>;
   mealItemsByMealId: MealItemsByMealId;
   products: Products;
   navigation: any;

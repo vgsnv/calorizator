@@ -8,13 +8,13 @@ import ProductsScreen from "./Products";
 import ProductFormScreen from "./ProductForm";
 import DietsScreen from "./Diets";
 import DietChangeScreen from "./DietChange";
-import MealsScreen from "./Meals";
+import MealsInDietScreen from "./MealsInDiet";
 import MealsChangeScreen from "./MealsChange";
 import ProductsChooseScreen from "./ProductsChoose";
 
 const HomeStack = createStackNavigator({
   Diets: DietsScreen,
-  Meals: MealsScreen,
+  MealsInDiet: MealsInDietScreen,
   ProductsChoose: ProductsChooseScreen
 });
 

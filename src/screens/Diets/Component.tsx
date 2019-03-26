@@ -9,7 +9,7 @@ import { NavigationInjectedProps } from "react-navigation";
 export interface Props extends DiaryItemsList {}
 
 export interface Dispatch {
-  toMeals: (nav, id) => void;
+  toMealsInDiet: (nav, id) => void;
 }
 
 interface State {}
@@ -21,7 +21,7 @@ export default class Component extends React.Component<
   render() {
     const diaryList = {
       dietsItems: this.props.dietsItems,
-      toMeals: this.props.toMeals,
+      toMealsInDiet: this.props.toMealsInDiet,
       navigation: this.props.navigation
     };
 

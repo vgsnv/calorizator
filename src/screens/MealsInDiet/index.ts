@@ -27,7 +27,10 @@ const getMealsById = (
   });
 
 const mapStateToProps = ({ app, db }): MapStateToProps => {
-  const ChildMealsId = getChildMealsId(db.meals, app.diaryEdit.diaryItemId);
+  const ChildMealsId = getChildMealsId(
+    db.meals,
+    app.mealsInDiet.selectedDietId
+  );
 
   const ChildMeals = getMealsById(
     ChildMealsId,
@@ -37,8 +40,6 @@ const mapStateToProps = ({ app, db }): MapStateToProps => {
   );
 
   const MealItemsByMealId = getMealItemsByMealId(ChildMealsId, db.mealItems);
-
-  console.log("MealItemsByMealId", ChildMeals, MealItemsByMealId);
 
   const TotalNutrients = getTotalNutrients(
     ChildMealsId,
