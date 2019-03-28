@@ -3,12 +3,14 @@ import * as React from "react";
 import { Page, ModalHeader, BtnContainer, TxtButton } from "./stylesComponents";
 
 import * as ui from "../../ui";
+import palette from "../../constants/palette";
 
-import { KeyboardAvoidingView, Text } from "react-native";
+import { View } from "react-native";
 
 import { NavigationInjectedProps } from "react-navigation";
 
 import { Product } from "../../store/app/curProduct";
+import Slider from "./Slider/Slider";
 
 export interface Props {
   curProduct: Product;
@@ -19,158 +21,86 @@ export interface Dispatch {
   submit: (nav, data) => void;
 }
 
-interface Inputs {
-  title: string;
-  kk: string;
-  protein: string;
-  fat: string;
-  crbh: string;
-}
+const validateNutrientValue = (minValue, value, maxValue) =>
+  minValue <= value && value < +maxValue;
+
 interface State {
   submitTitle: string;
-  inputs: Inputs;
+  productTitle: string;
+  kk: number;
+  protein: number;
+  fat: number;
+  crbh: number;
 }
 
 export default class Component extends React.Component<
   Props & Dispatch & NavigationInjectedProps,
   State
 > {
-  static navigationOptions = {
-    title: "ПРОДУКТЫ"
+  state = {
+    productTitle: this.props.curProduct.title,
+    submitTitle: "Сохранить",
+    kk: parseFloat(this.props.curProduct.kk),
+    protein: parseFloat(this.props.curProduct.protein),
+    fat: parseFloat(this.props.curProduct.fat),
+    crbh: parseFloat(this.props.curProduct.crbh)
   };
 
-  constructor(props) {
-    super(props);
+  private changeKK = value => {
+    if (validateNutrientValue(0, value, 500))
+      this.setState({
+        kk: value.toFixed(1)
+      });
+  };
 
-    let curProduct, submitTitle;
-
-    if (!!this.props.curProduct) {
-      submitTitle = "Сохранить";
-      curProduct = this.props.curProduct;
-    } else {
-      submitTitle = "Добавить";
-      curProduct = {
-        title: "",
-        kk: "",
-        protein: "",
-        fat: "",
-        crbh: ""
-      };
-    }
-
-    this.state = {
-      submitTitle,
-      inputs: {
-        title: curProduct.title,
-        kk: curProduct.kk,
-        protein: curProduct.protein,
-        fat: curProduct.fat,
-        crbh: curProduct.crbh
-      }
-    };
-  }
+  private changePROTEIN = value => {
+    if (validateNutrientValue(0, value, 40))
+      this.setState({
+        protein: value.toFixed(1)
+      });
+  };
+  private changeFAT = value => {
+    if (validateNutrientValue(0, value, 100))
+      this.setState({
+        fat: value.toFixed(1)
+      });
+  };
+  private changeCRBH = value => {
+    if (validateNutrientValue(0, value, 100))
+      this.setState({
+        crbh: value.toFixed(1)
+      });
+  };
 
   private handleOnPressClose = () => {
     this.props.goBack(this.props.navigation);
-  };
-
-  private handleOnChangeTITLE = text => {
-    this.setState(prevState => ({
-      ...prevState,
-      inputs: {
-        ...prevState.inputs,
-        title: text
-      }
-    }));
-  };
-
-  private handleOnChangeKK = text => {
-    this.setState(prevState => ({
-      ...prevState,
-      inputs: {
-        ...prevState.inputs,
-        kk: text
-      }
-    }));
-  };
-
-  private handleOnChangePROTEIN = text => {
-    this.setState(prevState => ({
-      ...prevState,
-      inputs: {
-        ...prevState.inputs,
-        protein: text
-      }
-    }));
-  };
-
-  private handleOnChangeFAT = text => {
-    this.setState(prevState => ({
-      ...prevState,
-      inputs: {
-        ...prevState.inputs,
-        fat: text
-      }
-    }));
-  };
-
-  private handleOnChangeCRBN = text => {
-    this.setState(prevState => ({
-      ...prevState,
-      inputs: {
-        ...prevState.inputs,
-        crbh: text
-      }
-    }));
   };
 
   private handleOnPressSubmit = () => {
     const nav = this.props.navigation;
     const submit = this.props.submit;
 
-    submit(nav, this.state.inputs);
+    submit(nav, {
+      title: this.state.productTitle,
+      protein: this.state.protein,
+      fat: this.state.fat,
+      crbh: this.state.crbh,
+      kk: this.state.kk
+    });
+  };
+
+  private handleOnChangeTITLE = text => {
+    this.setState(prevState => ({
+      productTitle: text
+    }));
   };
 
   render() {
-    console.log("state", this.state);
-
     const titleInput = {
       placeholder: "Название",
       onChangeText: this.handleOnChangeTITLE,
-      value: this.state.inputs.title,
+      value: this.state.productTitle,
       inputType: ui.InputType.STRING
-    };
-
-    const kkInput = {
-      placeholder: "0.0",
-      label: "Килокалории",
-      onChangeText: this.handleOnChangeKK,
-      value: this.state.inputs.kk,
-      inputType: ui.InputType.NUMBER
-    };
-
-    const proteinInput = {
-      placeholder: "0.0",
-      label: "Белки",
-      onChangeText: this.handleOnChangePROTEIN,
-      value: this.state.inputs.protein,
-      inputType: ui.InputType.NUMBER
-    };
-
-    const fatInput = {
-      placeholder: "0.0",
-      label: "Жиры",
-      onChangeText: this.handleOnChangeFAT,
-      value: this.state.inputs.fat,
-      inputType: ui.InputType.NUMBER
-    };
-
-    const crbhInput = {
-      placeholder: "0.0",
-      label: "Углеводы",
-      onChangeText: this.handleOnChangeCRBN,
-      value: this.state.inputs.crbh,
-      inputType: ui.InputType.NUMBER
     };
 
     const closeButton = {
@@ -183,21 +113,62 @@ export default class Component extends React.Component<
 
     return (
       <Page>
-        <KeyboardAvoidingView behavior="position" enabled>
-          <ModalHeader>
-            <BtnContainer {...closeButton}>
-              <TxtButton>Отмена</TxtButton>
-            </BtnContainer>
-            <BtnContainer {...SubmitBtn}>
-              <TxtButton>{this.state.submitTitle}</TxtButton>
-            </BtnContainer>
-          </ModalHeader>
-          <ui.Input {...titleInput} />
-          <ui.Input {...kkInput} />
-          <ui.Input {...proteinInput} />
-          <ui.Input {...fatInput} />
-          <ui.Input {...crbhInput} />
-        </KeyboardAvoidingView>
+        <ModalHeader>
+          <BtnContainer {...closeButton}>
+            <TxtButton>Отмена</TxtButton>
+          </BtnContainer>
+          <BtnContainer {...SubmitBtn}>
+            <TxtButton>{this.state.submitTitle}</TxtButton>
+          </BtnContainer>
+        </ModalHeader>
+
+        <ui.Input {...titleInput} />
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-around",
+            paddingLeft: 8,
+            paddingRight: 8
+          }}
+        >
+          <Slider
+            value={this.state.protein}
+            labelName={"Белки"}
+            minValue={0}
+            maxValue={40}
+            onChangeValue={this.changePROTEIN}
+            emptyColor={palette.nutrients.proteinLight}
+            backColor={palette.nutrients.protein}
+          />
+          <Slider
+            value={this.state.fat}
+            labelName={"Жиры"}
+            minValue={0}
+            maxValue={100}
+            onChangeValue={this.changeFAT}
+            emptyColor={palette.nutrients.fatLight}
+            backColor={palette.nutrients.fat}
+          />
+          <Slider
+            value={this.state.crbh}
+            labelName={"Углеводы"}
+            minValue={0}
+            maxValue={100}
+            onChangeValue={this.changeCRBH}
+            emptyColor={palette.nutrients.crbhLight}
+            backColor={palette.nutrients.crbh}
+          />
+
+          <Slider
+            value={this.state.kk}
+            labelName={"Килокалории"}
+            minValue={0}
+            maxValue={500}
+            onChangeValue={this.changeKK}
+            emptyColor={palette.nutrients.kkLight}
+            backColor={palette.nutrients.kk}
+          />
+        </View>
       </Page>
     );
   }

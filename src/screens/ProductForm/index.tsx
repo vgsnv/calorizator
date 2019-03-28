@@ -18,7 +18,8 @@ const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
 });
 
 const headerOptions = {
-  headerScreen: null
+  headerScreen: null,
+  gesturesEnabled: false
 };
 
 export default NeedProps(

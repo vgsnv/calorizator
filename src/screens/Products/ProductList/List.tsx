@@ -28,7 +28,7 @@ export default class Component extends React.Component<
   };
 
   private renderItem = ({ item }) => {
-    const props = {
+    const itemProps = {
       id: item.id,
       title: item.title,
       kk: item.kk,
@@ -37,7 +37,7 @@ export default class Component extends React.Component<
       crbh: item.crbh,
       onPressItem: this.onPressItem
     };
-    return <Item {...props} />;
+    return <Item {...itemProps} />;
   };
 
   render() {

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Page, PageTotal } from "./stylesComponents";
+import { Page } from "./stylesComponents";
 
 import ProductList from "./ProductList/List";
 
@@ -33,7 +33,7 @@ export default class Component extends React.Component<
 
     return (
       <Page>
-        <PageTotal />
+        {/* <PageTotal /> */}
         <ProductList {...productList} />
       </Page>
     );

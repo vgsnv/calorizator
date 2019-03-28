@@ -1,32 +1,49 @@
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import {
+  createStackNavigator,
+  createAppContainer,
+  createBottomTabNavigator
+} from "react-navigation";
 
-import HomeScreen from "./Home";
 import ProductsScreen from "./Products";
 import ProductFormScreen from "./ProductForm";
+import DietsScreen from "./Diets";
+import DietChangeScreen from "./DietChange";
+import MealsInDietScreen from "./MealsInDiet";
+import MealsChangeScreen from "./MealsChange";
+import ProductsChooseScreen from "./ProductsChoose";
 
-const MainStack = createStackNavigator(
-  {
-    Home: HomeScreen,
-    Products: ProductsScreen
-  },
-  {
-    initialRouteName: "Home"
-  }
-);
+const HomeStack = createStackNavigator({
+  Diets: DietsScreen,
+  MealsInDiet: MealsInDietScreen,
+  ProductsChoose: ProductsChooseScreen
+});
 
-const RootStack = createStackNavigator(
-  {
-    Main: {
-      screen: MainStack
+const ProductsStack = createStackNavigator({
+  Products: ProductsScreen
+});
+
+const BottomTabNavigator = createBottomTabNavigator({
+  Home: HomeStack,
+  Products: ProductsStack
+});
+
+export default createAppContainer(
+  createStackNavigator(
+    {
+      Main: BottomTabNavigator,
+      ProductsForm: {
+        screen: ProductFormScreen
+      },
+      DietChange: {
+        screen: DietChangeScreen
+      },
+      MealsChange: {
+        screen: MealsChangeScreen
+      }
     },
-    ProductsForm: {
-      screen: ProductFormScreen
+    {
+      mode: "modal",
+      headerMode: "none"
     }
-  },
-  {
-    mode: "modal",
-    headerMode: "none"
-  }
+  )
 );
-
-export default createAppContainer(RootStack);
