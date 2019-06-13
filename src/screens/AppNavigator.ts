@@ -4,6 +4,7 @@ import {
   createBottomTabNavigator
 } from "react-navigation";
 
+import AuthScreen from "./Auth";
 import ProductsScreen from "./Products";
 import ProductFormScreen from "./ProductForm";
 import DietsScreen from "./Diets";
@@ -30,6 +31,9 @@ const BottomTabNavigator = createBottomTabNavigator({
 export default createAppContainer(
   createStackNavigator(
     {
+      Auth: {
+        screen: AuthScreen
+      },
       Main: BottomTabNavigator,
       ProductsForm: {
         screen: ProductFormScreen

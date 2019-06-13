@@ -4,8 +4,9 @@
     "jsx": "react",
     "noEmit": true,
     "moduleResolution": "node",
-    "baseUrl": ".",
-    "paths": {}
-  },
-  "exclude": ["node_modules"]
+    "baseUrl": "./src",
+    "paths": {
+      "*": ["*"]
+    }
+  }
 }
