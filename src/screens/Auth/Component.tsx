@@ -8,7 +8,9 @@ import { LoginButton, AccessToken } from "react-native-fbsdk";
 
 export interface Props {}
 
-export interface Dispatch {}
+export interface Dispatch {
+  onLoginFinished: (nav, userId) => void;
+}
 
 interface State {}
 
@@ -32,7 +34,9 @@ export default class Component extends React.Component<
                 console.log("login is cancelled.");
               } else {
                 AccessToken.getCurrentAccessToken().then(data => {
-                  console.log(data.accessToken.toString());
+                  const userId = data.userID;
+
+                  this.props.onLoginFinished(this.props.navigation, userId);
                 });
               }
             }}
