@@ -18,11 +18,15 @@ export default class Component extends React.Component<
   Props & Dispatch & NavigationInjectedProps,
   State
 > {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <Page>
         <TitleContainer>
-          <Title>TEST AUTH</Title>
+          <Title>SIGN IN</Title>
         </TitleContainer>
 
         <Buttons>

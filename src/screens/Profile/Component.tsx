@@ -18,7 +18,7 @@ export default class Component extends React.Component<
     return (
       <Page>
         <TitleContainer>
-          <Title>DEFAULT</Title>
+          <Title>PROFILE</Title>
         </TitleContainer>
       </Page>
     );
