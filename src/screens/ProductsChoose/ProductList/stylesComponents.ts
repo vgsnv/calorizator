@@ -1,6 +1,6 @@
-import palette from "../../../constants/palette";
+import palette from '../../../constants/palette';
 
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 export const Container = styled.View`
   padding: 0 10px 0 34px;

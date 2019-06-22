@@ -1,13 +1,13 @@
-import * as React from "react";
+import * as React from 'react';
 
-import Item, { Props as DiaryItem } from "./Item";
+import Item, { Props as DiaryItem } from './Item';
 
-import { ScrollView } from "react-native";
+import { ScrollView } from 'react-native';
 
-import { checkIndexIsEven } from "../../../helpers/someFunctions";
+import { checkIndexIsEven } from '../../../helpers/someFunctions';
 
 export interface Props {
-  dietsItems: Array<DiaryItem>;
+  dietsItems: DiaryItem[];
   navigation?: any;
 }
 
@@ -21,6 +21,21 @@ export default class Component extends React.Component<
   Props & Dispatch,
   State
 > {
+
+  public render() {
+    return (
+      <ScrollView
+        contentContainerStyle={{
+          flex: 1,
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          justifyContent: 'flex-start'
+        }}
+      >
+        {this.renderItems()}
+      </ScrollView>
+    );
+  }
   private onPressItem = (id: string) => {
     this.props.toMealsInDiet(this.props.navigation, id);
   };
@@ -53,19 +68,4 @@ export default class Component extends React.Component<
       return this.renderItem(item, index);
     });
   };
-
-  render() {
-    return (
-      <ScrollView
-        contentContainerStyle={{
-          flex: 1,
-          flexDirection: "row",
-          flexWrap: "wrap",
-          justifyContent: "flex-start"
-        }}
-      >
-        {this.renderItems()}
-      </ScrollView>
-    );
-  }
 }

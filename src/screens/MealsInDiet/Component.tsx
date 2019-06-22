@@ -1,20 +1,20 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { Page } from "./stylesComponents";
+import { Page } from './stylesComponents';
 
-import MealsList, { MealItem } from "./MealsList/List";
+import MealsList, { MealItem } from './MealsList/List';
 
 import {
   MealItemsByMealId,
   TotalNutrients as ITotalNutrients
-} from "../../store/db/mealItems";
-import { Products } from "../../store/db/products";
+} from '../../store/db/mealItems';
+import { Products } from '../../store/db/products';
 
-import { NavigationInjectedProps } from "react-navigation";
+import { NavigationInjectedProps } from 'react-navigation';
 
 export interface Props {
   totalNutrients: ITotalNutrients;
-  mealsList: Array<MealItem>;
+  mealsList: MealItem[];
   mealItemsByMealId: MealItemsByMealId;
   products: Products;
 }
@@ -29,7 +29,7 @@ export default class Component extends React.Component<
   Props & Dispatch & NavigationInjectedProps,
   State
 > {
-  render() {
+  public render() {
     const mealsList = {
       mealsList: this.props.mealsList,
       mealItemsByMealId: this.props.mealItemsByMealId,

@@ -1,8 +1,8 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
-import products from "./products";
-import meals from "./meals";
-import mealItems from "./mealItems";
+import mealItems from './mealItems';
+import meals from './meals';
+import products from './products';
 
 const db = combineReducers({
   products,

@@ -1,8 +1,8 @@
-import * as React from "react";
+import * as React from 'react';
 
-import Item from "./Item";
+import Item from './Item';
 
-import { FlatList } from "react-native";
+import { FlatList } from 'react-native';
 
 export interface Props {
   products: any;
@@ -17,6 +17,17 @@ export default class Component extends React.Component<
   Props & Dispatch,
   State
 > {
+
+  public render() {
+    return (
+      <FlatList
+        data={this.props.products}
+        extraData={this.state}
+        keyExtractor={this.keyExtractor}
+        renderItem={this.renderItem}
+      />
+    );
+  }
   private keyExtractor = item => item.id;
 
   private renderItem = ({ item }) => {
@@ -31,15 +42,4 @@ export default class Component extends React.Component<
     };
     return <Item {...itemProps} />;
   };
-
-  render() {
-    return (
-      <FlatList
-        data={this.props.products}
-        extraData={this.state}
-        keyExtractor={this.keyExtractor}
-        renderItem={this.renderItem}
-      />
-    );
-  }
 }

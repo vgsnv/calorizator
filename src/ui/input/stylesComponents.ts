@@ -1,8 +1,8 @@
-import palette from "../../constants/palette";
+import palette from '../../constants/palette';
 
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
-import { InputType } from "./index";
+import { InputType } from './index';
 
 export const InputContainer = styled.View`
   flex-direction: row;
@@ -28,7 +28,7 @@ export const Input = styled.TextInput<TextInput>`
 
   font-size: 16px;
   text-align: ${props =>
-    props.inputType === InputType.STRING ? "left" : "right"};
+    props.inputType === InputType.STRING ? 'left' : 'right'};
   border-radius: 4px;
   border-color: ${palette.grayText};
   border-bottom-width: 1;

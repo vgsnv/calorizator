@@ -1,13 +1,13 @@
-import * as React from "react";
-import { connect } from "react-redux";
+import * as React from 'react';
+import { connect } from 'react-redux';
 
-import Header from "../../components/header";
+import Header from '../../components/header';
 
-import toProductsFormAdd from "./thunks/toProductsFormAdd";
+import toProductsFormAdd from './thunks/toProductsFormAdd';
 
-import { ImageSourcePropType } from "react-native";
+import { ImageSourcePropType } from 'react-native';
 
-const rightImg = require("../../assets/Add.png");
+const rightImg = require('../../assets/Add.png');
 
 interface Props {
   title: string;
@@ -20,14 +20,11 @@ interface Dispatch {
   toProductsFormAdd: (nav) => void;
 }
 
-interface State {}
+interface State { }
 
-class componentHeader extends React.Component<Props & Dispatch, State> {
-  private onPressRightButton = () => {
-    this.props.toProductsFormAdd(this.props.navigation);
-  };
+class ComponentHeader extends React.Component<Props & Dispatch, State> {
 
-  render() {
+  public render() {
     return (
       <Header
         {...{
@@ -41,10 +38,13 @@ class componentHeader extends React.Component<Props & Dispatch, State> {
       />
     );
   }
+  private onPressRightButton = () => {
+    this.props.toProductsFormAdd(this.props.navigation);
+  };
 }
 
 const headerStateToProps = () => ({
-  title: "Продукты",
+  title: 'Продукты',
   rightImg
 });
 
@@ -55,4 +55,4 @@ const headerDispatchToProps = dispatch => ({
 export default connect(
   headerStateToProps,
   headerDispatchToProps
-)(componentHeader);
+)(ComponentHeader);

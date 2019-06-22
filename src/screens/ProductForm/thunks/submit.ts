@@ -1,7 +1,7 @@
-import { NavigationActions } from "react-navigation";
+import { NavigationActions } from 'react-navigation';
 
-import { productsAdd } from "../../../store/db/products";
-import { curproductReset } from "../../../store/app/curProduct";
+import { curproductReset } from '../../../store/app/curProduct';
+import { productsAdd } from '../../../store/db/products';
 
 export default (nav, data) => async (dispatch, getState) => {
   const prevState = getState();

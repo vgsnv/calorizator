@@ -1,13 +1,13 @@
-import * as React from "react";
-import { connect } from "react-redux";
+import * as React from 'react';
+import { connect } from 'react-redux';
 
-import Header from "../../components/header";
+import Header from '../../components/header';
 
-import goBack from "./thunks/goBack";
+import goBack from './thunks/goBack';
 
-import { ImageSourcePropType } from "react-native";
+import { ImageSourcePropType } from 'react-native';
 
-const leftImg = require("../../assets/GoBack.png");
+const leftImg = require('../../assets/GoBack.png');
 
 interface Props {
   title: string;
@@ -19,14 +19,11 @@ interface Dispatch {
   goBack: (nav) => void;
 }
 
-interface State {}
+interface State { }
 
-class componentHeader extends React.Component<Props & Dispatch, State> {
-  private onPressLeftButton = () => {
-    this.props.goBack(this.props.navigation);
-  };
+class ComponentHeader extends React.Component<Props & Dispatch, State> {
 
-  render() {
+  public render() {
     return (
       <Header
         {...{
@@ -40,6 +37,9 @@ class componentHeader extends React.Component<Props & Dispatch, State> {
       />
     );
   }
+  private onPressLeftButton = () => {
+    this.props.goBack(this.props.navigation);
+  };
 }
 
 const headerStateToProps = ({ app, db }) => ({
@@ -54,4 +54,4 @@ const headerDispatchToProps = dispatch => ({
 export default connect(
   headerStateToProps,
   headerDispatchToProps
-)(componentHeader);
+)(ComponentHeader);

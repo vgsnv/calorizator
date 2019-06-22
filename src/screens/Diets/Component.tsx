@@ -1,10 +1,10 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { Page, MealListContainer } from "./stylesComponents";
+import { MealListContainer, Page } from './stylesComponents';
 
-import DiaryList, { Props as DiaryItemsList } from "./DiaryList/List";
+import DiaryList, { Props as DiaryItemsList } from './DiaryList/List';
 
-import { NavigationInjectedProps } from "react-navigation";
+import { NavigationInjectedProps } from 'react-navigation';
 
 export interface Props extends DiaryItemsList {}
 
@@ -18,7 +18,7 @@ export default class Component extends React.Component<
   Props & Dispatch & NavigationInjectedProps,
   State
 > {
-  render() {
+  public render() {
     const diaryList = {
       dietsItems: this.props.dietsItems,
       toMealsInDiet: this.props.toMealsInDiet,

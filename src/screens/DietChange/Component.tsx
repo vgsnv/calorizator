@@ -1,16 +1,16 @@
-import * as React from "react";
+import * as React from 'react';
 
 import {
-  Page,
-  ModalHeader,
+  BodyContainer,
   BtnContainer,
-  TxtButton,
-  BodyContainer
-} from "./stylesComponents";
+  ModalHeader,
+  Page,
+  TxtButton
+} from './stylesComponents';
 
-import { NavigationInjectedProps } from "react-navigation";
+import { NavigationInjectedProps } from 'react-navigation';
 
-import * as ui from "../../ui";
+import * as ui from '../../ui';
 
 export interface Props {}
 
@@ -27,30 +27,11 @@ export default class Component extends React.Component<
   Props & Dispatch & NavigationInjectedProps,
   State
 > {
-  state = {
-    diaryTitle: ""
+  public state = {
+    diaryTitle: ''
   };
 
-  private handleOnPressClose = () => {
-    this.props.goBack(this.props.navigation);
-  };
-
-  private handleOnPressSubmit = () => {
-    const nav = this.props.navigation;
-    const submit = this.props.submit;
-
-    submit(nav, {
-      title: this.state.diaryTitle
-    });
-  };
-
-  private handleOnChangeTITLE = text => {
-    this.setState(prevState => ({
-      diaryTitle: text
-    }));
-  };
-
-  render() {
+  public render() {
     const closeButton = {
       onPress: this.handleOnPressClose
     };
@@ -60,7 +41,7 @@ export default class Component extends React.Component<
     };
 
     const diaryTitle = {
-      placeholder: "Название",
+      placeholder: 'Название',
       onChangeText: this.handleOnChangeTITLE,
       value: this.state.diaryTitle,
       inputType: ui.InputType.STRING
@@ -82,4 +63,23 @@ export default class Component extends React.Component<
       </Page>
     );
   }
+
+  private handleOnPressClose = () => {
+    this.props.goBack(this.props.navigation);
+  };
+
+  private handleOnPressSubmit = () => {
+    const nav = this.props.navigation;
+    const submit = this.props.submit;
+
+    submit(nav, {
+      title: this.state.diaryTitle
+    });
+  };
+
+  private handleOnChangeTITLE = text => {
+    this.setState(prevState => ({
+      diaryTitle: text
+    }));
+  };
 }

@@ -1,13 +1,13 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { Page } from "./stylesComponents";
+import { Page } from './stylesComponents';
 
-import ProductList from "./ProductList/List";
+import ProductList from './ProductList/List';
 
-import { NavigationInjectedProps } from "react-navigation";
+import { NavigationInjectedProps } from 'react-navigation';
 
 export interface Props {
-  products: Array<any>;
+  products: any[];
 }
 
 export interface Dispatch {
@@ -20,11 +20,11 @@ export default class Component extends React.Component<
   Props & Dispatch & NavigationInjectedProps,
   State
 > {
-  static navigationOptions = {
-    title: "ПРОДУКТЫ"
+  public static navigationOptions = {
+    title: 'ПРОДУКТЫ'
   };
 
-  render() {
+  public render() {
     const productList = {
       products: this.props.products,
       toProductsFormToEdit: this.props.toProductsFormToEdit,

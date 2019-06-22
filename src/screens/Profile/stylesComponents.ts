@@ -1,6 +1,6 @@
-import palette from "../../constants/palette";
+import palette from '../../constants/palette';
 
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 export const Page = styled.View`
   flex: 1;
@@ -19,4 +19,12 @@ export const TitleContainer = styled.View`
 export const Title = styled.Text`
   font-size: 50px;
   color: ${palette.mainDark};
+`;
+
+export const Buttons = styled.View`
+  flex: 4;
+  font-size: 50px;
+  color: ${palette.white};
+  justify-content: center;
+  align-items: center;
 `;

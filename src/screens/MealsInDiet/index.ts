@@ -1,20 +1,20 @@
-import Component, { Props, Dispatch } from "./Component";
-import NeedProps from "../../components/needProps/needProps";
+import NeedProps from '../../components/needProps/needProps';
+import Component, { Dispatch, Props } from './Component';
 
-import Header from "./HeaderScreen";
+import Header from './HeaderScreen';
 
-import toProductsChoose from "./thunks/toProductsChoose";
+import toProductsChoose from './thunks/toProductsChoose';
 
-import { Meals, getChildMealsId } from "../../store/db/meals";
 import {
-  getTotalNutrients,
-  getMealItemsByMealId
-} from "../../store/db/mealItems";
+  getMealItemsByMealId,
+  getTotalNutrients
+} from '../../store/db/mealItems';
+import { getChildMealsId, Meals } from '../../store/db/meals';
 
 type MapStateToProps = Props;
 
 const getMealsById = (
-  ChildMealsId: Array<string>,
+  ChildMealsId: string[],
   meals: Meals,
   mealItems,
   products

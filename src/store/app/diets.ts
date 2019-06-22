@@ -4,10 +4,10 @@ export interface DietsItem {
 }
 
 export interface DietsItems {
-  entities: Array<DietsItem>;
+  entities: DietsItem[];
 }
 
-const DIETSITEMS_ADD = "APP/DIETSITEMS_ADD";
+const DIETSITEMS_ADD = 'APP/DIETSITEMS_ADD';
 
 export const dietsItemsAdd = (data: DietsItem) => ({
   type: DIETSITEMS_ADD,
@@ -17,15 +17,15 @@ export const dietsItemsAdd = (data: DietsItem) => ({
 const defaultDiaryItems: DietsItems = {
   entities: [
     {
-      id: "1art",
+      id: '1art',
       order: 1
     },
     {
-      id: "4uyt",
+      id: '4uyt',
       order: 2
     },
     {
-      id: "2oip",
+      id: '2oip',
       order: 3
     }
   ]

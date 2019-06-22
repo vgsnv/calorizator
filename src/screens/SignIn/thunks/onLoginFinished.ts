@@ -1,9 +1,12 @@
-import { NavigationActions } from "react-navigation";
+import AsyncStorage from '@react-native-community/async-storage';
+import { NavigationActions } from 'react-navigation';
 
-export default (nav, userId) => async (dispatch, getState) => {
-  const prevState = getState();
+import { AccessToken } from 'react-native-fbsdk';
 
-  console.log("userId", userId);
+export default nav => async (dispatch, getState) => {
+  const accessToken = await AccessToken.getCurrentAccessToken();
 
-  await nav.dispatch(NavigationActions.navigate({ routeName: "Diets" }));
+  await AsyncStorage.setItem('userToken', accessToken.userID);
+
+  nav.dispatch(NavigationActions.navigate({ routeName: 'Diets' }));
 };

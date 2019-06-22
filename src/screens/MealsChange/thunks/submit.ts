@@ -1,8 +1,8 @@
-import { NavigationActions } from "react-navigation";
+import { NavigationActions } from 'react-navigation';
 
-import { mealsAdd } from "../../../store/db/meals";
+import { mealsAdd } from '../../../store/db/meals';
 
-const uuidv1 = require("uuid/v1");
+const uuidv1 = require('uuid/v1');
 
 export default (nav, data) => async (dispatch, getState) => {
   const store = getState();

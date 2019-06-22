@@ -1,5 +1,5 @@
-import Component, { Props, Dispatch } from "./Component";
-import NeedProps from "../../components/needProps/needProps";
+import NeedProps from '../../components/needProps/needProps';
+import Component, { Dispatch, Props } from './Component';
 
 type MapStateToProps = Props;
 

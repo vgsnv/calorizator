@@ -1,8 +1,8 @@
-import Component, { Props, Dispatch } from "./Component";
-import NeedProps from "../../components/needProps/needProps";
+import NeedProps from '../../components/needProps/needProps';
+import Component, { Dispatch, Props } from './Component';
 
-import goBack from "./thunks/goBack";
-import submit from "./thunks/submit";
+import goBack from './thunks/goBack';
+import submit from './thunks/submit';
 
 type MapStateToProps = Props;
 

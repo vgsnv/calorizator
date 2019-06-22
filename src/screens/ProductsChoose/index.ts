@@ -1,15 +1,15 @@
-import Component, { Props, Dispatch } from "./Component";
-import NeedProps from "../../components/needProps/needProps";
+import NeedProps from '../../components/needProps/needProps';
+import Component, { Dispatch, Props } from './Component';
 
-import Header from "./HeaderScreen";
+import Header from './HeaderScreen';
 
-import { Meals, getChildMealsId } from "../../store/db/meals";
 import {
-  getTotalNutrients,
-  getMealItemsByMealId
-} from "../../store/db/mealItems";
+  getMealItemsByMealId,
+  getTotalNutrients
+} from '../../store/db/mealItems';
+import { getChildMealsId, Meals } from '../../store/db/meals';
 
-import { changeMealItem } from "../../store/db/mealItems";
+import { changeMealItem } from '../../store/db/mealItems';
 
 type MapStateToProps = Props;
 

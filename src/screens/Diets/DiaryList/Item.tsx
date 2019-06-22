@@ -1,16 +1,16 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   ContainerItem,
-  Item,
-  TitleText,
   DetailText,
+  Item,
   KKText,
   Left,
+  NutrientText,
   Right,
-  NutrientText
-} from "./stylesComponents";
+  TitleText
+} from './stylesComponents';
 
-import { ViewStyle } from "react-native";
+import { ViewStyle } from 'react-native';
 
 export interface Props {
   id: string;
@@ -29,11 +29,8 @@ export interface Dispatch {
 interface State {}
 
 export default class extends React.PureComponent<Props & Dispatch, State> {
-  private onPress = () => {
-    this.props.onPressItem(this.props.id);
-  };
 
-  render() {
+  public render() {
     return (
       <ContainerItem
         style={{
@@ -43,7 +40,7 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
       >
         <Item
           style={{
-            shadowColor: "#000",
+            shadowColor: '#000',
             shadowOffset: { width: 3, height: 1 },
             shadowOpacity: 0.16,
             shadowRadius: 6
@@ -64,4 +61,7 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
       </ContainerItem>
     );
   }
+  private onPress = () => {
+    this.props.onPressItem(this.props.id);
+  };
 }

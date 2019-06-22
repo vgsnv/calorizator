@@ -1,16 +1,16 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { Page, ModalHeader, BtnContainer, TxtButton } from "./stylesComponents";
+import { BtnContainer, ModalHeader, Page, TxtButton } from './stylesComponents';
 
-import * as ui from "../../ui";
-import palette from "../../constants/palette";
+import palette from '../../constants/palette';
+import * as ui from '../../ui';
 
-import { View } from "react-native";
+import { View } from 'react-native';
 
-import { NavigationInjectedProps } from "react-navigation";
+import { NavigationInjectedProps } from 'react-navigation';
 
-import { Product } from "../../store/app/curProduct";
-import Slider from "./Slider/Slider";
+import { Product } from '../../store/app/curProduct';
+import Slider from './Slider/Slider';
 
 export interface Props {
   curProduct: Product;
@@ -37,67 +37,18 @@ export default class Component extends React.Component<
   Props & Dispatch & NavigationInjectedProps,
   State
 > {
-  state = {
+  public state = {
     productTitle: this.props.curProduct.title,
-    submitTitle: "Сохранить",
+    submitTitle: 'Сохранить',
     kk: parseFloat(this.props.curProduct.kk),
     protein: parseFloat(this.props.curProduct.protein),
     fat: parseFloat(this.props.curProduct.fat),
     crbh: parseFloat(this.props.curProduct.crbh)
   };
 
-  private changeKK = value => {
-    if (validateNutrientValue(0, value, 500))
-      this.setState({
-        kk: value.toFixed(1)
-      });
-  };
-
-  private changePROTEIN = value => {
-    if (validateNutrientValue(0, value, 40))
-      this.setState({
-        protein: value.toFixed(1)
-      });
-  };
-  private changeFAT = value => {
-    if (validateNutrientValue(0, value, 100))
-      this.setState({
-        fat: value.toFixed(1)
-      });
-  };
-  private changeCRBH = value => {
-    if (validateNutrientValue(0, value, 100))
-      this.setState({
-        crbh: value.toFixed(1)
-      });
-  };
-
-  private handleOnPressClose = () => {
-    this.props.goBack(this.props.navigation);
-  };
-
-  private handleOnPressSubmit = () => {
-    const nav = this.props.navigation;
-    const submit = this.props.submit;
-
-    submit(nav, {
-      title: this.state.productTitle,
-      protein: this.state.protein,
-      fat: this.state.fat,
-      crbh: this.state.crbh,
-      kk: this.state.kk
-    });
-  };
-
-  private handleOnChangeTITLE = text => {
-    this.setState(prevState => ({
-      productTitle: text
-    }));
-  };
-
-  render() {
+  public render() {
     const titleInput = {
-      placeholder: "Название",
+      placeholder: 'Название',
       onChangeText: this.handleOnChangeTITLE,
       value: this.state.productTitle,
       inputType: ui.InputType.STRING
@@ -125,15 +76,15 @@ export default class Component extends React.Component<
         <ui.Input {...titleInput} />
         <View
           style={{
-            flexDirection: "row",
-            justifyContent: "space-around",
+            flexDirection: 'row',
+            justifyContent: 'space-around',
             paddingLeft: 8,
             paddingRight: 8
           }}
         >
           <Slider
             value={this.state.protein}
-            labelName={"Белки"}
+            labelName={'Белки'}
             minValue={0}
             maxValue={40}
             onChangeValue={this.changePROTEIN}
@@ -142,7 +93,7 @@ export default class Component extends React.Component<
           />
           <Slider
             value={this.state.fat}
-            labelName={"Жиры"}
+            labelName={'Жиры'}
             minValue={0}
             maxValue={100}
             onChangeValue={this.changeFAT}
@@ -151,7 +102,7 @@ export default class Component extends React.Component<
           />
           <Slider
             value={this.state.crbh}
-            labelName={"Углеводы"}
+            labelName={'Углеводы'}
             minValue={0}
             maxValue={100}
             onChangeValue={this.changeCRBH}
@@ -161,7 +112,7 @@ export default class Component extends React.Component<
 
           <Slider
             value={this.state.kk}
-            labelName={"Килокалории"}
+            labelName={'Килокалории'}
             minValue={0}
             maxValue={500}
             onChangeValue={this.changeKK}
@@ -172,4 +123,57 @@ export default class Component extends React.Component<
       </Page>
     );
   }
+
+  private changeKK = value => {
+    if (validateNutrientValue(0, value, 500)) {
+      this.setState({
+        kk: value.toFixed(1)
+      });
+    }
+  };
+
+  private changePROTEIN = value => {
+    if (validateNutrientValue(0, value, 40)) {
+      this.setState({
+        protein: value.toFixed(1)
+      });
+    }
+  };
+  private changeFAT = value => {
+    if (validateNutrientValue(0, value, 100)) {
+      this.setState({
+        fat: value.toFixed(1)
+      });
+    }
+  };
+  private changeCRBH = value => {
+    if (validateNutrientValue(0, value, 100)) {
+      this.setState({
+        crbh: value.toFixed(1)
+      });
+    }
+  };
+
+  private handleOnPressClose = () => {
+    this.props.goBack(this.props.navigation);
+  };
+
+  private handleOnPressSubmit = () => {
+    const nav = this.props.navigation;
+    const submit = this.props.submit;
+
+    submit(nav, {
+      title: this.state.productTitle,
+      protein: this.state.protein,
+      fat: this.state.fat,
+      crbh: this.state.crbh,
+      kk: this.state.kk
+    });
+  };
+
+  private handleOnChangeTITLE = text => {
+    this.setState(prevState => ({
+      productTitle: text
+    }));
+  };
 }

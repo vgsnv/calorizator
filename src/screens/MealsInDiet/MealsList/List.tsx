@@ -1,18 +1,18 @@
-import * as React from "react";
+import * as React from 'react';
 
-import Item from "./Item";
-import TotalNutrients from "../TotalNutrients";
+import TotalNutrients from '../TotalNutrients';
+import Item from './Item';
 
-import {} from "./stylesComponents";
+import {} from './stylesComponents';
 
-import { FlatList, View } from "react-native";
+import { FlatList, View } from 'react-native';
 
-import { Meal } from "../../../store/db/meals";
 import {
   MealItemsByMealId,
   TotalNutrients as ITotalNutrients
-} from "../../../store/db/mealItems";
-import { Products } from "../../../store/db/products";
+} from '../../../store/db/mealItems';
+import { Meal } from '../../../store/db/meals';
+import { Products } from '../../../store/db/products';
 
 export interface MealItem {
   portion: Meal;
@@ -21,7 +21,7 @@ export interface MealItem {
 
 export interface Props {
   totalNutrients: ITotalNutrients;
-  mealsList: Array<MealItem>;
+  mealsList: MealItem[];
   mealItemsByMealId: MealItemsByMealId;
   products: Products;
   navigation: any;
@@ -37,6 +37,20 @@ export default class Component extends React.Component<
   Props & Dispatch,
   State
 > {
+
+  public render() {
+    const totalNutrients = { totalNutrients: this.props.totalNutrients };
+
+    return (
+      <FlatList
+        data={this.props.mealsList}
+        keyExtractor={this.keyExtractor}
+        renderItem={this.renderItem}
+        ItemSeparatorComponent={this.renderSeparator}
+        ListHeaderComponent={<TotalNutrients {...totalNutrients} />}
+      />
+    );
+  }
   private keyExtractor = item => item.portion.id;
 
   private onPressItem = (id: string) => {
@@ -64,18 +78,4 @@ export default class Component extends React.Component<
       />
     );
   };
-
-  render() {
-    const totalNutrients = { totalNutrients: this.props.totalNutrients };
-
-    return (
-      <FlatList
-        data={this.props.mealsList}
-        keyExtractor={this.keyExtractor}
-        renderItem={this.renderItem}
-        ItemSeparatorComponent={this.renderSeparator}
-        ListHeaderComponent={<TotalNutrients {...totalNutrients} />}
-      />
-    );
-  }
 }

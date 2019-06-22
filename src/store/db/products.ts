@@ -15,8 +15,8 @@ export interface Products {
   };
 }
 
-const CATEGORIES_LOAD = "DB/CATEGORIES_LOAD";
-const PRODUCTS_ADD = "DB/PRODUCTS_ADD";
+const CATEGORIES_LOAD = 'DB/CATEGORIES_LOAD';
+const PRODUCTS_ADD = 'DB/PRODUCTS_ADD';
 
 export const categoriesLoad = () => ({
   type: CATEGORIES_LOAD
@@ -31,49 +31,49 @@ const defaultProducts: Products = {
   loading: false,
   error: false,
   entities: {
-    "1": {
-      id: "1",
-      title: "Гречка",
+    '1': {
+      id: '1',
+      title: 'Гречка',
       kk: 70,
       protein: 4,
       fat: 3,
       crbh: 20
     },
-    "2": {
-      id: "2",
-      title: "Ягоды",
+    '2': {
+      id: '2',
+      title: 'Ягоды',
       kk: 80.52,
       protein: 0,
       fat: 7,
       crbh: 20
     },
-    "3": {
-      id: "3",
-      title: "Творог",
+    '3': {
+      id: '3',
+      title: 'Творог',
       kk: 20.5,
       protein: 4,
       fat: 30,
       crbh: 3
     },
-    "4": {
-      id: "4",
-      title: "Рис",
+    '4': {
+      id: '4',
+      title: 'Рис',
       kk: 200.5,
       protein: 4,
       fat: 30,
       crbh: 4
     },
-    "5": {
-      id: "5",
-      title: "Куриные грудки",
+    '5': {
+      id: '5',
+      title: 'Куриные грудки',
       kk: 70,
       protein: 25,
       fat: 3,
       crbh: 2
     },
-    "6": {
-      id: "6",
-      title: "Овсянка",
+    '6': {
+      id: '6',
+      title: 'Овсянка',
       kk: 40,
       protein: 5,
       fat: 0,

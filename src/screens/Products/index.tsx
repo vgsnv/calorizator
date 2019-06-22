@@ -1,9 +1,9 @@
-import Component, { Props, Dispatch } from "./Component";
-import NeedProps from "../../components/needProps/needProps";
+import NeedProps from '../../components/needProps/needProps';
+import Component, { Dispatch, Props } from './Component';
 
-import Header from "./HeaderScreen";
+import Header from './HeaderScreen';
 
-import toProductsFormToEdit from "./thunks/toProductsFormToEdit";
+import toProductsFormToEdit from './thunks/toProductsFormToEdit';
 
 type MapStateToProps = Props;
 

@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Input, InputContainer, Label } from "./stylesComponents";
+import * as React from 'react';
+import { Input, InputContainer, Label } from './stylesComponents';
 
 export enum InputType {
   STRING,
@@ -23,22 +23,18 @@ export default class Component extends React.Component<
   Props & Dispatch,
   State
 > {
-  private handleOnChangeText = text => {
-    const { onChangeText } = this.props;
-    onChangeText(text);
-  };
 
-  render() {
+  public render() {
     const { label, value, placeholder, inputType } = this.props;
     return (
       <InputContainer>
         {inputType === InputType.NUMBER && <Label>{label}</Label>}
         <Input
-          onSubmitEditing={() => console.log("submit")}
+          onSubmitEditing={() => console.log('submit')}
           keyboardType={
-            inputType === InputType.NUMBER ? "decimal-pad" : "default"
+            inputType === InputType.NUMBER ? 'decimal-pad' : 'default'
           }
-          returnKeyType={"done"}
+          returnKeyType={'done'}
           inputType={inputType}
           value={value}
           onChangeText={text => this.handleOnChangeText(text)}
@@ -47,4 +43,8 @@ export default class Component extends React.Component<
       </InputContainer>
     );
   }
+  private handleOnChangeText = text => {
+    const { onChangeText } = this.props;
+    onChangeText(text);
+  };
 }

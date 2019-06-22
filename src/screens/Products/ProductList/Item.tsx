@@ -1,19 +1,19 @@
-import * as React from "react";
+import * as React from 'react';
 import {
+  BigText,
   Container,
+  DetailContainer,
+  DetailItem,
+  DetailText,
+  Img,
   Item,
   Left,
   Right,
   TilteTextContainer,
-  DetailContainer,
-  DetailItem,
-  DetailText,
-  TitleText,
-  BigText,
-  Img
-} from "./stylesComponents";
+  TitleText
+} from './stylesComponents';
 
-const forward = require("../../../assets/forward.png");
+const forward = require('../../../assets/forward.png');
 
 export interface Props {
   id: string;
@@ -31,11 +31,8 @@ export interface Dispatch {
 interface State {}
 
 export default class extends React.PureComponent<Props & Dispatch, State> {
-  private onPress = () => {
-    this.props.onPressItem(this.props.id);
-  };
 
-  render() {
+  public render() {
     const { title, kk, protein, fat, crbh } = this.props;
 
     return (
@@ -47,13 +44,13 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
             </TilteTextContainer>
 
             <DetailContainer>
-              <DetailItem type={"protein"}>
+              <DetailItem type={'protein'}>
                 <DetailText>{parseFloat(protein).toFixed(1)}</DetailText>
               </DetailItem>
-              <DetailItem type={"fat"}>
+              <DetailItem type={'fat'}>
                 <DetailText>{parseFloat(fat).toFixed(1)}</DetailText>
               </DetailItem>
-              <DetailItem type={"crbh"}>
+              <DetailItem type={'crbh'}>
                 <DetailText>{parseFloat(crbh).toFixed(1)}</DetailText>
               </DetailItem>
             </DetailContainer>
@@ -66,4 +63,7 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
       </Container>
     );
   }
+  private onPress = () => {
+    this.props.onPressItem(this.props.id);
+  };
 }

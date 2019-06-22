@@ -1,6 +1,6 @@
 export enum ProductFormMode {
-  EDIT = "EDIT",
-  ADD = "ADD"
+  EDIT = 'EDIT',
+  ADD = 'ADD'
 }
 
 export interface Product {
@@ -13,9 +13,9 @@ export interface Product {
   crbh: string;
 }
 
-const CURPRODUCT_ADD = "APP/CURPRODUCT_ADD";
-const CURPRODUCT_EDIT = "APP/CURPRODUCT_EDIT";
-const CURPRODUCT_RESET = "APP/CURPRODUCT_RESET";
+const CURPRODUCT_ADD = 'APP/CURPRODUCT_ADD';
+const CURPRODUCT_EDIT = 'APP/CURPRODUCT_EDIT';
+const CURPRODUCT_RESET = 'APP/CURPRODUCT_RESET';
 
 export const curproductAdd = (id: string) => ({
   type: CURPRODUCT_ADD,
@@ -38,7 +38,7 @@ export default (prevProducts: Product = defaultProducts, action) => {
     case CURPRODUCT_ADD:
       return {
         id: action.data,
-        title: "",
+        title: '',
         kk: 0,
         protein: 0,
         fat: 0,

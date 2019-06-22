@@ -1,16 +1,16 @@
-import * as React from "react";
+import * as React from 'react';
 import {
+  EmptySpace,
   HeaderContainer,
-  Nav,
-  LButtonContainer,
-  RButtonContainer,
   Img,
+  LButtonContainer,
+  Nav,
+  RButtonContainer,
   Title,
-  TitleText,
-  EmptySpace
-} from "./stylesComponents";
+  TitleText
+} from './stylesComponents';
 
-import { ImageSourcePropType } from "react-native";
+import { ImageSourcePropType } from 'react-native';
 
 interface Button {
   image: ImageSourcePropType;
@@ -23,15 +23,15 @@ export interface Props {
   rightButton?: Button;
 }
 
-export interface Dispatch {}
+export interface Dispatch { }
 
-interface State {}
+interface State { }
 
 export default class Component extends React.Component<
   Props & Dispatch,
   State
-> {
-  render() {
+  > {
+  public render() {
     const { title, leftButton, rightButton } = this.props;
 
     return (

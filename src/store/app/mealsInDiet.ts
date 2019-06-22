@@ -2,7 +2,7 @@ export interface MealsInDiet {
   selectedDietId: string;
 }
 
-const UPD_SELECTEDDIET = "APP/UPD_SELECTEDDIET";
+const UPD_SELECTEDDIET = 'APP/UPD_SELECTEDDIET';
 
 export const updSelectedDiet = (data: string) => ({
   type: UPD_SELECTEDDIET,

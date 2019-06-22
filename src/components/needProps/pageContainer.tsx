@@ -1,16 +1,16 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { View, ActivityIndicator } from "react-native";
+import { ActivityIndicator, View } from 'react-native';
 
-const Dimensions = require("Dimensions");
-const { width, height } = Dimensions.get("window");
+const Dimensions = require('Dimensions');
+const { width, height } = Dimensions.get('window');
 
 const PageContainer = ({ appReady, children }) => {
   return (
     <View
       style={{
         flex: 1,
-        backgroundColor: "transparent"
+        backgroundColor: 'transparent'
       }}
     >
       {children}
@@ -20,13 +20,13 @@ const PageContainer = ({ appReady, children }) => {
           color="#aaa"
           style={{
             flex: 1,
-            position: "absolute",
+            position: 'absolute',
             left: 0,
             top: 0,
             opacity: 0.9,
-            backgroundColor: "#fff",
-            width: width,
-            height: height
+            backgroundColor: '#fff',
+            width,
+            height
           }}
         />
       )}

@@ -1,20 +1,20 @@
-import * as React from "react";
+import * as React from 'react';
 import {
-  Container,
-  Item,
-  Top,
+  BigText,
   Bottom,
-  TilteTextContainer,
+  Container,
   DetailContainer,
   DetailItem,
   DetailText,
+  Item,
+  SliderContainer,
+  TilteTextContainer,
   TitleText,
-  BigText,
-  SliderContainer
-} from "./stylesComponents";
+  Top
+} from './stylesComponents';
 
-import * as ui from "../../../ui";
-import Slider from "react-native-slider";
+import Slider from 'react-native-slider';
+import * as ui from '../../../ui';
 
 export interface Props {
   id: string;
@@ -37,7 +37,7 @@ interface State {
 }
 
 export default class extends React.PureComponent<Props & Dispatch, State> {
-  state = {
+  public state = {
     weight: this.props.weight,
     kk: (
       (parseFloat(this.props.kk) * parseFloat(this.props.weight)) /
@@ -57,19 +57,7 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
     ).toFixed(0)
   };
 
-  private changeS2 = value => {
-    this.setState(prevState => {
-      return {
-        weight: value,
-        kk: ((parseFloat(this.props.kk) * value) / 100).toFixed(1),
-        protein: ((parseFloat(this.props.protein) * value) / 100).toFixed(1),
-        fat: ((parseFloat(this.props.fat) * value) / 100).toFixed(1),
-        crbh: ((parseFloat(this.props.crbh) * value) / 100).toFixed(1)
-      };
-    });
-  };
-
-  render() {
+  public render() {
     const { title, weight } = this.props;
     const { kk, protein, fat, crbh } = this.state;
 
@@ -111,10 +99,10 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
               height: 40,
               borderRadius: 50
             }}
-            thumbTintColor={"#e2e1eb"}
+            thumbTintColor={'#e2e1eb'}
             animateTransitions={true}
-            minimumTrackTintColor={"#e2e1eb"}
-            maximumTrackTintColor={"#e2e1eb"}
+            minimumTrackTintColor={'#e2e1eb'}
+            maximumTrackTintColor={'#e2e1eb'}
             trackStyle={{
               height: 2
             }}
@@ -123,4 +111,16 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
       </Container>
     );
   }
+
+  private changeS2 = value => {
+    this.setState(prevState => {
+      return {
+        weight: value,
+        kk: ((parseFloat(this.props.kk) * value) / 100).toFixed(1),
+        protein: ((parseFloat(this.props.protein) * value) / 100).toFixed(1),
+        fat: ((parseFloat(this.props.fat) * value) / 100).toFixed(1),
+        crbh: ((parseFloat(this.props.crbh) * value) / 100).toFixed(1)
+      };
+    });
+  };
 }

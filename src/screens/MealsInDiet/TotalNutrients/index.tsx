@@ -1,16 +1,16 @@
-import * as React from "react";
+import * as React from 'react';
 
 import {
-  Left,
-  Right,
+  BigText,
   DetailContainer,
   DetailItem,
   DetailText,
-  BigText,
+  Left,
+  Right,
   TotalNutrients
-} from "./stylesComponents";
+} from './stylesComponents';
 
-import { TotalNutrients as ITotalNutrients } from "../../../store/db/mealItems";
+import { TotalNutrients as ITotalNutrients } from '../../../store/db/mealItems';
 
 export interface Props {
   totalNutrients: ITotalNutrients;
@@ -24,7 +24,7 @@ export default class Component extends React.Component<
   Props & Dispatch,
   State
 > {
-  render() {
+  public render() {
     const {
       totalNutrients: { totalKK, totalProtein, totalFat, totalCRBH }
     } = this.props;
@@ -33,13 +33,13 @@ export default class Component extends React.Component<
       <TotalNutrients>
         <Left>
           <DetailContainer>
-            <DetailItem type={"protein"}>
+            <DetailItem type={'protein'}>
               <DetailText>{totalProtein.toFixed(1)}</DetailText>
             </DetailItem>
-            <DetailItem type={"fat"}>
+            <DetailItem type={'fat'}>
               <DetailText>{totalFat.toFixed(1)}</DetailText>
             </DetailItem>
-            <DetailItem type={"crbh"}>
+            <DetailItem type={'crbh'}>
               <DetailText>{totalCRBH.toFixed(1)}</DetailText>
             </DetailItem>
           </DetailContainer>

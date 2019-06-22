@@ -1,6 +1,6 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
-import palette from "../../constants/palette";
+import palette from '../../constants/palette';
 
 export const HeaderContainer = styled.View`
   background-color: ${palette.white};

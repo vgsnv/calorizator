@@ -1,20 +1,20 @@
 import {
-  createStackNavigator,
   createAppContainer,
   createBottomTabNavigator,
+  createStackNavigator,
   createSwitchNavigator
-} from "react-navigation";
+} from 'react-navigation';
 
-import SignInScreen from "./SignIn";
-import AuthLoadingScreen from "./AuthLoading";
-import ProductsScreen from "./Products";
-import ProductFormScreen from "./ProductForm";
-import DietsScreen from "./Diets";
-import DietChangeScreen from "./DietChange";
-import MealsInDietScreen from "./MealsInDiet";
-import MealsChangeScreen from "./MealsChange";
-import ProductsChooseScreen from "./ProductsChoose";
-import ProfileScreen from "./Profile";
+import AuthLoadingScreen from './AuthLoading';
+import DietChangeScreen from './DietChange';
+import DietsScreen from './Diets';
+import MealsChangeScreen from './MealsChange';
+import MealsInDietScreen from './MealsInDiet';
+import ProductFormScreen from './ProductForm';
+import ProductsScreen from './Products';
+import ProductsChooseScreen from './ProductsChoose';
+import ProfileScreen from './Profile';
+import SignInScreen from './SignIn';
 
 const HomeStack = createStackNavigator({
   Diets: DietsScreen,
@@ -50,8 +50,8 @@ const AppStack = createStackNavigator(
     }
   },
   {
-    mode: "modal",
-    headerMode: "none"
+    mode: 'modal',
+    headerMode: 'none'
   }
 );
 
@@ -64,7 +64,7 @@ const AuthNavigator = createSwitchNavigator(
     App: AppStack
   },
   {
-    initialRouteName: "AuthLoading"
+    initialRouteName: 'AuthLoading'
   }
 );
 

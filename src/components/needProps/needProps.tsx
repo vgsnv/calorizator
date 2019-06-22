@@ -1,7 +1,7 @@
-import * as React from "react";
-import { connect } from "react-redux";
+import * as React from 'react';
+import { connect } from 'react-redux';
 
-import PageContainer from "./pageContainer";
+import PageContainer from './pageContainer';
 
 interface Props {
   appReady: boolean;
@@ -17,11 +17,12 @@ export default function(
 ) {
   const container = (Component, options) => {
     return class extends React.Component<Props, State> {
-      static navigationOptions = ({ navigation }) => {
-        if (!options.headerScreen)
+      public static navigationOptions = ({ navigation }) => {
+        if (!options.headerScreen) {
           return {
             header: null
           };
+        }
 
         const Header = options.headerScreen;
         const HeaderComponent = <Header navigation={navigation} />;
@@ -35,7 +36,7 @@ export default function(
         };
       };
 
-      render() {
+      public render() {
         const props = this.props;
         const { appReady, ...componentProps } = props;
         return (

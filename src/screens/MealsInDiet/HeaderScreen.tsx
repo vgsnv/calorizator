@@ -1,15 +1,15 @@
-import * as React from "react";
-import { connect } from "react-redux";
+import * as React from 'react';
+import { connect } from 'react-redux';
 
-import Header from "../../components/header";
+import Header from '../../components/header';
 
-import goBack from "./thunks/goBack";
-import toMealsChange from "./thunks/toMealsChange";
+import goBack from './thunks/goBack';
+import toMealsChange from './thunks/toMealsChange';
 
-import { ImageSourcePropType } from "react-native";
+import { ImageSourcePropType } from 'react-native';
 
-const leftImg = require("../../assets/GoBack.png");
-const rightImg = require("../../assets/Add.png");
+const leftImg = require('../../assets/GoBack.png');
+const rightImg = require('../../assets/Add.png');
 
 interface Props {
   title: string;
@@ -26,15 +26,8 @@ interface Dispatch {
 interface State {}
 
 class componentHeader extends React.Component<Props & Dispatch, State> {
-  private onPressLeftButton = () => {
-    this.props.goBack(this.props.navigation);
-  };
 
-  private onPressRightButton = () => {
-    this.props.toMealsChange(this.props.navigation);
-  };
-
-  render() {
+  public render() {
     return (
       <Header
         {...{
@@ -51,6 +44,13 @@ class componentHeader extends React.Component<Props & Dispatch, State> {
       />
     );
   }
+  private onPressLeftButton = () => {
+    this.props.goBack(this.props.navigation);
+  };
+
+  private onPressRightButton = () => {
+    this.props.toMealsChange(this.props.navigation);
+  };
 }
 
 const headerStateToProps = ({ app, db }) => ({

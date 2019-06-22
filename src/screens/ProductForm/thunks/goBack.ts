@@ -1,6 +1,6 @@
-import { NavigationActions } from "react-navigation";
+import { NavigationActions } from 'react-navigation';
 
-import { curproductReset } from "../../../store/app/curProduct";
+import { curproductReset } from '../../../store/app/curProduct';
 
 export default nav => async dispatch => {
   dispatch(curproductReset());

@@ -10,7 +10,7 @@ export interface Meals {
   };
 }
 
-const MEALS_ADD = "DB/MEALS_ADD";
+const MEALS_ADD = 'DB/MEALS_ADD';
 
 export const mealsAdd = data => ({
   type: MEALS_ADD,
@@ -19,40 +19,40 @@ export const mealsAdd = data => ({
 
 const defaultMeals: Meals = {
   entities: {
-    "1art": {
-      id: "1art",
+    '1art': {
+      id: '1art',
       parentId: null,
-      title: "Понедельник"
+      title: 'Понедельник'
     },
-    "12art": {
-      id: "12art",
-      parentId: "1art",
-      title: "Завтрак"
+    '12art': {
+      id: '12art',
+      parentId: '1art',
+      title: 'Завтрак'
     },
-    "13art": {
-      id: "13art",
-      parentId: "1art",
-      title: "Обед"
+    '13art': {
+      id: '13art',
+      parentId: '1art',
+      title: 'Обед'
     },
-    "14art": {
-      id: "14art",
-      parentId: "1art",
-      title: "Ужин"
+    '14art': {
+      id: '14art',
+      parentId: '1art',
+      title: 'Ужин'
     },
-    "4uyt": {
-      id: "4uyt",
+    '4uyt': {
+      id: '4uyt',
       parentId: null,
-      title: "Вторник"
+      title: 'Вторник'
     },
-    "4uyt11": {
-      id: "4uyt11",
-      parentId: "4uyt",
-      title: "Завтрак"
+    '4uyt11': {
+      id: '4uyt11',
+      parentId: '4uyt',
+      title: 'Завтрак'
     },
-    "2oip": {
-      id: "2oip",
+    '2oip': {
+      id: '2oip',
       parentId: null,
-      title: "Среда"
+      title: 'Среда'
     }
   }
 };
@@ -74,7 +74,7 @@ export default (prevState: Meals = defaultMeals, action) => {
   }
 };
 
-export const getChildMealsId = (meals: Meals, idMeal: string): Array<string> =>
+export const getChildMealsId = (meals: Meals, idMeal: string): string[] =>
   Object.keys(meals.entities).reduce((acc, id) => {
     if (meals.entities[id].parentId === idMeal) {
       acc.push(id);

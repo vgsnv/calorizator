@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Button, ButtonText } from "./stylesComponents";
+import * as React from 'react';
+import { Button, ButtonText } from './stylesComponents';
 
 export interface Props {
   name: string;
@@ -17,13 +17,8 @@ export default class Component extends React.Component<
   Props & Dispatch,
   State
 > {
-  private handleClick = () => {
-    const { onPress } = this.props;
 
-    onPress();
-  };
-
-  render() {
+  public render() {
     const { name, disabled, activeOpacity } = this.props;
 
     return (
@@ -36,4 +31,9 @@ export default class Component extends React.Component<
       </Button>
     );
   }
+  private handleClick = () => {
+    const { onPress } = this.props;
+
+    onPress();
+  };
 }

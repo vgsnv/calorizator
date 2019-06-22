@@ -1,7 +1,7 @@
-import Component, { Props, Dispatch } from "./Component";
-import NeedProps from "../../components/needProps/needProps";
+import NeedProps from '../../components/needProps/needProps';
+import Component, { Dispatch, Props } from './Component';
 
-import onLoginFinished from "./thunks/onLoginFinished";
+import onLoginFinished from './thunks/onLoginFinished';
 
 type MapStateToProps = Props;
 
@@ -10,7 +10,7 @@ const mapStateToProps = (state): MapStateToProps => ({});
 type MapDispatchToProps = Dispatch;
 
 const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
-  onLoginFinished: (nav, userId) => dispatch(onLoginFinished(nav, userId))
+  onLoginFinished: nav => dispatch(onLoginFinished(nav))
 });
 
 const headerOptions = {

@@ -1,10 +1,10 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { View, PanResponder, ViewStyle } from "react-native";
+import { PanResponder, View, ViewStyle } from 'react-native';
 
 export enum SliderDirect {
-  VERTICAL = "vertical",
-  HORIZONT = "horizont"
+  VERTICAL = 'vertical',
+  HORIZONT = 'horizont'
 }
 
 export interface Props {
@@ -30,20 +30,9 @@ export default class Component extends React.Component<
   Props & Dispatch,
   State
 > {
-  state = {
+  public state = {
     heightTouchOnPage: 0,
     scaleUnit: 0
-  };
-
-  componentDidMount = () => {
-    const { minValue, maxValue, style, direct } = this.props;
-    const { height, width } = style;
-
-    const lenght = direct === SliderDirect.VERTICAL ? height : width;
-
-    this.setState({
-      scaleUnit: parseInt(lenght.toString()) / (maxValue - minValue)
-    });
   };
 
   private panResponder = PanResponder.create({
@@ -76,7 +65,18 @@ export default class Component extends React.Component<
     }
   });
 
-  render() {
+  public componentDidMount = () => {
+    const { minValue, maxValue, style, direct } = this.props;
+    const { height, width } = style;
+
+    const lenght = direct === SliderDirect.VERTICAL ? height : width;
+
+    this.setState({
+      scaleUnit: parseInt(lenght.toString()) / (maxValue - minValue)
+    });
+  };
+
+  public render() {
     const {
       style,
       emptyColor,
@@ -95,7 +95,7 @@ export default class Component extends React.Component<
         style={[
           {
             backgroundColor: emptyColor,
-            overflow: "hidden"
+            overflow: 'hidden'
           },
           style
         ]}
@@ -104,7 +104,7 @@ export default class Component extends React.Component<
         <View
           style={{
             zIndex: 2,
-            position: "absolute",
+            position: 'absolute',
             backgroundColor: backColor,
             bottom: 0,
             height:

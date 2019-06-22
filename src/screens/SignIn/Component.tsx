@@ -1,15 +1,15 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { Page, TitleContainer, Title, Buttons } from "./stylesComponents";
+import { Buttons, Page, Title, TitleContainer } from './stylesComponents';
 
-import { NavigationInjectedProps } from "react-navigation";
+import { NavigationInjectedProps } from 'react-navigation';
 
-import { LoginButton, AccessToken } from "react-native-fbsdk";
+import { LoginButton } from 'react-native-fbsdk';
 
 export interface Props {}
 
 export interface Dispatch {
-  onLoginFinished: (nav, userId) => void;
+  onLoginFinished: (nav) => void;
 }
 
 interface State {}
@@ -22,7 +22,12 @@ export default class Component extends React.Component<
     super(props);
   }
 
-  render() {
+  public render() {
+    const loginButton = {
+      onLoginFinished: this.onLoginFinished,
+      onLogoutFinished: this.onLogoutFinished
+    };
+
     return (
       <Page>
         <TitleContainer>
@@ -30,24 +35,23 @@ export default class Component extends React.Component<
         </TitleContainer>
 
         <Buttons>
-          <LoginButton
-            onLoginFinished={(error, result) => {
-              if (error) {
-                console.log("login has error: " + result.error);
-              } else if (result.isCancelled) {
-                console.log("login is cancelled.");
-              } else {
-                AccessToken.getCurrentAccessToken().then(data => {
-                  const userId = data.userID;
-
-                  this.props.onLoginFinished(this.props.navigation, userId);
-                });
-              }
-            }}
-            onLogoutFinished={() => console.log("logout.")}
-          />
+          <LoginButton {...loginButton} />
         </Buttons>
       </Page>
     );
   }
+
+  private onLoginFinished = (error, result) => {
+    if (error) {
+      console.log('login has error: ' + result.error);
+    } else if (result.isCancelled) {
+      console.log('login is cancelled.');
+    } else {
+      this.props.onLoginFinished(this.props.navigation);
+    }
+  };
+
+  private onLogoutFinished = () => {
+    console.log('logout.');
+  };
 }

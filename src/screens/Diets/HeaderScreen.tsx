@@ -1,13 +1,13 @@
-import * as React from "react";
-import { connect } from "react-redux";
+import * as React from 'react';
+import { connect } from 'react-redux';
 
-import Header from "../../components/header";
+import Header from '../../components/header';
 
-import toDietChange from "./thunks/toDietChange";
+import toDietChange from './thunks/toDietChange';
 
-import { ImageSourcePropType } from "react-native";
+import { ImageSourcePropType } from 'react-native';
 
-const rightImg = require("../../assets/Add.png");
+const rightImg = require('../../assets/Add.png');
 
 interface Props {
   title: string;
@@ -23,11 +23,8 @@ interface Dispatch {
 interface State {}
 
 class componentHeader extends React.Component<Props & Dispatch, State> {
-  private onPressRightButton = () => {
-    this.props.toDietChange(this.props.navigation);
-  };
 
-  render() {
+  public render() {
     return (
       <Header
         {...{
@@ -42,10 +39,13 @@ class componentHeader extends React.Component<Props & Dispatch, State> {
       />
     );
   }
+  private onPressRightButton = () => {
+    this.props.toDietChange(this.props.navigation);
+  };
 }
 
 const headerStateToProps = state => ({
-  title: "Рационы",
+  title: 'Рационы',
   rightImg
 });
 

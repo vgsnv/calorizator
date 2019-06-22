@@ -1,9 +1,9 @@
-import * as React from "react";
-import { SliderContainer } from "./stylesComponents";
+import * as React from 'react';
+import { SliderContainer } from './stylesComponents';
 
-import { View, Text } from "react-native";
+import { Text, View } from 'react-native';
 
-import * as ui from "../../../ui";
+import * as ui from '../../../ui';
 
 export interface Props {
   value: number;
@@ -21,14 +21,14 @@ export interface Dispatch {
 interface State {}
 
 export default class extends React.PureComponent<Props & Dispatch, State> {
-  render() {
+  public render() {
     const { value, labelName, onChangeValue } = this.props;
 
     return (
       <View
         style={{
           height: 360,
-          flexDirection: "column"
+          flexDirection: 'column'
         }}
       >
         <View
@@ -41,8 +41,8 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
             style={{
               fontSize: 27,
               color: this.props.backColor,
-              textAlign: "right",
-              fontWeight: "600"
+              textAlign: 'right',
+              fontWeight: '600'
             }}
           >
             {`${parseFloat(value)
@@ -54,8 +54,8 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
             style={{
               fontSize: 11,
               color: this.props.backColor,
-              textAlign: "right",
-              fontWeight: "600"
+              textAlign: 'right',
+              fontWeight: '600'
             }}
           >
             {this.props.labelName}
@@ -64,7 +64,7 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
 
         <SliderContainer
           style={{
-            shadowColor: "#000",
+            shadowColor: '#000',
             shadowOffset: { width: 1, height: 3 },
             shadowOpacity: 0.16,
             shadowRadius: 4,
