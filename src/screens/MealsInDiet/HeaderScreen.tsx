@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import Header from '../../components/header';
 
 import goBack from './thunks/goBack';
-import toMealsChange from './thunks/toMealsChange';
+import openActionSheet from './thunks/openActionSheet';
 
 import { ImageSourcePropType } from 'react-native';
 
 const leftImg = require('../../assets/GoBack.png');
-const rightImg = require('../../assets/Add.png');
+const rightImg = require('../../assets/ActionSheet.png');
 
 interface Props {
   title: string;
@@ -20,12 +20,12 @@ interface Props {
 
 interface Dispatch {
   goBack: (nav) => void;
-  toMealsChange: (nav) => void;
+  openActionSheet: (nav) => void;
 }
 
-interface State {}
+interface State { }
 
-class componentHeader extends React.Component<Props & Dispatch, State> {
+class ComponentHeader extends React.Component<Props & Dispatch, State> {
 
   public render() {
     return (
@@ -49,7 +49,7 @@ class componentHeader extends React.Component<Props & Dispatch, State> {
   };
 
   private onPressRightButton = () => {
-    this.props.toMealsChange(this.props.navigation);
+    this.props.openActionSheet(this.props.navigation);
   };
 }
 
@@ -61,10 +61,10 @@ const headerStateToProps = ({ app, db }) => ({
 
 const headerDispatchToProps = dispatch => ({
   goBack: nav => dispatch(goBack(nav)),
-  toMealsChange: nav => dispatch(toMealsChange(nav))
+  openActionSheet: nav => dispatch(openActionSheet(nav))
 });
 
 export default connect(
   headerStateToProps,
   headerDispatchToProps
-)(componentHeader);
+)(ComponentHeader);

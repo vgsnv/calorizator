@@ -23,12 +23,12 @@ export interface Dispatch {
   toProductsChoose: (nav, id) => void;
 }
 
-interface State {}
+interface State { }
 
 export default class Component extends React.Component<
   Props & Dispatch & NavigationInjectedProps,
   State
-> {
+  > {
   public render() {
     const mealsList = {
       mealsList: this.props.mealsList,
