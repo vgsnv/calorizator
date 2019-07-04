@@ -1,25 +1,25 @@
-import NeedProps from '../../components/needProps/needProps';
-import Component, { Dispatch, Props } from './Component';
+import NeedProps from '../../components/needProps/needProps'
+import Component, { Dispatch, Props } from './Component'
 
-import onLoginFinished from './thunks/onLoginFinished';
+import onLoginFinished from './thunks/onLoginFinished'
 
-type MapStateToProps = Props;
+type MapStateToProps = Props
 
-const mapStateToProps = (state): MapStateToProps => ({});
+const mapStateToProps = (state): MapStateToProps => ({})
 
-type MapDispatchToProps = Dispatch;
+type MapDispatchToProps = Dispatch
 
 const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
-  onLoginFinished: nav => dispatch(onLoginFinished(nav))
-});
+  onLoginFinished: nav => dispatch(onLoginFinished(nav)),
+})
 
 const headerOptions = {
-  headerScreen: null
-};
+  headerScreen: null,
+}
 
 export default NeedProps(
   mapStateToProps,
   mapDispatchToProps,
   Component,
   headerOptions
-);
+)

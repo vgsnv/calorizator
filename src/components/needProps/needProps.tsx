@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
+import * as React from 'react'
+import { connect } from 'react-redux'
 
-import PageContainer from './pageContainer';
+import PageContainer from './pageContainer'
 
 interface Props {
-  appReady: boolean;
+  appReady: boolean
 }
 
 interface State {}
@@ -20,45 +20,45 @@ export default function(
       public static navigationOptions = ({ navigation }) => {
         if (!options.headerScreen) {
           return {
-            header: null
-          };
+            header: null,
+          }
         }
 
-        const Header = options.headerScreen;
-        const HeaderComponent = <Header navigation={navigation} />;
+        const Header = options.headerScreen
+        const HeaderComponent = <Header navigation={navigation} />
 
         return {
           ...options,
           headerTitle: null,
           headerLeft: null,
           headerRight: null,
-          header: HeaderComponent
-        };
-      };
+          header: HeaderComponent,
+        }
+      }
 
       public render() {
-        const props = this.props;
-        const { appReady, ...componentProps } = props;
+        const props = this.props
+        const { appReady, ...componentProps } = props
         return (
           <PageContainer appReady={appReady}>
             <Component {...componentProps} />
           </PageContainer>
-        );
+        )
       }
-    };
-  };
+    }
+  }
 
-  type MapStateToProps = Props;
+  type MapStateToProps = Props
 
   const selfMapStateToProps = (state): MapStateToProps => {
     return {
       ...mapStateToProps(state),
-      appReady: state.app.App.ready
-    };
-  };
+      appReady: state.app.App.ready,
+    }
+  }
 
   return connect(
     selfMapStateToProps,
     mapDispatchToProps
-  )(container(PreLoginScreen, headerOptions));
+  )(container(PreLoginScreen, headerOptions))
 }

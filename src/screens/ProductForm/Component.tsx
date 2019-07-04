@@ -1,36 +1,36 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import { BtnContainer, ModalHeader, Page, TxtButton } from './stylesComponents';
+import { BtnContainer, ModalHeader, Page, TxtButton } from './stylesComponents'
 
-import palette from '../../constants/palette';
-import * as ui from '../../ui';
+import palette from '../../constants/palette'
+import * as ui from '../../ui'
 
-import { View } from 'react-native';
+import { View } from 'react-native'
 
-import { NavigationInjectedProps } from 'react-navigation';
+import { NavigationInjectedProps } from 'react-navigation'
 
-import { Product } from '../../store/app/curProduct';
-import Slider from './Slider/Slider';
+import { Product } from '../../store/app/curProduct'
+import Slider from './Slider/Slider'
 
 export interface Props {
-  curProduct: Product;
+  curProduct: Product
 }
 
 export interface Dispatch {
-  goBack: (nav) => void;
-  submit: (nav, data) => void;
+  goBack: (nav) => void
+  submit: (nav, data) => void
 }
 
 const validateNutrientValue = (minValue, value, maxValue) =>
-  minValue <= value && value < +maxValue;
+  minValue <= value && value < +maxValue
 
 interface State {
-  submitTitle: string;
-  productTitle: string;
-  kk: number;
-  protein: number;
-  fat: number;
-  crbh: number;
+  submitTitle: string
+  productTitle: string
+  kk: number
+  protein: number
+  fat: number
+  crbh: number
 }
 
 export default class Component extends React.Component<
@@ -43,24 +43,24 @@ export default class Component extends React.Component<
     kk: parseFloat(this.props.curProduct.kk),
     protein: parseFloat(this.props.curProduct.protein),
     fat: parseFloat(this.props.curProduct.fat),
-    crbh: parseFloat(this.props.curProduct.crbh)
-  };
+    crbh: parseFloat(this.props.curProduct.crbh),
+  }
 
   public render() {
     const titleInput = {
       placeholder: 'Название',
       onChangeText: this.handleOnChangeTITLE,
       value: this.state.productTitle,
-      inputType: ui.InputType.STRING
-    };
+      inputType: ui.InputType.STRING,
+    }
 
     const closeButton = {
-      onPress: this.handleOnPressClose
-    };
+      onPress: this.handleOnPressClose,
+    }
 
     const SubmitBtn = {
-      onPress: this.handleOnPressSubmit
-    };
+      onPress: this.handleOnPressSubmit,
+    }
 
     return (
       <Page>
@@ -79,7 +79,7 @@ export default class Component extends React.Component<
             flexDirection: 'row',
             justifyContent: 'space-around',
             paddingLeft: 8,
-            paddingRight: 8
+            paddingRight: 8,
           }}
         >
           <Slider
@@ -121,59 +121,59 @@ export default class Component extends React.Component<
           />
         </View>
       </Page>
-    );
+    )
   }
 
   private changeKK = value => {
     if (validateNutrientValue(0, value, 500)) {
       this.setState({
-        kk: value.toFixed(1)
-      });
+        kk: value.toFixed(1),
+      })
     }
-  };
+  }
 
   private changePROTEIN = value => {
     if (validateNutrientValue(0, value, 40)) {
       this.setState({
-        protein: value.toFixed(1)
-      });
+        protein: value.toFixed(1),
+      })
     }
-  };
+  }
   private changeFAT = value => {
     if (validateNutrientValue(0, value, 100)) {
       this.setState({
-        fat: value.toFixed(1)
-      });
+        fat: value.toFixed(1),
+      })
     }
-  };
+  }
   private changeCRBH = value => {
     if (validateNutrientValue(0, value, 100)) {
       this.setState({
-        crbh: value.toFixed(1)
-      });
+        crbh: value.toFixed(1),
+      })
     }
-  };
+  }
 
   private handleOnPressClose = () => {
-    this.props.goBack(this.props.navigation);
-  };
+    this.props.goBack(this.props.navigation)
+  }
 
   private handleOnPressSubmit = () => {
-    const nav = this.props.navigation;
-    const submit = this.props.submit;
+    const nav = this.props.navigation
+    const submit = this.props.submit
 
     submit(nav, {
       title: this.state.productTitle,
       protein: this.state.protein,
       fat: this.state.fat,
       crbh: this.state.crbh,
-      kk: this.state.kk
-    });
-  };
+      kk: this.state.kk,
+    })
+  }
 
   private handleOnChangeTITLE = text => {
     this.setState(prevState => ({
-      productTitle: text
-    }));
-  };
+      productTitle: text,
+    }))
+  }
 }

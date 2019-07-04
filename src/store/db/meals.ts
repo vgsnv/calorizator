@@ -1,61 +1,61 @@
 export interface Meal {
-  id: string;
-  parentId: string;
-  title: string;
+  id: string
+  parentId: string
+  title: string
 }
 
 export interface Meals {
   entities: {
-    [key: string]: Meal;
-  };
+    [key: string]: Meal
+  }
 }
 
-const MEALS_ADD = 'DB/MEALS_ADD';
+const MEALS_ADD = 'DB/MEALS_ADD'
 
 export const mealsAdd = data => ({
   type: MEALS_ADD,
-  data
-});
+  data,
+})
 
 const defaultMeals: Meals = {
   entities: {
     '1art': {
       id: '1art',
       parentId: null,
-      title: 'Понедельник'
+      title: 'Понедельник',
     },
     '12art': {
       id: '12art',
       parentId: '1art',
-      title: 'Завтрак'
+      title: 'Завтрак',
     },
     '13art': {
       id: '13art',
       parentId: '1art',
-      title: 'Обед'
+      title: 'Обед',
     },
     '14art': {
       id: '14art',
       parentId: '1art',
-      title: 'Ужин'
+      title: 'Ужин',
     },
     '4uyt': {
       id: '4uyt',
       parentId: null,
-      title: 'Вторник'
+      title: 'Вторник',
     },
     '4uyt11': {
       id: '4uyt11',
       parentId: '4uyt',
-      title: 'Завтрак'
+      title: 'Завтрак',
     },
     '2oip': {
       id: '2oip',
       parentId: null,
-      title: 'Среда'
-    }
-  }
-};
+      title: 'Среда',
+    },
+  },
+}
 
 export default (prevState: Meals = defaultMeals, action) => {
   switch (action.type) {
@@ -64,20 +64,20 @@ export default (prevState: Meals = defaultMeals, action) => {
         entities: {
           ...prevState.entities,
           [action.data.id]: {
-            ...action.data
-          }
-        }
-      };
+            ...action.data,
+          },
+        },
+      }
 
     default:
-      return prevState;
+      return prevState
   }
-};
+}
 
 export const getChildMealsId = (meals: Meals, idMeal: string): string[] =>
   Object.keys(meals.entities).reduce((acc, id) => {
     if (meals.entities[id].parentId === idMeal) {
-      acc.push(id);
+      acc.push(id)
     }
-    return acc;
-  }, []);
+    return acc
+  }, [])

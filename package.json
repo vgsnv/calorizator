@@ -7,7 +7,7 @@
     "dev": "react-native run-ios --simulator='iPhone X'",
     "dev7": "react-native run-ios --simulator='iPhone 7'",
     "test": "jest",
-    "lint": "tslint  --project tsconfig.json"
+    "lint": "tslint --fix  --project tsconfig.json"
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.3.3",

@@ -1,24 +1,24 @@
-import * as React from 'react';
+import * as React from 'react'
 
 import {
   DetailContainer,
   DetailDesc,
   DetailItem,
   DetailText,
-  TotalNutrients
-} from './stylesComponents';
+  TotalNutrients,
+} from './stylesComponents'
 
 const shadowStyle = {
   shadowColor: '#000',
   shadowOffset: { width: 1, height: 3 },
   shadowOpacity: 0.16,
-  shadowRadius: 4
-};
+  shadowRadius: 4,
+}
 
-import { TotalNutrients as ITotalNutrients } from '../../../store/db/mealItems';
+import { TotalNutrients as ITotalNutrients } from '../../../store/db/mealItems'
 
 export interface Props {
-  totalNutrients: ITotalNutrients;
+  totalNutrients: ITotalNutrients
 }
 
 export interface Dispatch {}
@@ -31,8 +31,8 @@ export default class Component extends React.Component<
 > {
   public render() {
     const {
-      totalNutrients: { totalKK, totalProtein, totalFat, totalCRBH }
-    } = this.props;
+      totalNutrients: { totalKK, totalProtein, totalFat, totalCRBH },
+    } = this.props
 
     return (
       <TotalNutrients>
@@ -55,6 +55,6 @@ export default class Component extends React.Component<
           </DetailItem>
         </DetailContainer>
       </TotalNutrients>
-    );
+    )
   }
 }

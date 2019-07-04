@@ -1,13 +1,13 @@
-import * as React from 'react';
-import { PersistGate } from 'redux-persist/integration/react';
+import * as React from 'react'
+import { PersistGate } from 'redux-persist/integration/react'
 
-import { Provider } from 'react-redux';
+import { Provider } from 'react-redux'
 
-import AppNavigator from './screens/AppNavigator';
+import AppNavigator from './screens/AppNavigator'
 
-import createStore from './store';
+import createStore from './store'
 
-const store = createStore();
+const store = createStore()
 
 class App extends React.Component<{}, {}> {
   public render() {
@@ -17,8 +17,8 @@ class App extends React.Component<{}, {}> {
           <AppNavigator />
         </PersistGate>
       </Provider>
-    );
+    )
   }
 }
 
-export default App;
+export default App

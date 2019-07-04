@@ -1,40 +1,40 @@
-import * as React from 'react';
-import { SliderContainer } from './stylesComponents';
+import * as React from 'react'
+import { SliderContainer } from './stylesComponents'
 
-import { Text, View } from 'react-native';
+import { Text, View } from 'react-native'
 
-import * as ui from '../../../ui';
+import * as ui from '../../../ui'
 
 export interface Props {
-  value: number;
-  labelName: string;
-  emptyColor: string;
-  backColor: string;
-  minValue: number;
-  maxValue: number;
+  value: number
+  labelName: string
+  emptyColor: string
+  backColor: string
+  minValue: number
+  maxValue: number
 }
 
 export interface Dispatch {
-  onChangeValue: (value: number) => void;
+  onChangeValue: (value: number) => void
 }
 
 interface State {}
 
 export default class extends React.PureComponent<Props & Dispatch, State> {
   public render() {
-    const { value, labelName, onChangeValue } = this.props;
+    const { value, labelName, onChangeValue } = this.props
 
     return (
       <View
         style={{
           height: 360,
-          flexDirection: 'column'
+          flexDirection: 'column',
         }}
       >
         <View
           style={{
             flex: 1,
-            width: 80
+            width: 80,
           }}
         >
           <Text
@@ -42,7 +42,7 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
               fontSize: 27,
               color: this.props.backColor,
               textAlign: 'right',
-              fontWeight: '600'
+              fontWeight: '600',
             }}
           >
             {`${parseFloat(value)
@@ -55,7 +55,7 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
               fontSize: 11,
               color: this.props.backColor,
               textAlign: 'right',
-              fontWeight: '600'
+              fontWeight: '600',
             }}
           >
             {this.props.labelName}
@@ -68,7 +68,7 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
             shadowOffset: { width: 1, height: 3 },
             shadowOpacity: 0.16,
             shadowRadius: 4,
-            height: 300
+            height: 300,
           }}
         >
           <ui.Slider
@@ -82,11 +82,11 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
             style={{
               borderRadius: 8,
               height: 300,
-              width: 80
+              width: 80,
             }}
           />
         </SliderContainer>
       </View>
-    );
+    )
   }
 }

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 
 import {
   BigText,
@@ -7,13 +7,13 @@ import {
   DetailText,
   Left,
   Right,
-  TotalNutrients
-} from './stylesComponents';
+  TotalNutrients,
+} from './stylesComponents'
 
-import { TotalNutrients as ITotalNutrients } from '../../../store/db/mealItems';
+import { TotalNutrients as ITotalNutrients } from '../../../store/db/mealItems'
 
 export interface Props {
-  totalNutrients: ITotalNutrients;
+  totalNutrients: ITotalNutrients
 }
 
 export interface Dispatch {}
@@ -26,8 +26,8 @@ export default class Component extends React.Component<
 > {
   public render() {
     const {
-      totalNutrients: { totalKK, totalProtein, totalFat, totalCRBH }
-    } = this.props;
+      totalNutrients: { totalKK, totalProtein, totalFat, totalCRBH },
+    } = this.props
 
     return (
       <TotalNutrients>
@@ -48,6 +48,6 @@ export default class Component extends React.Component<
           <BigText>{totalKK.toFixed(0)}</BigText>
         </Right>
       </TotalNutrients>
-    );
+    )
   }
 }

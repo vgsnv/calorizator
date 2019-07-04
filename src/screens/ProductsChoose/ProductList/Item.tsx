@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 import {
   BigText,
   Bottom,
@@ -10,30 +10,30 @@ import {
   SliderContainer,
   TilteTextContainer,
   TitleText,
-  Top
-} from './stylesComponents';
+  Top,
+} from './stylesComponents'
 
-import Slider from 'react-native-slider';
-import * as ui from '../../../ui';
+import Slider from 'react-native-slider'
+import * as ui from '../../../ui'
 
 export interface Props {
-  id: string;
-  title: string;
-  kk: string;
-  protein: string;
-  fat: string;
-  crbh: string;
-  weight: string;
+  id: string
+  title: string
+  kk: string
+  protein: string
+  fat: string
+  crbh: string
+  weight: string
 }
 
 export interface Dispatch {}
 
 interface State {
-  weight: string;
-  kk: string;
-  protein: string;
-  fat: string;
-  crbh: string;
+  weight: string
+  kk: string
+  protein: string
+  fat: string
+  crbh: string
 }
 
 export default class extends React.PureComponent<Props & Dispatch, State> {
@@ -54,14 +54,14 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
     crbh: (
       (parseFloat(this.props.crbh) * parseFloat(this.props.weight)) /
       100
-    ).toFixed(0)
-  };
+    ).toFixed(0),
+  }
 
   public render() {
-    const { title, weight } = this.props;
-    const { kk, protein, fat, crbh } = this.state;
+    const { title, weight } = this.props
+    const { kk, protein, fat, crbh } = this.state
 
-    const s2Text = parseFloat(this.state.weight).toFixed(0);
+    const s2Text = parseFloat(this.state.weight).toFixed(0)
 
     return (
       <Container>
@@ -97,19 +97,19 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
             thumbStyle={{
               width: 40,
               height: 40,
-              borderRadius: 50
+              borderRadius: 50,
             }}
             thumbTintColor={'#e2e1eb'}
             animateTransitions={true}
             minimumTrackTintColor={'#e2e1eb'}
             maximumTrackTintColor={'#e2e1eb'}
             trackStyle={{
-              height: 2
+              height: 2,
             }}
           />
         </Item>
       </Container>
-    );
+    )
   }
 
   private changeS2 = value => {
@@ -119,8 +119,8 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
         kk: ((parseFloat(this.props.kk) * value) / 100).toFixed(1),
         protein: ((parseFloat(this.props.protein) * value) / 100).toFixed(1),
         fat: ((parseFloat(this.props.fat) * value) / 100).toFixed(1),
-        crbh: ((parseFloat(this.props.crbh) * value) / 100).toFixed(1)
-      };
-    });
-  };
+        crbh: ((parseFloat(this.props.crbh) * value) / 100).toFixed(1),
+      }
+    })
+  }
 }

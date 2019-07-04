@@ -1,21 +1,21 @@
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux'
 
-import { combineReducers } from 'redux';
-import app from './app';
-import db from './db';
+import { combineReducers } from 'redux'
+import app from './app'
+import db from './db'
 
-import thunk from 'redux-thunk';
+import thunk from 'redux-thunk'
 
-import { createLogger } from 'redux-logger';
-import { persistReducer, persistStore } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import { createLogger } from 'redux-logger'
+import { persistReducer, persistStore } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
 const persistConfig = {
   key: 'root',
-  storage
-};
+  storage,
+}
 
-const loggerMiddleware = createLogger();
+const loggerMiddleware = createLogger()
 
 export default (initialState?: {}) => {
   const store = createStore(
@@ -23,12 +23,12 @@ export default (initialState?: {}) => {
       persistConfig,
       combineReducers({
         db,
-        app
+        app,
       })
     ),
     initialState,
     applyMiddleware(thunk, loggerMiddleware)
-  );
-  const persistor = persistStore(store);
-  return { store, persistor };
-};
+  )
+  const persistor = persistStore(store)
+  return { store, persistor }
+}

@@ -1,18 +1,18 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import Item from './Item';
+import Item from './Item'
 
-import { FlatList } from 'react-native';
+import { FlatList } from 'react-native'
 
-import { Product } from '../../../store/db/products';
+import { Product } from '../../../store/db/products'
 
 export interface Props {
-  products: Product[];
-  navigation: any;
+  products: Product[]
+  navigation: any
 }
 
 export interface Dispatch {
-  toProductsFormToEdit: (nav, id) => void;
+  toProductsFormToEdit: (nav, id) => void
 }
 
 interface State {}
@@ -21,7 +21,6 @@ export default class Component extends React.Component<
   Props & Dispatch,
   State
 > {
-
   public render() {
     return (
       <FlatList
@@ -30,13 +29,13 @@ export default class Component extends React.Component<
         keyExtractor={this.keyExtractor}
         renderItem={this.renderItem}
       />
-    );
+    )
   }
-  private keyExtractor = item => item.id;
+  private keyExtractor = item => item.id
 
   private onPressItem = (id: string) => {
-    this.props.toProductsFormToEdit(this.props.navigation, id);
-  };
+    this.props.toProductsFormToEdit(this.props.navigation, id)
+  }
 
   private renderItem = ({ item }) => {
     const itemProps = {
@@ -46,8 +45,8 @@ export default class Component extends React.Component<
       protein: item.protein,
       fat: item.fat,
       crbh: item.crbh,
-      onPressItem: this.onPressItem
-    };
-    return <Item {...itemProps} />;
-  };
+      onPressItem: this.onPressItem,
+    }
+    return <Item {...itemProps} />
+  }
 }

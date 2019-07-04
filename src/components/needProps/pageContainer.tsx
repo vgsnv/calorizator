@@ -1,16 +1,16 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native'
 
-const Dimensions = require('Dimensions');
-const { width, height } = Dimensions.get('window');
+const Dimensions = require('Dimensions')
+const { width, height } = Dimensions.get('window')
 
 const PageContainer = ({ appReady, children }) => {
   return (
     <View
       style={{
         flex: 1,
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
       }}
     >
       {children}
@@ -26,12 +26,12 @@ const PageContainer = ({ appReady, children }) => {
             opacity: 0.9,
             backgroundColor: '#fff',
             width,
-            height
+            height,
           }}
         />
       )}
     </View>
-  );
-};
+  )
+}
 
-export default PageContainer;
+export default PageContainer

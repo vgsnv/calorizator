@@ -21,6 +21,6 @@ export default {
     crbh: '#D3C5D0',
 
     kkLight: '#E2E2F4',
-    kk: '#A6A6BC'
-  }
-};
+    kk: '#A6A6BC',
+  },
+}

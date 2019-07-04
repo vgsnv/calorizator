@@ -1,8 +1,5 @@
-import { NavigationActions } from 'react-navigation';
-
-import { updSelectedDiet } from '../../../store/app/mealsInDiet';
+import toMealsInDiet from '../../../store/coreThunks/toMealsInDiet'
 
 export default (nav, id) => async dispatch => {
-  dispatch(updSelectedDiet(id));
-  nav.dispatch(NavigationActions.navigate({ routeName: 'MealsInDiet' }));
-};
+  dispatch(toMealsInDiet(nav, id))
+}

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 import {
   ContainerItem,
   DetailText,
@@ -7,34 +7,33 @@ import {
   Left,
   NutrientText,
   Right,
-  TitleText
-} from './stylesComponents';
+  TitleText,
+} from './stylesComponents'
 
-import { ViewStyle } from 'react-native';
+import { ViewStyle } from 'react-native'
 
 export interface Props {
-  id: string;
-  title: string;
-  totalKK: number;
-  totalProtein: number;
-  totalFat: number;
-  totalCRBH: number;
-  style?: ViewStyle;
+  id: string
+  title: string
+  totalKK: number
+  totalProtein: number
+  totalFat: number
+  totalCRBH: number
+  style?: ViewStyle
 }
 
 export interface Dispatch {
-  onPressItem: (id: string) => void;
+  onPressItem: (id: string) => void
 }
 
 interface State {}
 
 export default class extends React.PureComponent<Props & Dispatch, State> {
-
   public render() {
     return (
       <ContainerItem
         style={{
-          ...this.props.style
+          ...this.props.style,
         }}
         onPress={this.onPress}
       >
@@ -43,7 +42,7 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
             shadowColor: '#000',
             shadowOffset: { width: 3, height: 1 },
             shadowOpacity: 0.16,
-            shadowRadius: 6
+            shadowRadius: 6,
           }}
         >
           <TitleText>{this.props.title}</TitleText>
@@ -59,9 +58,9 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
           </DetailText>
         </Item>
       </ContainerItem>
-    );
+    )
   }
   private onPress = () => {
-    this.props.onPressItem(this.props.id);
-  };
+    this.props.onPressItem(this.props.id)
+  }
 }

@@ -1,26 +1,26 @@
 export interface PortionForm {
-  portionId: string;
+  portionId: string
 }
 
-const PORTIONFORM_ADD_ID = 'DB/PORTIONFORM_ADD_ID';
+const PORTIONFORM_ADD_ID = 'DB/PORTIONFORM_ADD_ID'
 
 export const portionFormAddID = (data: string) => ({
   type: PORTIONFORM_ADD_ID,
-  data
-});
+  data,
+})
 
 const defaultState: PortionForm = {
-  portionId: null
-};
+  portionId: null,
+}
 
 export default (prevState: PortionForm = defaultState, action) => {
   switch (action.type) {
     case PORTIONFORM_ADD_ID:
       return {
-        portionId: action.data
-      };
+        portionId: action.data,
+      }
 
     default:
-      return prevState;
+      return prevState
   }
-};
+}

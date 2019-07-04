@@ -1,27 +1,27 @@
 export const appStart = () => ({
-  type: 'APP_START'
-});
+  type: 'APP_START',
+})
 
 export const appStop = () => ({
-  type: 'APP_STOP'
-});
+  type: 'APP_STOP',
+})
 
 const reducer = (state = { ready: true }, action) => {
   switch (action.type) {
     case 'APP_START':
       return {
         ...state,
-        ready: true
-      };
+        ready: true,
+      }
     case 'APP_STOP':
       return {
         ...state,
-        ready: false
-      };
+        ready: false,
+      }
 
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default reducer;
+export default reducer

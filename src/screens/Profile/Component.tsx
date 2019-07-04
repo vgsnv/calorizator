@@ -1,16 +1,19 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import { Buttons, Page, Title, TitleContainer } from './stylesComponents';
+import { Buttons, Page, Title, TitleContainer } from './stylesComponents'
 
-import AsyncStorage from '@react-native-community/async-storage';
+import store from '../../store'
+import { Button } from '../../ui'
 
-import { AccessToken, LoginButton } from 'react-native-fbsdk';
-import { NavigationInjectedProps } from 'react-navigation';
+import AsyncStorage from '@react-native-community/async-storage'
+
+import { AccessToken, LoginButton } from 'react-native-fbsdk'
+import { NavigationInjectedProps } from 'react-navigation'
 
 export interface Props {}
 
 export interface Dispatch {
-  onLoginFinished: (nav) => void;
+  onLoginFinished: (nav) => void
 }
 
 interface State {}
@@ -30,12 +33,18 @@ export default class Component extends React.Component<
           <LoginButton
             onLoginFinished={(error, result) => {}}
             onLogoutFinished={() => {
-              AsyncStorage.removeItem('userToken');
-              this.props.onLoginFinished(this.props.navigation);
+              AsyncStorage.removeItem('userToken')
+              this.props.onLoginFinished(this.props.navigation)
             }}
+          />
+
+          <Button
+            name={'Hello'}
+            activeOpacity={1}
+            onPress={() => store().persistor.purge()}
           />
         </Buttons>
       </Page>
-    );
+    )
   }
 }

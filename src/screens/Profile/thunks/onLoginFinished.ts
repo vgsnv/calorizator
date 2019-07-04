@@ -1,5 +1,5 @@
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions } from 'react-navigation'
 
 export default nav => async (dispatch, getState) => {
-  await nav.dispatch(NavigationActions.navigate({ routeName: 'AuthLoading' }));
-};
+  await nav.dispatch(NavigationActions.navigate({ routeName: 'AuthLoading' }))
+}

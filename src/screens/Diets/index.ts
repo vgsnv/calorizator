@@ -1,16 +1,16 @@
-import NeedProps from '../../components/needProps/needProps';
-import Component, { Dispatch, Props } from './Component';
+import NeedProps from '../../components/needProps/needProps'
+import Component, { Dispatch, Props } from './Component'
 
-import Header from './HeaderScreen';
+import Header from './HeaderScreen'
 
-import toMealsInDiet from './thunks/toMealsInDiet';
+import toMealsInDiet from './thunks/toMealsInDiet'
 
-import { DietsItems } from '../../store/app/diets';
-import { getTotalNutrients, MealItems } from '../../store/db/mealItems';
-import { getChildMealsId, Meals } from '../../store/db/meals';
-import { Products } from '../../store/db/products';
+import { DietsItems } from '../../store/app/diets'
+import { getTotalNutrients, MealItems } from '../../store/db/mealItems'
+import { getChildMealsId, Meals } from '../../store/db/meals'
+import { Products } from '../../store/db/products'
 
-type MapStateToProps = Props;
+type MapStateToProps = Props
 
 const getDietsItems = (
   diets: DietsItems,
@@ -19,35 +19,35 @@ const getDietsItems = (
   products: Products
 ) =>
   diets.entities.map(item => {
-    const Id = item.id;
+    const Id = item.id
 
-    const ChildMeals = getChildMealsId(meals, Id);
+    const ChildMeals = getChildMealsId(meals, Id)
 
-    const TotalNutrients = getTotalNutrients(ChildMeals, mealItems, products);
+    const TotalNutrients = getTotalNutrients(ChildMeals, mealItems, products)
 
     return {
       ...meals.entities[item.id],
-      ...TotalNutrients
-    };
-  });
+      ...TotalNutrients,
+    }
+  })
 
 const mapStateToProps = ({ app, db }): MapStateToProps => ({
-  dietsItems: getDietsItems(app.diets, db.mealItems, db.meals, db.products)
-});
+  dietsItems: getDietsItems(app.diets, db.mealItems, db.meals, db.products),
+})
 
-type MapDispatchToProps = Dispatch;
+type MapDispatchToProps = Dispatch
 
 const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
-  toMealsInDiet: (nav, id) => dispatch(toMealsInDiet(nav, id))
-});
+  toMealsInDiet: (nav, id) => dispatch(toMealsInDiet(nav, id)),
+})
 
 const headerOptions = {
-  headerScreen: Header
-};
+  headerScreen: Header,
+}
 
 export default NeedProps(
   mapStateToProps,
   mapDispatchToProps,
   Component,
   headerOptions
-);
+)

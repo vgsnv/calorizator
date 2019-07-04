@@ -1,17 +1,17 @@
-import NeedProps from '../../components/needProps/needProps';
-import Component, { Dispatch, Props } from './Component';
+import NeedProps from '../../components/needProps/needProps'
+import Component, { Dispatch, Props } from './Component'
 
-import Header from './HeaderScreen';
+import Header from './HeaderScreen'
 
-import toProductsChoose from './thunks/toProductsChoose';
+import toProductsChoose from './thunks/toProductsChoose'
 
 import {
   getMealItemsByMealId,
-  getTotalNutrients
-} from '../../store/db/mealItems';
-import { getChildMealsId, Meals } from '../../store/db/meals';
+  getTotalNutrients,
+} from '../../store/db/mealItems'
+import { getChildMealsId, Meals } from '../../store/db/meals'
 
-type MapStateToProps = Props;
+type MapStateToProps = Props
 
 const getMealsById = (
   ChildMealsId: string[],
@@ -22,53 +22,50 @@ const getMealsById = (
   ChildMealsId.map(mealId => {
     return {
       portion: meals.entities[mealId],
-      totalNutrients: getTotalNutrients([mealId], mealItems, products)
-    };
-  });
+      totalNutrients: getTotalNutrients([mealId], mealItems, products),
+    }
+  })
 
 const mapStateToProps = ({ app, db }): MapStateToProps => {
-  const ChildMealsId = getChildMealsId(
-    db.meals,
-    app.mealsInDiet.selectedDietId
-  );
+  const ChildMealsId = getChildMealsId(db.meals, app.mealsInDiet.selectedDietId)
 
   const ChildMeals = getMealsById(
     ChildMealsId,
     db.meals,
     db.mealItems,
     db.products
-  );
+  )
 
-  const MealItemsByMealId = getMealItemsByMealId(ChildMealsId, db.mealItems);
+  const MealItemsByMealId = getMealItemsByMealId(ChildMealsId, db.mealItems)
 
   const TotalNutrients = getTotalNutrients(
     ChildMealsId,
     db.mealItems,
     db.products
-  );
+  )
 
   return {
     mealsList: ChildMeals,
     mealItemsByMealId: MealItemsByMealId,
     totalNutrients: TotalNutrients,
-    products: db.products
-  };
-};
+    products: db.products,
+  }
+}
 
-type MapDispatchToProps = Dispatch;
+type MapDispatchToProps = Dispatch
 
 const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
-  toProductsChoose: (nav, id) => dispatch(toProductsChoose(nav, id))
-});
+  toProductsChoose: (nav, id) => dispatch(toProductsChoose(nav, id)),
+})
 
 const headerOptions = {
   headerScreen: Header,
-  gesturesEnabled: false
-};
+  gesturesEnabled: false,
+}
 
 export default NeedProps(
   mapStateToProps,
   mapDispatchToProps,
   Component,
   headerOptions
-);
+)

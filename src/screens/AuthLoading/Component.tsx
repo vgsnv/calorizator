@@ -1,10 +1,10 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import { NavigationInjectedProps } from 'react-navigation';
+import { NavigationInjectedProps } from 'react-navigation'
 
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-community/async-storage'
 
-import { ActivityIndicator, StatusBar, View } from 'react-native';
+import { ActivityIndicator, StatusBar, View } from 'react-native'
 
 export interface Props {}
 
@@ -17,23 +17,23 @@ export default class Component extends React.Component<
   State
 > {
   constructor(props) {
-    super(props);
-    this._bootstrapAsync();
+    super(props)
+    this._bootstrapAsync()
   }
 
   public _bootstrapAsync = async () => {
-    const userToken = await AsyncStorage.getItem('userToken');
+    const userToken = await AsyncStorage.getItem('userToken')
 
-    this.props.navigation.navigate(userToken ? 'App' : 'Auth');
-  };
+    this.props.navigation.navigate(userToken ? 'App' : 'Auth')
+  }
 
   public render() {
-    console.log('AuthLoading');
+    console.log('AuthLoading')
     return (
       <View>
         <ActivityIndicator />
         <StatusBar barStyle="default" />
       </View>
-    );
+    )
   }
 }

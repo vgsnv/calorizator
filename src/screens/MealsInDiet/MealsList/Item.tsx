@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 
 import {
   BigText,
@@ -14,41 +14,40 @@ import {
   TitleText,
   TotalNutrientsContainter,
   TotalNutrientsItem,
-  TotalNutrientsText
-} from './stylesComponents';
+  TotalNutrientsText,
+} from './stylesComponents'
 
 import {
   MealItemsByMealIdItem,
-  TotalNutrients as ITotalNutrients
-} from '../../../store/db/mealItems';
-import { Products } from '../../../store/db/products';
+  TotalNutrients as ITotalNutrients,
+} from '../../../store/db/mealItems'
+import { Products } from '../../../store/db/products'
 
 export interface Props {
-  id: string;
-  title: string;
-  totalNutrients: ITotalNutrients;
-  products: Products;
-  mealItemsByMealIdItem: MealItemsByMealIdItem;
+  id: string
+  title: string
+  totalNutrients: ITotalNutrients
+  products: Products
+  mealItemsByMealIdItem: MealItemsByMealIdItem
 }
 
 export interface Dispatch {
-  onPressItem: (id: string) => void;
+  onPressItem: (id: string) => void
 }
 
-interface State { }
+interface State {}
 
 export default class extends React.PureComponent<Props & Dispatch, State> {
-
   public render() {
-    const { title, mealItemsByMealIdItem, totalNutrients } = this.props;
-    console.log('this.props', this.props);
+    const { title, mealItemsByMealIdItem, totalNutrients } = this.props
+    console.log('this.props', this.props)
     return (
       <PortionContainer
         style={{
           shadowColor: '#000',
           shadowOffset: { width: 3, height: 1 },
           shadowOpacity: 0.16,
-          shadowRadius: 6
+          shadowRadius: 6,
         }}
         onPress={this.onPress}
       >
@@ -88,11 +87,11 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
 
         {!mealItemsByMealIdItem && <ChooseText>Выбрать продукты</ChooseText>}
       </PortionContainer>
-    );
+    )
   }
   private onPress = () => {
-    this.props.onPressItem(this.props.id);
-  };
+    this.props.onPressItem(this.props.id)
+  }
 
   private renderProduct = (id, title, weight) => {
     return (
@@ -100,25 +99,25 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
         <ProductTitle>{title}</ProductTitle>
         <ProductValue>{`${weight}г`}</ProductValue>
       </Product>
-    );
-  };
+    )
+  }
 
   private renderProducts = () => {
-    const { mealItemsByMealIdItem, products } = this.props;
-    const ProductEntities = products.entities;
+    const { mealItemsByMealIdItem, products } = this.props
+    const ProductEntities = products.entities
 
     return Object.keys(mealItemsByMealIdItem).map(key => {
-      const MealItem = mealItemsByMealIdItem[key];
+      const MealItem = mealItemsByMealIdItem[key]
 
-      const ProductId = MealItem.productId;
-      const ProductTitle = ProductEntities[ProductId].title;
-      const ProductWeight = MealItem.weight;
+      const ProductId = MealItem.productId
+      const ProductTitle = ProductEntities[ProductId].title
+      const ProductWeight = MealItem.weight
 
       return (
         <ProductsContainer key={MealItem.id}>
           {this.renderProduct(ProductId, ProductTitle, ProductWeight)}
         </ProductsContainer>
-      );
-    });
-  };
+      )
+    })
+  }
 }

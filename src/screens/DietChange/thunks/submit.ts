@@ -1,27 +1,29 @@
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions } from 'react-navigation'
 
-import { dietsItemsAdd } from '../../../store/app/diets';
-import { mealsAdd } from '../../../store/db/meals';
+import { dietsItemsAdd } from '../../../store/app/diets'
+import { mealsAdd } from '../../../store/db/meals'
 
-const uuidv1 = require('uuid/v1');
+import toMealsInDiet from '../../../store/coreThunks/toMealsInDiet'
+
+const uuidv1 = require('uuid/v1')
 
 export default (nav, data) => async (dispatch, getState) => {
-  const id = uuidv1();
+  const id = uuidv1()
 
   await dispatch(
     mealsAdd({
       id,
       ...data,
-      parentId: null
+      parentId: null,
     })
-  );
+  )
 
   await dispatch(
     dietsItemsAdd({
       id,
-      order: null
+      order: null,
     })
-  );
+  )
 
-  await nav.dispatch(NavigationActions.back());
-};
+  dispatch(toMealsInDiet(nav, id))
+}

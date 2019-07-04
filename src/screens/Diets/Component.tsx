@@ -1,15 +1,15 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import { MealListContainer, Page } from './stylesComponents';
+import { MealListContainer, Page } from './stylesComponents'
 
-import DiaryList, { Props as DiaryItemsList } from './DiaryList/List';
+import DiaryList, { Props as DiaryItemsList } from './DiaryList/List'
 
-import { NavigationInjectedProps } from 'react-navigation';
+import { NavigationInjectedProps } from 'react-navigation'
 
 export interface Props extends DiaryItemsList {}
 
 export interface Dispatch {
-  toMealsInDiet: (nav, id) => void;
+  toMealsInDiet: (nav, id) => void
 }
 
 interface State {}
@@ -22,8 +22,8 @@ export default class Component extends React.Component<
     const diaryList = {
       dietsItems: this.props.dietsItems,
       toMealsInDiet: this.props.toMealsInDiet,
-      navigation: this.props.navigation
-    };
+      navigation: this.props.navigation,
+    }
 
     return (
       <Page>
@@ -31,6 +31,6 @@ export default class Component extends React.Component<
           <DiaryList {...diaryList}>Hello</DiaryList>
         </MealListContainer>
       </Page>
-    );
+    )
   }
 }

@@ -1,8 +1,8 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import { Page, Title, TitleContainer } from './stylesComponents';
+import { Page, Title, TitleContainer } from './stylesComponents'
 
-import { NavigationInjectedProps } from 'react-navigation';
+import { NavigationInjectedProps } from 'react-navigation'
 
 export interface Props {}
 
@@ -21,6 +21,6 @@ export default class Component extends React.Component<
           <Title>DEFAULT</Title>
         </TitleContainer>
       </Page>
-    );
+    )
   }
 }

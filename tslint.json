@@ -11,11 +11,6 @@
     "no-var-requires": false,
     "interface-name": false,
     "jsx-no-lambda": false,
-    "object-literal-sort-keys": false,
-    "quotemark": [
-      true,
-      "single",
-      "jsx-double"
-    ]
+    "object-literal-sort-keys": false
   }
 }

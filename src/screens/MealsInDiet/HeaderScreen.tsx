@@ -1,32 +1,31 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
+import * as React from 'react'
+import { connect } from 'react-redux'
 
-import Header from '../../components/header';
+import Header from '../../components/header'
 
-import goBack from './thunks/goBack';
-import openActionSheet from './thunks/openActionSheet';
+import goBack from './thunks/goBack'
+import openActionSheet from './thunks/openActionSheet'
 
-import { ImageSourcePropType } from 'react-native';
+import { ImageSourcePropType } from 'react-native'
 
-const leftImg = require('../../assets/GoBack.png');
-const rightImg = require('../../assets/ActionSheet.png');
+const leftImg = require('../../assets/GoBack.png')
+const rightImg = require('../../assets/ActionSheet.png')
 
 interface Props {
-  title: string;
-  leftImg: ImageSourcePropType;
-  rightImg: ImageSourcePropType;
-  navigation: any;
+  title: string
+  leftImg: ImageSourcePropType
+  rightImg: ImageSourcePropType
+  navigation: any
 }
 
 interface Dispatch {
-  goBack: (nav) => void;
-  openActionSheet: (nav) => void;
+  goBack: (nav) => void
+  openActionSheet: (nav) => void
 }
 
-interface State { }
+interface State {}
 
 class ComponentHeader extends React.Component<Props & Dispatch, State> {
-
   public render() {
     return (
       <Header
@@ -34,37 +33,37 @@ class ComponentHeader extends React.Component<Props & Dispatch, State> {
           title: this.props.title,
           leftButton: {
             image: this.props.leftImg,
-            onPress: this.onPressLeftButton
+            onPress: this.onPressLeftButton,
           },
           rightButton: {
             image: this.props.rightImg,
-            onPress: this.onPressRightButton
-          }
+            onPress: this.onPressRightButton,
+          },
         }}
       />
-    );
+    )
   }
   private onPressLeftButton = () => {
-    this.props.goBack(this.props.navigation);
-  };
+    this.props.goBack(this.props.navigation)
+  }
 
   private onPressRightButton = () => {
-    this.props.openActionSheet(this.props.navigation);
-  };
+    this.props.openActionSheet(this.props.navigation)
+  }
 }
 
 const headerStateToProps = ({ app, db }) => ({
   title: db.meals.entities[app.mealsInDiet.selectedDietId].title,
   leftImg,
-  rightImg
-});
+  rightImg,
+})
 
 const headerDispatchToProps = dispatch => ({
   goBack: nav => dispatch(goBack(nav)),
-  openActionSheet: nav => dispatch(openActionSheet(nav))
-});
+  openActionSheet: nav => dispatch(openActionSheet(nav)),
+})
 
 export default connect(
   headerStateToProps,
   headerDispatchToProps
-)(ComponentHeader);
+)(ComponentHeader)

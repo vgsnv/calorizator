@@ -1,31 +1,31 @@
 export interface Product {
-  id: string;
-  title: string;
-  kk: number;
-  protein: number;
-  fat: number;
-  crbh: number;
+  id: string
+  title: string
+  kk: number
+  protein: number
+  fat: number
+  crbh: number
 }
 
 export interface Products {
-  loading: boolean;
-  error: boolean;
+  loading: boolean
+  error: boolean
   entities: {
-    [key: string]: Product;
-  };
+    [key: string]: Product
+  }
 }
 
-const CATEGORIES_LOAD = 'DB/CATEGORIES_LOAD';
-const PRODUCTS_ADD = 'DB/PRODUCTS_ADD';
+const CATEGORIES_LOAD = 'DB/CATEGORIES_LOAD'
+const PRODUCTS_ADD = 'DB/PRODUCTS_ADD'
 
 export const categoriesLoad = () => ({
-  type: CATEGORIES_LOAD
-});
+  type: CATEGORIES_LOAD,
+})
 
 export const productsAdd = data => ({
   type: PRODUCTS_ADD,
-  data
-});
+  data,
+})
 
 const defaultProducts: Products = {
   loading: false,
@@ -37,7 +37,7 @@ const defaultProducts: Products = {
       kk: 70,
       protein: 4,
       fat: 3,
-      crbh: 20
+      crbh: 20,
     },
     '2': {
       id: '2',
@@ -45,7 +45,7 @@ const defaultProducts: Products = {
       kk: 80.52,
       protein: 0,
       fat: 7,
-      crbh: 20
+      crbh: 20,
     },
     '3': {
       id: '3',
@@ -53,7 +53,7 @@ const defaultProducts: Products = {
       kk: 20.5,
       protein: 4,
       fat: 30,
-      crbh: 3
+      crbh: 3,
     },
     '4': {
       id: '4',
@@ -61,7 +61,7 @@ const defaultProducts: Products = {
       kk: 200.5,
       protein: 4,
       fat: 30,
-      crbh: 4
+      crbh: 4,
     },
     '5': {
       id: '5',
@@ -69,7 +69,7 @@ const defaultProducts: Products = {
       kk: 70,
       protein: 25,
       fat: 3,
-      crbh: 2
+      crbh: 2,
     },
     '6': {
       id: '6',
@@ -77,10 +77,10 @@ const defaultProducts: Products = {
       kk: 40,
       protein: 5,
       fat: 0,
-      crbh: 4
-    }
-  }
-};
+      crbh: 4,
+    },
+  },
+}
 
 export default (prevState: Products = defaultProducts, action) => {
   switch (action.type) {
@@ -90,14 +90,14 @@ export default (prevState: Products = defaultProducts, action) => {
         entities: {
           ...prevState.entities,
           [action.data.id]: {
-            ...action.data
-          }
+            ...action.data,
+          },
         },
         loading: false,
-        error: false
-      };
+        error: false,
+      }
 
     default:
-      return prevState;
+      return prevState
   }
-};
+}

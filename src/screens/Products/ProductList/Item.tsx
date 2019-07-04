@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 import {
   BigText,
   Container,
@@ -10,30 +10,29 @@ import {
   Left,
   Right,
   TilteTextContainer,
-  TitleText
-} from './stylesComponents';
+  TitleText,
+} from './stylesComponents'
 
-const forward = require('../../../assets/forward.png');
+const forward = require('../../../assets/forward.png')
 
 export interface Props {
-  id: string;
-  title: string;
-  kk: string;
-  protein: string;
-  fat: string;
-  crbh: string;
+  id: string
+  title: string
+  kk: string
+  protein: string
+  fat: string
+  crbh: string
 }
 
 export interface Dispatch {
-  onPressItem: (id: string) => void;
+  onPressItem: (id: string) => void
 }
 
 interface State {}
 
 export default class extends React.PureComponent<Props & Dispatch, State> {
-
   public render() {
-    const { title, kk, protein, fat, crbh } = this.props;
+    const { title, kk, protein, fat, crbh } = this.props
 
     return (
       <Container onPress={this.onPress}>
@@ -61,9 +60,9 @@ export default class extends React.PureComponent<Props & Dispatch, State> {
           </Right>
         </Item>
       </Container>
-    );
+    )
   }
   private onPress = () => {
-    this.props.onPressItem(this.props.id);
-  };
+    this.props.onPressItem(this.props.id)
+  }
 }

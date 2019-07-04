@@ -1,12 +1,12 @@
-import AsyncStorage from '@react-native-community/async-storage';
-import { NavigationActions } from 'react-navigation';
+import AsyncStorage from '@react-native-community/async-storage'
+import { NavigationActions } from 'react-navigation'
 
-import { AccessToken } from 'react-native-fbsdk';
+import { AccessToken } from 'react-native-fbsdk'
 
 export default nav => async (dispatch, getState) => {
-  const accessToken = await AccessToken.getCurrentAccessToken();
+  const accessToken = await AccessToken.getCurrentAccessToken()
 
-  await AsyncStorage.setItem('userToken', accessToken.userID);
+  await AsyncStorage.setItem('userToken', accessToken.userID)
 
-  nav.dispatch(NavigationActions.navigate({ routeName: 'Diets' }));
-};
+  nav.dispatch(NavigationActions.navigate({ routeName: 'Diets' }))
+}
