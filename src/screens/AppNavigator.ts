@@ -5,16 +5,20 @@ import {
   createSwitchNavigator,
 } from 'react-navigation'
 
-import AuthLoadingScreen from './AuthLoading'
-import DietChangeScreen from './DietChange'
-import DietsScreen from './Diets'
-import MealsChangeScreen from './MealsChange'
-import MealsInDietScreen from './MealsInDiet'
-import ProductFormScreen from './ProductForm'
+import AuthLoadingScreen from './Auth/AuthLoading'
+import SignInScreen from './Auth/SignIn'
+
+import DietsScreen from './Home/Diets'
+import MealsInDietScreen from './Home/MealsInDiet'
+import ProductsChooseScreen from './Home/ProductsChoose'
+
 import ProductsScreen from './Products'
-import ProductsChooseScreen from './ProductsChoose'
+
+import DietChangeScreen from './Modals/DietChange'
+import MealsChangeScreen from './Modals/MealsChange'
+import ProductFormScreen from './Modals/ProductForm'
+
 import ProfileScreen from './Profile'
-import SignInScreen from './SignIn'
 
 const HomeStack = createStackNavigator({
   Diets: DietsScreen,
